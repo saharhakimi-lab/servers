@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שרתים ושירותי רשת | סימולטור לימוד אינטראקטיבי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght=400;500;600;700;800&family=Fira+Code:wght=400;500;600&display=swap" rel="stylesheet">
+
+<!-- טעינת Tailwind CSS ו-Lucide Icons לתמיכה מלאה בחלונית החדשה -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+:root{
+  --bg:#141822; --panel:#1E2533; --panel2:#2A3347; --panel3:#37435D;
+  --border:#2D3950; --border2:#415374;
+  --text:#E2E8F0; --muted:#94A3B8; --muted2:#64748B;
+  --dns:#F59E0B; --dns-dim:rgba(245,158,11,0.15);
+  --dhcp:#EF4444; --dhcp-dim:rgba(239,68,68,0.15);
+  --web:#10B981; --web-dim:rgba(16,185,129,0.15);
+  --ftp:#3B82F6; --ftp-dim:rgba(59,130,246,0.15);
+  --stick:#8B5CF6;
+  --ok:#10B981; --bad:#EF4444; --info:#3B82F6;
+  --radius:14px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Rubik',sans-serif; line-height:1.6;
+  padding-bottom:140px;
+}
+.mono{font-family:'Fira Code',monospace;}
+.wrap{max-width:1100px; margin:0 auto; padding:0 20px;}
+h1,h2,h3{font-weight:700; margin:0 0 8px;}
+p{margin:0 0 12px; color:var(--muted);}
+
+.progressbar{position:sticky; top:0; z-index:40; background:rgba(20,24,34,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); padding:14px 20px;}
+.progressbar-inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:14px;}
+.progressbar-title{font-weight:700; font-size:15px; white-space:nowrap;}
+.steps{display:flex; gap:6px; flex:1;}
+.step{flex:1; height:6px; border-radius:4px; background:var(--panel3); position:relative; overflow:hidden;}
+.step.done{background:var(--ok);}
+.step.active{background:var(--info);}
+.progress-pct{font-size:13px; color:var(--muted); font-family:'Fira Code',monospace; white-space:nowrap;}
+
+header.hero{padding:60px 0 30px; border-bottom:1px solid var(--border);}
+.eyebrow{display:inline-block; font-family:'Fira Code',monospace; font-size:12px; letter-spacing:1px; color:var(--stick); background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); padding:5px 14px; border-radius:20px; margin-bottom:18px;}
+h1.title{font-size:38px; margin-bottom:12px; color:#FFFFFF;}
+h1.title span{color:var(--stick);}
+.subtitle{font-size:16px; max-width:700px; margin:0;}
+
+section{padding:50px 0; border-top:1px solid var(--border);}
+.section-head{margin-bottom:26px;}
+.section-num{font-family:'Fira Code',monospace; color:var(--muted2); font-size:13px; margin-bottom:6px;}
+.section-title{font-size:24px; color:#FFFFFF;}
+
+.card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px;}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media(max-width:720px){.grid2{grid-template-columns:1fr;}}
+
+.concept-card{border-right:4px solid var(--stick);}
+.tag{display:inline-block; font-family:'Fira Code',monospace; font-size:11px; padding:3px 8px; border-radius:6px; margin:2px 4px 2px 0;}
+.tag.dns{background:var(--dns-dim); color:var(--dns);}
+.tag.dhcp{background:var(--dhcp-dim); color:var(--dhcp);}
+.tag.web{background:var(--web-dim); color:var(--web);}
+.tag.ftp{background:var(--ftp-dim); color:var(--ftp);}
+
+.accordion{border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:12px;}
+.acc-head{padding:16px 18px; background:var(--panel); cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:600;}
+.acc-head:hover{background:var(--panel2);}
+.acc-body{max-height:0; overflow:hidden; transition:max-height .3s ease; background:var(--panel);}
+.acc-body-inner{padding:0 18px 18px;}
+.accordion.open .acc-body{max-height:600px;}
+.acc-arrow{transition:transform .3s; color:var(--muted);}
+.accordion.open .acc-arrow{transform:rotate(180deg);}
+
+/* אזור הדיאגרמה המוגדל */
+.diagram-wrap{background:#0D111A; border:2px solid var(--border); border-radius:var(--radius); padding:30px; overflow-x:auto; margin-top:20px;}
+.srv-node{cursor:pointer; transition:transform 0.2s, opacity 0.15s;}
+.srv-node:hover{opacity:0.9; transform:scale(1.02);}
+.controls-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:20px;}
+button.btn{background:var(--stick); color:#FFFFFF; border:none; border-radius:8px; padding:12px 22px; font-family:'Rubik'; font-weight:600; font-size:15px; cursor:pointer; transition:transform .1s, opacity .15s;}
+button.btn:hover{opacity:0.9;}
+button.btn:active{transform:scale(0.97);}
+button.btn:disabled{opacity:0.3; cursor:not-allowed;}
+button.btn.secondary{background:var(--panel3); color:var(--text); border:1px solid var(--border2);}
+
+.log-panel{background:#080C14; border:1px solid var(--border); border-radius:10px; margin-top:16px; padding:16px; font-family:'Fira Code',monospace; font-size:13px; max-height:240px; overflow-y:auto; color:#A1B0CB;}
+.log-line{margin-bottom:8px; animation:fadeIn .3s ease;}
+.log-line .lbl{color:var(--stick); font-weight:bold;}
+
+.terminal{background:#0B0F17; border:1px solid var(--border2); border-radius:10px; padding:18px; font-family:'Fira Code',monospace; font-size:13px;}
+.term-topbar{display:flex; gap:6px; margin-bottom:12px; align-items:center;}
+.dot{width:10px; height:10px; border-radius:50%;}
+.dot.r{background:#EF4444;} .dot.y{background:#F59E0B;} .dot.g{background:#10B981;}
+.term-output{white-space:pre-wrap; color:#94A3B8; margin-bottom:10px; min-height:40px;}
+.term-output .ok{color:#10B981;}
+.term-output .bad{color:#EF4444;}
+.term-output .hint{color:#F59E0B;}
+.term-input-row{display:flex; align-items:center; gap:6px; border-top:1px solid var(--border); padding-top:12px;}
+.prompt{color:#10B981; white-space:nowrap;}
+input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; font-family:'Fira Code',monospace; font-size:13px; outline:none;}
+
+.task-box{background:var(--panel2); border:1px solid var(--border2); border-radius:10px; padding:14px 16px; margin-bottom:14px;}
+.task-title{font-weight:600; margin-bottom:4px; color:var(--dns);}
+.task-progress{font-family:'Fira Code',monospace; font-size:12px; color:var(--muted);}
+
+.quiz-q{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:20px;}
+.quiz-q-num{font-family:'Fira Code',monospace; color:var(--muted2); font-size:12px; margin-bottom:6px;}
+.quiz-opts{display:flex; flex-direction:column; gap:10px; margin-top:14px;}
+.quiz-opt{background:var(--panel3); border:1px solid var(--border2); border-radius:8px; padding:14px; cursor:pointer; text-align:right; font-size:14px; transition:border-color 0.15s;}
+.quiz-opt:hover{border-color:var(--muted);}
+.quiz-opt.correct{background:rgba(16,185,129,0.15); border-color:var(--ok); color:var(--ok);}
+.quiz-opt.wrong{background:rgba(239,68,68,0.15); border-color:var(--bad); color:var(--bad);}
+.quiz-opt.disabled{pointer-events:none;}
+.quiz-explain{margin-top:12px; padding:12px; background:var(--panel2); border-radius:8px; font-size:13px; display:none;}
+.quiz-explain.show{display:block;}
+
+.completion{text-align:center; padding:40px 20px; background:var(--panel); border:2px solid var(--ok); border-radius:var(--radius); display:none;}
+.completion.show{display:block;}
+
+.footer-note{text-align:center; color:var(--muted2); font-size:12px; margin-top:50px;}
+::-webkit-scrollbar{width:8px; height:8px;}
+::-webkit-scrollbar-thumb{background:var(--border2); border-radius:4px;}
+</style>
+</head>
+<body>
+
+<div class="progressbar">
+  <div class="progressbar-inner">
+    <div class="progressbar-title">🖥️ שרתים ושירותי רשת</div>
+    <div class="steps" id="stepsBar"></div>
+    <div class="progress-pct" id="progressPct">0%</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Network Servers · Application Layer Services</div>
+    <h1 class="title">ארכיטקטורת <span>שרת-לקוח</span></h1>
+    <p class="subtitle">הבנה מעמיקה של שירותי הרשת המרכזיים המפעילים את רשת האינטרנט והרשת הארגונית: כיצד שרתי ה-DHCP, DNS, Web ו-FTP משרתים את תחנות הקצה.</p>
+  </div>
+</header>
+
+<section id="s1">
+<div class="section-head">
+  <div class="section-num">01 — מבוא ושירותים</div>
+  <h2 class="section-title">ארבעת עמודי התווך של שירותי הרשת</h2>
+</div>
+
+<div class="grid2">
+  <div class="card concept-card">
+    <h3>🔍 שירותי זיהוי ומיפוי</h3>
+    <p><span class="tag dns">DNS · פורט 53</span> מתרגם שמות דומיין קריאים לבני אדם (כמו google.com) לכתובות IP שהמחשבים מבינים.</p>
+    <p><span class="tag dhcp">DHCP · פורטים 67, 68</span> מחלק כתובות IP, מסיכות רשת וכתובות Gateway באופן אוטומטי ודינמי לכל מכשיר שמתחבר לרשת.</p>
+  </div>
+  <div class="card concept-card">
+    <h3>🌐 שירותי תוכן והעברת קבצים</h3>
+    <p><span class="tag web">HTTP/HTTPS · פורטים 80, 443</span> שרת ה-Web המארח אתרי אינטרנט ומגיש דפי HTML, תמונות וסקריפטים לדפדפן של הלקוח.</p>
+    <p><span class="tag ftp">FTP · פורטים 20, 21</span> פרוטוקול ייעודי המאפשר העלאה והורדה מאובטחת או רגילה של קבצים ומסמכים גדולים בין שרת לקוח.</p>
+  </div>
+</div>
+</section>
+
+<section id="s2">
+<div class="section-head">
+  <div class="section-num">02 — פרוטוקולי האפליקציה</div>
+  <h2 class="section-title">כיצד הבקשות מנותבות בשכבת האפליקציה?</h2>
+</div>
+
+<div id="acc1" class="accordion">
+  <div class="acc-head" onclick="toggleAcc('acc1')"><span>כיצד פועל תהליך ה-DHCP (DORA)?</span><span class="acc-arrow">▾</span></div>
+  <div class="acc-body"><div class="acc-body-inner">
+    <p>התהליך מורכב מ-4 שלבים רצופים: <b>Discover</b> (הלקוח מחפש שרת ב-Broadcast), ‏<b>Offer</b> (השרת מציע כתובת), ‏<b>Request</b> (הלקוח מבקש רשמית לאמץ אותה), ו-<b>ACK</b> (השרת מאשר ונועל את ההקצאה).</p>
+  </div></div>
+</div>
+
+<div id="acc2" class="accordion">
+  <div class="acc-head" onclick="toggleAcc('acc2')"><span>מה ההבדל בין פורט 20 לפורט 21 בשירות FTP?</span><span class="acc-arrow">▾</span></div>
+  <div class="acc-body"><div class="acc-body-inner">
+    <p>פרוטוקול FTP משתמש בשני ערוצים נפרדים: <b>פורט 21</b> משמש להעברת פקודות ובקרת חיבור (Control Connection), בעוד ש<b>פורט 20</b> משמש להעברה הפיזית של הקבצים עצמם (Data Connection).</p>
+  </div></div>
+</div>
+</section>
+
+<section id="s3">
+<div class="section-head">
+  <div class="section-num">03 — הדמיית תעבורה אינטראקטיבית</div>
+  <h2 class="section-title">בחר שירות ועקוב אחר תנועת החבילה ברשת</h2>
+</div>
+<p>לחץ על אחד מסוגי השירותים למטה כדי להפעיל שאילתה מתאימה ממחשב הלקוח ולראות כיצד החבילה מנותבת לשרת הייעודי דרך מתג הרשת המרכזי.</p>
+
+<div class="diagram-wrap">
+<svg id="netDiagram" viewBox="0 0 1000 580" style="width:100%; display:block;">
+  
+  <line x1="500" y1="460" x2="500" y2="280" stroke="#415374" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <line x1="160" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
+  <line x1="380" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
+  <line x1="620" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
+  <line x1="840" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
+
+  <g class="srv-node" onclick="selectService('DNS')">
+    <rect x="70" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#F59E0B" stroke-width="2"/>
+    <rect x="135" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#F59E0B" stroke-width="1.5"/>
+    <line x1="140" y1="55" x2="160" y2="55" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="140" y1="65" x2="160" y2="65" stroke="#F59E0B" stroke-width="2"/>
+    <circle cx="145" cy="73" r="2" fill="#10B981"/>
+    <text x="150" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">DNS Server</text>
+    <text x="150" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.10</text>
+    <text x="150" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 53 (UDP)</text>
+  </g>
+
+  <g class="srv-node" onclick="selectService('DHCP')">
+    <rect x="290" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#EF4444" stroke-width="2"/>
+    <rect x="355" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#EF4444" stroke-width="1.5"/>
+    <line x1="360" y1="55" x2="380" y2="55" stroke="#EF4444" stroke-width="2"/>
+    <line x1="360" y1="65" x2="380" y2="65" stroke="#EF4444" stroke-width="2"/>
+    <circle cx="365" cy="73" r="2" fill="#10B981"/>
+    <text x="370" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">DHCP Server</text>
+    <text x="370" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.20</text>
+    <text x="370" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 67 (UDP)</text>
+  </g>
+
+  <g class="srv-node" onclick="selectService('Web')">
+    <rect x="530" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#10B981" stroke-width="2"/>
+    <rect x="595" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#10B981" stroke-width="1.5"/>
+    <line x1="600" y1="55" x2="620" y2="55" stroke="#10B981" stroke-width="2"/>
+    <line x1="600" y1="65" x2="620" y2="65" stroke="#10B981" stroke-width="2"/>
+    <circle cx="605" cy="73" r="2" fill="#10B981"/>
+    <text x="610" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">Web Server</text>
+    <text x="610" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.30</text>
+    <text x="610" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 80 / 443</text>
+  </g>
+
+  <g class="srv-node" onclick="selectService('FTP')">
+    <rect x="750" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#3B82F6" stroke-width="2"/>
+    <rect x="815" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#3B82F6" stroke-width="1.5"/>
+    <line x1="820" y1="55" x2="840" y2="55" stroke="#3B82F6" stroke-width="2"/>
+    <line x1="820" y1="65" x2="840" y2="65" stroke="#3B82F6" stroke-width="2"/>
+    <circle cx="825" cy="73" r="2" fill="#10B981"/>
+    <text x="830" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">FTP Server</text>
+    <text x="830" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.40</text>
+    <text x="830" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 20 / 21</text>
+  </g>
+
+  <g transform="translate(450, 230)">
+    <rect width="100" height="50" rx="6" fill="#2A3347" stroke="#3B82F6" stroke-width="3"/>
+    <path d="M 20 25 L 55 25 M 55 25 L 47 18 M 55 25 L 47 32" stroke="#3B82F6" stroke-width="2.5" fill="none"/>
+    <path d="M 80 25 L 45 25 M 45 25 L 53 18 M 45 25 L 53 32" stroke="#3B82F6" stroke-width="2.5" fill="none"/>
+    <text x="50" y="72" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="14" font-weight="700">Switch_Main</text>
+  </g>
+
+  <g transform="translate(400, 440)">
+    <rect width="200" height="90" rx="8" fill="#1E2533" stroke="#8B5CF6" stroke-width="2"/>
+    <rect x="15" y="15" width="32" height="22" rx="3" fill="#2A3347" stroke="#8B5CF6" stroke-width="1.5"/>
+    <path d="M 25 37 L 37 37 M 31 37 L 31 42" stroke="#8B5CF6" stroke-width="2"/>
+    
+    <text x="115" y="32" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">PC_Client (לקוח)</text>
+    <text x="115" y="54" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.150</text>
+    <text x="115" y="72" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Subnet: /24</text>
+  </g>
+
+  <g id="movingPacket" style="display:none;">
+    <rect x="-25" y="-14" width="50" height="28" rx="6" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text id="movingPacketLabel" x="0" y="4" text-anchor="middle" fill="#FFFFFF" font-family="Fira Code" font-size="10" font-weight="800">REQ</text>
+  </g>
+</svg>
+
+<div class="controls-row">
+  <span id="selInfo" style="color:var(--muted); font-size:14px; font-weight: 500;">לחץ על אחד השרתים למעלה או על הכפתורים לבחירת שירות...</span>
+</div>
+<div class="controls-row">
+  <button class="btn" onclick="selectService('DNS')">שאילתת DNS 🔍</button>
+  <button class="btn" onclick="selectService('DHCP')">בקשת DHCP 🎫</button>
+  <button class="btn" onclick="selectService('Web')">גלישת Web 🌐</button>
+  <button class="btn" onclick="selectService('FTP')">חיבור FTP 📂</button>
+  <button class="btn secondary" onclick="resetSim()">איפוס</button>
+</div>
+<div class="log-panel" id="simLog">
+  <div class="log-line">מוכן לפעילות. בחר שירות כדי להזניק את חבילת המידע ברשת.</div>
+</div>
+</div>
+</section>
+
+<section id="s4">
+<div class="section-head">
+  <div class="section-num">04 — מעבדה מעשית</div>
+  <h2 class="section-title">הגדר שרת DNS בארגון דרך שורת הפקודה</h2>
+</div>
+<p>המשימה: להגדיר רשומת מיפוי (A Record) בשרת ה-DNS עבור האתר הארגוני המקומי `academy.local` שכתובתו 192.168.1.30.</p>
+
+<div class="task-box">
+  <div class="task-title">משימה: הוספת רשומת DNS מסוג A לכתובת 192.168.1.30</div>
+  <div class="task-progress" id="taskProgress">שלב 1 מתוך 3</div>
+</div>
+
+<div class="terminal">
+  <div class="term-topbar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span style="margin-right:8px; color:var(--muted2); font-size:12px;">DNS-Server-CLI</span></div>
+  <div class="term-output" id="termOutput">DNS-Server> enable
+DNS-Server# configure terminal
+DNS-Server(config)# ip dns server
+<span class="hint">הקלד את פקודת המיפוי: ip dns name academy.local a 192.168.1.30 ולחץ Enter</span></div>
+  <div class="term-input-row">
+    <span class="prompt" id="termPrompt">DNS-Server(config)#</span>
+    <input type="text" class="term-input" id="termInput" placeholder="הקלד פקודת קונפיגורציה..." onkeydown="if(event.key==='Enter')submitCmd()">
+  </div>
+</div>
+</section>
+
+<section id="s5">
+<div class="section-head">
+  <div class="section-num">05 — בחינת הבנה</div>
+  <h2 class="section-title">בחן את עצמך: ארכיטקטורת שירותים</h2>
+</div>
+<div id="quizContainer"></div>
+</section>
+
+<div class="completion" id="completionBox">
+  <h2>🎉 כל הכבוד! השלמת את מעבדת השרתים בהצלחה!</h2>
+  <p>הוכחת שליטה מעולה בפרוטוקולים, מספרי פורטים וקונפיגורציית שירותים בשכבת האפליקציה.</p>
+</div>
+
+<div class="footer-note">סימולטור לימוד אינטראקטיבי — מגמת הנדסת רשתות ותקשורת 2026</div>
+</div>
+
+<!-- כפתור עזרה צף קבוע בפינה התחתונה עם אווטר מובנה -->
+<div class="fixed bottom-6 left-6 z-50 no-print">
+    <button id="openHelpModalBtn" class="flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg shadow-cyan-500/20 transition-all duration-300 transform hover:scale-105 group border border-cyan-400/30">
+        <!-- אווטר קטן בתוך הכפתור -->
+        <div class="w-8 h-8 rounded-full border border-white/40 overflow-hidden bg-slate-950 flex-shrink-0 shadow-inner">
+            <img src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb" alt="אווטר בוט עזרה" class="w-full h-full object-cover">
+        </div>
+        <span>בוט עזרה</span>
+    </button>
+</div>
+
+<!-- חלונית עזרה צפה (Modal) עם אווטר מורחב -->
+<div id="helpModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 transition-all duration-300">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl shadow-cyan-500/5 transform scale-95 transition-transform duration-300" id="helpModalContent">
+        <!-- כפתור סגירה X -->
+        <button id="closeHelpModalBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-slate-800">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        
+        <!-- אווטר התמונה בחלונית -->
+        <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-cyan-400/50 p-1 bg-slate-950 shadow-lg shadow-cyan-500/20 overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb" alt="תמונת בוט עזרה" class="w-full h-full object-cover rounded-full">
+        </div>
+
+        <h3 class="text-lg font-black text-white mb-2">צריך עזרה במשימה?</h3>
+        <p class="text-sm text-slate-400 mb-6 leading-relaxed">בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ולכוון אותך לפתרון המלא!</p>
+        
+        <!-- כפתור הפניה לקישור הבוט -->
+        <a href="https://gemini.google.com/gem/167016ac4a4b/66c3b83daa7940ef?usp=sharing" target="_blank" class="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-black py-3 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-cyan-500/10">
+            <span>הפעל את בוט העזרה</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+        </a>
+    </div>
+</div>
+
+<!-- סקריפט להפעלת החלונית -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // אתחול האייקונים של Lucide
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        const modal = document.getElementById('helpModal');
+        const modalContent = document.getElementById('helpModalContent');
+        const openBtn = document.getElementById('openHelpModalBtn');
+        const closeBtn = document.getElementById('closeHelpModalBtn');
+
+        if(openBtn && modal && modalContent && closeBtn) {
+            openBtn.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                setTimeout(() => modalContent.classList.remove('scale-95'), 10);
+            });
+
+            closeBtn.addEventListener('click', () => {
+                modalContent.classList.add('scale-95');
+                setTimeout(() => modal.classList.add('hidden'), 150);
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modalContent.classList.add('scale-95');
+                    setTimeout(() => modal.classList.add('hidden'), 150);
+                }
+            });
+        }
+    });
+</script>
+
+<script>
+const PROGRESS_KEY = "srv_progress_v1";
+const stepIds = ["s1","s2","s3","s4","s5"];
+let progress = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}");
+
+function renderStepsBar(){
+  const bar = document.getElementById("stepsBar");
+  if(!bar) return;
+  bar.innerHTML = "";
+  stepIds.forEach(id=>{
+    const d = document.createElement("div");
+    d.className = "step" + (progress[id] ? " done" : "");
+    bar.appendChild(d);
+  });
+  const done = stepIds.filter(id=>progress[id]).length;
+  document.getElementById("progressPct").textContent = Math.round(done/stepIds.length*100) + "%";
+  if(done === stepIds.length){
+    document.getElementById("completionBox").classList.add("show");
+  }
+}
+function markDone(id){
+  progress[id] = true;
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+  renderStepsBar();
+}
+renderStepsBar();
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && e.intersectionRatio > 0.4){
+      markDone(e.target.id);
+    }
+  });
+}, {threshold:0.4});
+stepIds.forEach(id=>{ const el = document.getElementById(id); if(el) io.observe(el); });
+
+function toggleAcc(id){
+  document.getElementById(id).classList.toggle("open");
+}
+
+// קואורדינטות קבועות בדיאגרמה המוגדלת
+const srvColors = { DNS: "#F59E0B", DHCP: "#EF4444", Web: "#10B981", FTP: "#3B82F6" };
+const coords = {
+  client: { x: 500, y: 440 },
+  switch: { x: 500, y: 255 },
+  DNS: { x: 160, y: 120 },
+  DHCP: { x: 380, y: 120 },
+  Web: { x: 620, y: 120 },
+  FTP: { x: 840, y: 120 }
+};
+
+let currentSrv = null;
+
+async function animatePacket(x1, y1, x2, y2, color, label, duration) {
+  const pkt = document.getElementById("movingPacket");
+  const rect = pkt.querySelector("rect");
+  const txt = document.getElementById("movingPacketLabel");
+  rect.setAttribute("fill", color);
+  txt.textContent = label;
+  pkt.style.display = "block";
+  
+  const steps = 35;
+  for(let i=0; i<=steps; i++) {
+    const t = i / steps;
+    const currentX = x1 + (x2 - x1) * t;
+    const currentY = y1 + (y2 - y1) * t;
+    pkt.setAttribute("transform", `translate(${currentX}, ${currentY})`);
+    await new Promise(r => setTimeout(r, duration / steps));
+  }
+}
+
+async function selectService(srv) {
+  currentSrv = srv;
+  document.getElementById("selInfo").innerHTML = "נבחר שירות: <b style='color:" + srvColors[srv] + "'>" + srv + "</b>. האנימציה מתחילה...";
+  const logPanel = document.getElementById("simLog");
+  logPanel.innerHTML = "";
+  
+  // 1. קליינט לסוויטש
+  log("<span class='lbl'>[שלב 1]</span> תחנת הקצה מייצרת בקשת " + srv + " ושולחת אותה דרך כרטיס הרשת אל מתג הגישה הארגוני.");
+  await animatePacket(coords.client.x, coords.client.y, coords.switch.x, coords.switch.y, srvColors[srv], "REQ", 700);
+  
+  // 2. סוויטש לשרת
+  log("<span class='lbl'>[שלב 2]</span> ה-Switch מקבל את ה-Frame, קורא את כתובת ה-MAC של היעד ומעביר את החבילה במדויק לשרת ה-" + srv + ".");
+  await animatePacket(coords.switch.x, coords.switch.y, coords[srv].x, coords[srv].y, srvColors[srv], srv, 800);
+  
+  // 3. עיבוד בשרת
+  log("<span class='lbl'>[שלב 3]</span> שרת ה-" + srv + " מעבד את השאילתה בשכבת האפליקציה ומחזיר תשובה (Reply) עם המידע המבוקש.");
+  await new Promise(r => setTimeout(r, 1000));
+  
+  // 4. שרת חזרה לסוויטש
+  await animatePacket(coords[srv].x, coords[srv].y, coords.switch.x, coords.switch.y, srvColors[srv], "RES", 800);
+  
+  // 5. סוויטש לקליינט
+  log("<span class='lbl'>[שלב 4]</span> התשובה מגיעה בחזרה ללקוח. השירות בוצע בהצלחה!");
+  await animatePacket(coords.switch.x, coords.switch.y, coords.client.x, coords.client.y, srvColors[srv], "OK", 700);
+  
+  document.getElementById("movingPacket").style.display = "none";
+  markDone("s3");
+}
+
+function resetSim() {
+  document.getElementById("selInfo").textContent = "לחץ על אחד השרתים למעלה או על הכפתורים לבחירת שירות...";
+  document.getElementById("simLog").innerHTML = '<div class="log-line">מוכן לפעילות. בחר שירות כדי להזניק את חבילת המידע ברשת.</div>';
+  document.getElementById("movingPacket").style.display = "none";
+}
+
+function log(text){
+  const panel = document.getElementById("simLog");
+  const line = document.createElement("div");
+  line.className = "log-line";
+  line.innerHTML = text;
+  panel.appendChild(line);
+  panel.scrollTop = panel.scrollHeight;
+}
+
+// קוד ה-CLI
+const cliSteps = [
+  {expect:/^ip\s+dns\s+name\s+academy\.local\s+a\s+192\.168\.1\.30\s*$/i, ok:"מעולה! הוספת בהצלחה רשומת מיפוי מסוג A עבור הדומיין הארגוני.", cmd:"ip dns name academy.local a 192.168.1.30"},
+  {expect:/^exit\s*$/i, ok:"יצאת ממצב ההגדרות. הרשומה נשמרה ב-Cache של השרת ותופץ ברשת הארגונית! 🏆", cmd:"exit"}
+];
+let cliStep = 0;
+
+function submitCmd(){
+  const input = document.getElementById("termInput");
+  const val = input.value.trim();
+  const output = document.getElementById("termOutput");
+  const prompt = document.getElementById("termPrompt").textContent;
+  if(val === ""){ return; }
+  if(cliStep >= cliSteps.length){ input.value=""; return; }
+  
+  const step = cliSteps[cliStep];
+  if(step.expect.test(val)){
+    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='ok'>✔ " + step.ok + "</span>";
+    cliStep++;
+    if(cliStep < cliSteps.length){
+      output.innerHTML += "\n<span class='hint'>שלב הבא: הזן את פקודת היציאה והשמירה</span>";
+      document.getElementById("taskProgress").textContent = "שלב " + (cliStep+1) + " מתוך " + cliSteps.length;
+      document.getElementById("termPrompt").textContent = "DNS-Server(config)#";
+    } else {
+      document.getElementById("taskProgress").textContent = "הושלם בהצלחה! ✅";
+      markDone("s4");
+    }
+  } else {
+    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='bad'>✘ תחביר פקודה לא מדויק. נסה שוב או היעזר ברמז למעלה.</span>";
+  }
+  input.value = "";
+  output.scrollTop = output.scrollHeight;
+}
+
+// קוד החידון
+const quizData = [
+  {
+    q: "באיזה פרוטוקול תחנת קצה משתמשת כדי לקבל כתובת IP באופן אוטומטי מיד עם הדלקתה?",
+    opts: ["DNS", "DHCP", "HTTP", "FTP"],
+    correct: 1,
+    explain: "שרת ה-DHCP אחראי על חלוקה וניהול דינמי של כתובות IP ופרמטרי רשת נוספים לתחנות הקצה בארגון."
+  },
+  {
+    q: "מה תפקידו המרכזי של שרת ה-DNS ברשת?",
+    opts: ["להעביר קבצים גדולים במהירות גבוהה", "לאבטח את תעבורת ה-Web באמצעות הצפנה", "לתרגם שמות דומיין קריאים (כמו academy.local) לכתובות IP", "לחלק כתובות IP דינמיות למחשבים"],
+    correct: 2,
+    explain: "שרת ה-DNS משמש כספר הטלפונים של הרשת — הוא מתרגם שמות נוחים לזכירה לכתובות ה-IP האמיתיות של השרתים."
+  }
+];
+
+function renderQuiz(){
+  const container = document.getElementById("quizContainer");
+  if(!container) return;
+  quizData.forEach((item, qi)=>{
+    const qDiv = document.createElement("div");
+    qDiv.className = "quiz-q";
+    qDiv.innerHTML = "<div class='quiz-q-num'>שאלה " + (qi+1) + " מתוך " + quizData.length + "</div><div><b>" + item.q + "</b></div>";
+    const optsDiv = document.createElement("div");
+    optsDiv.className = "quiz-opts";
+    item.opts.forEach((opt, oi)=>{
+      const b = document.createElement("div");
+      b.className = "quiz-opt";
+      b.textContent = opt;
+      b.onclick = ()=>answerQuiz(qi, oi);
+      optsDiv.appendChild(b);
+    });
+    qDiv.appendChild(optsDiv);
+    const explainDiv = document.createElement("div");
+    explainDiv.className = "quiz-explain";
+    explainDiv.id = "explain-" + qi;
+    explainDiv.textContent = item.explain;
+    qDiv.appendChild(explainDiv);
+    container.appendChild(qDiv);
+  });
+}
+let quizAnswered = {};
+function answerQuiz(qi, oi){
+  if(quizAnswered[qi]) return;
+  quizAnswered[qi] = true;
+  const item = quizData[qi];
+  const opts = document.querySelectorAll(".quiz-q")[qi].querySelectorAll(".quiz-opt");
+  opts.forEach((el, i)=>{
+    el.classList.add("disabled");
+    if(i === item.correct) el.classList.add("correct");
+    else if(i === oi) el.classList.add("wrong");
+  });
+  document.getElementById("explain-"+qi).classList.add("show");
+  if(Object.keys(quizAnswered).length === quizData.length){
+    markDone("s5");
+  }
+}
+renderQuiz();
+</script>
+</body>
+</html>
