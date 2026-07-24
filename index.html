@@ -8,21 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght=400;500;600;700;800&family=Fira+Code:wght=400;500;600&display=swap" rel="stylesheet">
 
-<!-- טעינת Tailwind CSS ו-Lucide Icons לתמיכה מלאה בחלונית החדשה -->
+<!-- טעינת Tailwind CSS ו-Lucide Icons -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
 :root{
-  --bg:#141822; --panel:#1E2533; --panel2:#2A3347; --panel3:#37435D;
-  --border:#2D3950; --border2:#415374;
-  --text:#E2E8F0; --muted:#94A3B8; --muted2:#64748B;
-  --dns:#F59E0B; --dns-dim:rgba(245,158,11,0.15);
-  --dhcp:#EF4444; --dhcp-dim:rgba(239,68,68,0.15);
-  --web:#10B981; --web-dim:rgba(16,185,129,0.15);
-  --ftp:#3B82F6; --ftp-dim:rgba(59,130,246,0.15);
-  --stick:#8B5CF6;
-  --ok:#10B981; --bad:#EF4444; --info:#3B82F6;
+  --bg:#FAF7F2; --panel:#FFFFFF; --panel2:#F3EFEA; --panel3:#EBE5DD;
+  --border:#E2D9CE; --border2:#CBD5E1;
+  --text:#292524; --muted:#57534E; --muted2:#78716C;
+  --dns:#D97706; --dns-dim:rgba(217,119,6,0.15);
+  --dhcp:#DC2626; --dhcp-dim:rgba(220,38,38,0.15);
+  --web:#059669; --web-dim:rgba(5,150,105,0.15);
+  --ftp:#2563EB; --ftp-dim:rgba(37,99,235,0.15);
+  --stick:#7C3AED;
+  --ok:#059669; --bad:#DC2626; --info:#2563EB;
   --radius:14px;
 }
 *{box-sizing:border-box;}
@@ -36,7 +36,7 @@ body{
 h1,h2,h3{font-weight:700; margin:0 0 8px;}
 p{margin:0 0 12px; color:var(--muted);}
 
-.progressbar{position:sticky; top:0; z-index:40; background:rgba(20,24,34,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); padding:14px 20px;}
+.progressbar{position:sticky; top:0; z-index:40; background:rgba(250,247,242,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); padding:14px 20px;}
 .progressbar-inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:14px;}
 .progressbar-title{font-weight:700; font-size:15px; white-space:nowrap;}
 .steps{display:flex; gap:6px; flex:1;}
@@ -46,17 +46,45 @@ p{margin:0 0 12px; color:var(--muted);}
 .progress-pct{font-size:13px; color:var(--muted); font-family:'Fira Code',monospace; white-space:nowrap;}
 
 header.hero{padding:60px 0 30px; border-bottom:1px solid var(--border);}
-.eyebrow{display:inline-block; font-family:'Fira Code',monospace; font-size:12px; letter-spacing:1px; color:var(--stick); background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); padding:5px 14px; border-radius:20px; margin-bottom:18px;}
-h1.title{font-size:38px; margin-bottom:12px; color:#FFFFFF;}
+.hero-flex{display:flex; align-items:center; justify-content:space-between; gap:30px; direction: rtl;}
+.hero-text{flex: 1;}
+
+.eyebrow{display:inline-block; font-family:'Fira Code',monospace; font-size:12px; letter-spacing:1px; color:var(--stick); background:rgba(124,58,237,0.1); border:1px solid rgba(124,58,237,0.3); padding:5px 14px; border-radius:20px; margin-bottom:18px;}
+h1.title{font-size:38px; margin-bottom:12px; color:#1C1917;}
 h1.title span{color:var(--stick);}
 .subtitle{font-size:16px; max-width:700px; margin:0;}
+
+/* אלוף ההטיה 30 מעלות - ממוקם בצד שמאל */
+.avatar-wild-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+.avatar-wild {
+  width: 130px;
+  height: 130px;
+  border-radius: 28px;
+  transform: rotate(30deg);
+  box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3), 0 0 0 5px #FFFFFF;
+  border: 4px solid var(--stick);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  object-fit: cover;
+  background: #1E2533;
+}
+.avatar-wild-wrapper:hover .avatar-wild {
+  transform: rotate(0deg) scale(1.1);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.4), 0 0 0 5px #FFFFFF;
+}
 
 section{padding:50px 0; border-top:1px solid var(--border);}
 .section-head{margin-bottom:26px;}
 .section-num{font-family:'Fira Code',monospace; color:var(--muted2); font-size:13px; margin-bottom:6px;}
-.section-title{font-size:24px; color:#FFFFFF;}
+.section-title{font-size:24px; color:#1C1917;}
 
-.card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px;}
+.card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);}
 .grid2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
 @media(max-width:720px){.grid2{grid-template-columns:1fr;}}
 
@@ -67,7 +95,7 @@ section{padding:50px 0; border-top:1px solid var(--border);}
 .tag.web{background:var(--web-dim); color:var(--web);}
 .tag.ftp{background:var(--ftp-dim); color:var(--ftp);}
 
-.accordion{border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:12px;}
+.accordion{border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:12px; background:var(--panel);}
 .acc-head{padding:16px 18px; background:var(--panel); cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:600;}
 .acc-head:hover{background:var(--panel2);}
 .acc-body{max-height:0; overflow:hidden; transition:max-height .3s ease; background:var(--panel);}
@@ -76,8 +104,7 @@ section{padding:50px 0; border-top:1px solid var(--border);}
 .acc-arrow{transition:transform .3s; color:var(--muted);}
 .accordion.open .acc-arrow{transform:rotate(180deg);}
 
-/* אזור הדיאגרמה המוגדל */
-.diagram-wrap{background:#0D111A; border:2px solid var(--border); border-radius:var(--radius); padding:30px; overflow-x:auto; margin-top:20px;}
+.diagram-wrap{background:#F5F0E8; border:2px solid var(--border); border-radius:var(--radius); padding:30px; overflow-x:auto; margin-top:20px;}
 .srv-node{cursor:pointer; transition:transform 0.2s, opacity 0.15s;}
 .srv-node:hover{opacity:0.9; transform:scale(1.02);}
 .controls-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:20px;}
@@ -87,33 +114,33 @@ button.btn:active{transform:scale(0.97);}
 button.btn:disabled{opacity:0.3; cursor:not-allowed;}
 button.btn.secondary{background:var(--panel3); color:var(--text); border:1px solid var(--border2);}
 
-.log-panel{background:#080C14; border:1px solid var(--border); border-radius:10px; margin-top:16px; padding:16px; font-family:'Fira Code',monospace; font-size:13px; max-height:240px; overflow-y:auto; color:#A1B0CB;}
+.log-panel{background:#FAF7F2; border:1px solid var(--border); border-radius:10px; margin-top:16px; padding:16px; font-family:'Fira Code',monospace; font-size:13px; max-height:240px; overflow-y:auto; color:#44403C;}
 .log-line{margin-bottom:8px; animation:fadeIn .3s ease;}
 .log-line .lbl{color:var(--stick); font-weight:bold;}
 
-.terminal{background:#0B0F17; border:1px solid var(--border2); border-radius:10px; padding:18px; font-family:'Fira Code',monospace; font-size:13px;}
+.terminal{background:#1E293B; border:1px solid var(--border2); border-radius:10px; padding:18px; font-family:'Fira Code',monospace; font-size:13px; color:#F8FAFC;}
 .term-topbar{display:flex; gap:6px; margin-bottom:12px; align-items:center;}
 .dot{width:10px; height:10px; border-radius:50%;}
 .dot.r{background:#EF4444;} .dot.y{background:#F59E0B;} .dot.g{background:#10B981;}
 .term-output{white-space:pre-wrap; color:#94A3B8; margin-bottom:10px; min-height:40px;}
-.term-output .ok{color:#10B981;}
-.term-output .bad{color:#EF4444;}
-.term-output .hint{color:#F59E0B;}
-.term-input-row{display:flex; align-items:center; gap:6px; border-top:1px solid var(--border); padding-top:12px;}
-.prompt{color:#10B981; white-space:nowrap;}
+.term-output .ok{color:#34D399;}
+.term-output .bad{color:#F87171;}
+.term-output .hint{color:#FBBF24;}
+.term-input-row{display:flex; align-items:center; gap:6px; border-top:1px solid #334155; padding-top:12px;}
+.prompt{color:#34D399; white-space:nowrap;}
 input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; font-family:'Fira Code',monospace; font-size:13px; outline:none;}
 
-.task-box{background:var(--panel2); border:1px solid var(--border2); border-radius:10px; padding:14px 16px; margin-bottom:14px;}
+.task-box{background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:14px;}
 .task-title{font-weight:600; margin-bottom:4px; color:var(--dns);}
 .task-progress{font-family:'Fira Code',monospace; font-size:12px; color:var(--muted);}
 
 .quiz-q{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:20px;}
 .quiz-q-num{font-family:'Fira Code',monospace; color:var(--muted2); font-size:12px; margin-bottom:6px;}
 .quiz-opts{display:flex; flex-direction:column; gap:10px; margin-top:14px;}
-.quiz-opt{background:var(--panel3); border:1px solid var(--border2); border-radius:8px; padding:14px; cursor:pointer; text-align:right; font-size:14px; transition:border-color 0.15s;}
+.quiz-opt{background:var(--panel2); border:1px solid var(--border); border-radius:8px; padding:14px; cursor:pointer; text-align:right; font-size:14px; transition:border-color 0.15s;}
 .quiz-opt:hover{border-color:var(--muted);}
-.quiz-opt.correct{background:rgba(16,185,129,0.15); border-color:var(--ok); color:var(--ok);}
-.quiz-opt.wrong{background:rgba(239,68,68,0.15); border-color:var(--bad); color:var(--bad);}
+.quiz-opt.correct{background:rgba(5,150,105,0.15); border-color:var(--ok); color:var(--ok);}
+.quiz-opt.wrong{background:rgba(220,38,38,0.15); border-color:var(--bad); color:var(--bad);}
 .quiz-opt.disabled{pointer-events:none;}
 .quiz-explain{margin-top:12px; padding:12px; background:var(--panel2); border-radius:8px; font-size:13px; display:none;}
 .quiz-explain.show{display:block;}
@@ -139,10 +166,16 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
 <div class="wrap">
 
 <header class="hero">
-  <div class="hero-text">
-    <div class="eyebrow">Network Servers · Application Layer Services</div>
-    <h1 class="title">ארכיטקטורת <span>שרת-לקוח</span></h1>
-    <p class="subtitle">הבנה מעמיקה של שירותי הרשת המרכזיים המפעילים את רשת האינטרנט והרשת הארגונית: כיצד שרתי ה-DHCP, DNS, Web ו-FTP משרתים את תחנות הקצה.</p>
+  <div class="hero-flex">
+    <div class="hero-text">
+      <div class="eyebrow">Network Servers · Application Layer Services</div>
+      <h1 class="title">ארכיטקטורת <span>שרת-לקוח</span></h1>
+      <p class="subtitle">הבנה מעמיקה של שירותי הרשת המרכזיים המפעילים את רשת האינטרנט והרשת הארגונית: כיצד שרתי ה-DHCP, DNS, Web ו-FTP משרתים את תחנות הקצה.</p>
+    </div>
+    <!-- האווטאר המטורלל ממוקם בצד שמאל -->
+    <div class="avatar-wild-wrapper">
+      <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w500" alt="מטורלל בהטיה" class="avatar-wild">
+    </div>
   </div>
 </header>
 
@@ -197,75 +230,75 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
 <div class="diagram-wrap">
 <svg id="netDiagram" viewBox="0 0 1000 580" style="width:100%; display:block;">
   
-  <line x1="500" y1="460" x2="500" y2="280" stroke="#415374" stroke-width="2.5" stroke-dasharray="4 4"/>
-  <line x1="160" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
-  <line x1="380" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
-  <line x1="620" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
-  <line x1="840" y1="120" x2="500" y2="280" stroke="#415374" stroke-width="2.5"/>
+  <line x1="500" y1="460" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <line x1="160" y1="120" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5"/>
+  <line x1="380" y1="120" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5"/>
+  <line x1="620" y1="120" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5"/>
+  <line x1="840" y1="120" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5"/>
 
   <g class="srv-node" onclick="selectService('DNS')">
-    <rect x="70" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#F59E0B" stroke-width="2"/>
-    <rect x="135" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#F59E0B" stroke-width="1.5"/>
-    <line x1="140" y1="55" x2="160" y2="55" stroke="#F59E0B" stroke-width="2"/>
-    <line x1="140" y1="65" x2="160" y2="65" stroke="#F59E0B" stroke-width="2"/>
-    <circle cx="145" cy="73" r="2" fill="#10B981"/>
-    <text x="150" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">DNS Server</text>
-    <text x="150" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.10</text>
-    <text x="150" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 53 (UDP)</text>
+    <rect x="70" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+    <rect x="135" y="45" width="30" height="35" rx="3" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+    <line x1="140" y1="55" x2="160" y2="55" stroke="#D97706" stroke-width="2"/>
+    <line x1="140" y1="65" x2="160" y2="65" stroke="#D97706" stroke-width="2"/>
+    <circle cx="145" cy="73" r="2" fill="#059669"/>
+    <text x="150" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">DNS Server</text>
+    <text x="150" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11">IP: 192.168.1.10</text>
+    <text x="150" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11">Port: 53 (UDP)</text>
   </g>
 
   <g class="srv-node" onclick="selectService('DHCP')">
-    <rect x="290" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#EF4444" stroke-width="2"/>
-    <rect x="355" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#EF4444" stroke-width="1.5"/>
-    <line x1="360" y1="55" x2="380" y2="55" stroke="#EF4444" stroke-width="2"/>
-    <line x1="360" y1="65" x2="380" y2="65" stroke="#EF4444" stroke-width="2"/>
-    <circle cx="365" cy="73" r="2" fill="#10B981"/>
-    <text x="370" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">DHCP Server</text>
-    <text x="370" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.20</text>
-    <text x="370" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 67 (UDP)</text>
+    <rect x="290" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="2"/>
+    <rect x="355" y="45" width="30" height="35" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+    <line x1="360" y1="55" x2="380" y2="55" stroke="#DC2626" stroke-width="2"/>
+    <line x1="360" y1="65" x2="380" y2="65" stroke="#DC2626" stroke-width="2"/>
+    <circle cx="365" cy="73" r="2" fill="#059669"/>
+    <text x="370" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">DHCP Server</text>
+    <text x="370" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11">IP: 192.168.1.20</text>
+    <text x="370" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11">Port: 67 (UDP)</text>
   </g>
 
   <g class="srv-node" onclick="selectService('Web')">
-    <rect x="530" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#10B981" stroke-width="2"/>
-    <rect x="595" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#10B981" stroke-width="1.5"/>
-    <line x1="600" y1="55" x2="620" y2="55" stroke="#10B981" stroke-width="2"/>
-    <line x1="600" y1="65" x2="620" y2="65" stroke="#10B981" stroke-width="2"/>
-    <circle cx="605" cy="73" r="2" fill="#10B981"/>
-    <text x="610" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">Web Server</text>
-    <text x="610" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.30</text>
-    <text x="610" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 80 / 443</text>
+    <rect x="530" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+    <rect x="595" y="45" width="30" height="35" rx="3" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+    <line x1="600" y1="55" x2="620" y2="55" stroke="#059669" stroke-width="2"/>
+    <line x1="600" y1="65" x2="620" y2="65" stroke="#059669" stroke-width="2"/>
+    <circle cx="605" cy="73" r="2" fill="#059669"/>
+    <text x="610" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">Web Server</text>
+    <text x="610" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11">IP: 192.168.1.30</text>
+    <text x="610" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11">Port: 80 / 443</text>
   </g>
 
   <g class="srv-node" onclick="selectService('FTP')">
-    <rect x="750" y="30" width="160" height="130" rx="8" fill="#1E2533" stroke="#3B82F6" stroke-width="2"/>
-    <rect x="815" y="45" width="30" height="35" rx="3" fill="#2A3347" stroke="#3B82F6" stroke-width="1.5"/>
-    <line x1="820" y1="55" x2="840" y2="55" stroke="#3B82F6" stroke-width="2"/>
-    <line x1="820" y1="65" x2="840" y2="65" stroke="#3B82F6" stroke-width="2"/>
-    <circle cx="825" cy="73" r="2" fill="#10B981"/>
-    <text x="830" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">FTP Server</text>
-    <text x="830" y="118" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.40</text>
-    <text x="830" y="135" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Port: 20 / 21</text>
+    <rect x="750" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
+    <rect x="815" y="45" width="30" height="35" rx="3" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.5"/>
+    <line x1="820" y1="55" x2="840" y2="55" stroke="#2563EB" stroke-width="2"/>
+    <line x1="820" y1="65" x2="840" y2="65" stroke="#2563EB" stroke-width="2"/>
+    <circle cx="825" cy="73" r="2" fill="#059669"/>
+    <text x="830" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">FTP Server</text>
+    <text x="830" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11">IP: 192.168.1.40</text>
+    <text x="830" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11">Port: 20 / 21</text>
   </g>
 
   <g transform="translate(450, 230)">
-    <rect width="100" height="50" rx="6" fill="#2A3347" stroke="#3B82F6" stroke-width="3"/>
-    <path d="M 20 25 L 55 25 M 55 25 L 47 18 M 55 25 L 47 32" stroke="#3B82F6" stroke-width="2.5" fill="none"/>
-    <path d="M 80 25 L 45 25 M 45 25 L 53 18 M 45 25 L 53 32" stroke="#3B82F6" stroke-width="2.5" fill="none"/>
-    <text x="50" y="72" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="14" font-weight="700">Switch_Main</text>
+    <rect width="100" height="50" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="3"/>
+    <path d="M 20 25 L 55 25 M 55 25 L 47 18 M 55 25 L 47 32" stroke="#2563EB" stroke-width="2.5" fill="none"/>
+    <path d="M 80 25 L 45 25 M 45 25 L 53 18 M 45 25 L 53 32" stroke="#2563EB" stroke-width="2.5" fill="none"/>
+    <text x="50" y="72" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Switch_Main</text>
   </g>
 
   <g transform="translate(400, 440)">
-    <rect width="200" height="90" rx="8" fill="#1E2533" stroke="#8B5CF6" stroke-width="2"/>
-    <rect x="15" y="15" width="32" height="22" rx="3" fill="#2A3347" stroke="#8B5CF6" stroke-width="1.5"/>
-    <path d="M 25 37 L 37 37 M 31 37 L 31 42" stroke="#8B5CF6" stroke-width="2"/>
+    <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
+    <rect x="15" y="15" width="32" height="22" rx="3" fill="#F3EFEA" stroke="#7C3AED" stroke-width="1.5"/>
+    <path d="M 25 37 L 37 37 M 31 37 L 31 42" stroke="#7C3AED" stroke-width="2"/>
     
-    <text x="115" y="32" text-anchor="middle" fill="#FFFFFF" font-family="Rubik" font-size="13" font-weight="700">PC_Client (לקוח)</text>
-    <text x="115" y="54" text-anchor="middle" fill="#94A3B8" font-family="Fira Code" font-size="11">IP: 192.168.1.150</text>
-    <text x="115" y="72" text-anchor="middle" fill="#64748B" font-family="Fira Code" font-size="11">Subnet: /24</text>
+    <text x="115" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client (לקוח)</text>
+    <text x="115" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11">IP: 192.168.1.150</text>
+    <text x="115" y="72" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11">Subnet: /24</text>
   </g>
 
   <g id="movingPacket" style="display:none;">
-    <rect x="-25" y="-14" width="50" height="28" rx="6" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="1.5"/>
+    <rect x="-25" y="-14" width="50" height="28" rx="6" fill="#7C3AED" stroke="#FFFFFF" stroke-width="1.5"/>
     <text id="movingPacketLabel" x="0" y="4" text-anchor="middle" fill="#FFFFFF" font-family="Fira Code" font-size="10" font-weight="800">REQ</text>
   </g>
 </svg>
@@ -299,7 +332,7 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
 </div>
 
 <div class="terminal">
-  <div class="term-topbar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span style="margin-right:8px; color:var(--muted2); font-size:12px;">DNS-Server-CLI</span></div>
+  <div class="term-topbar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span style="margin-right:8px; color:#94A3B8; font-size:12px;">DNS-Server-CLI</span></div>
   <div class="term-output" id="termOutput">DNS-Server> enable
 DNS-Server# configure terminal
 DNS-Server(config)# ip dns server
@@ -327,45 +360,43 @@ DNS-Server(config)# ip dns server
 <div class="footer-note">סימולטור לימוד אינטראקטיבי — מגמת הנדסת רשתות ותקשורת 2026</div>
 </div>
 
-<!-- כפתור עזרה צף קבוע בפינה התחתונה עם אווטר מובנה -->
-<div class="fixed bottom-6 left-6 z-50 no-print">
-    <button id="openHelpModalBtn" class="flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg shadow-cyan-500/20 transition-all duration-300 transform hover:scale-105 group border border-cyan-400/30">
+<!-- כפתור עזרה צף קבוע בפינה התחתונה -->
+<div style="position: fixed; bottom: 24px; left: 24px; z-index: 9999;">
+    <button id="openHelpModalBtn" class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3 px-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-white/50">
         <!-- אווטר קטן בתוך הכפתור -->
-        <div class="w-8 h-8 rounded-full border border-white/40 overflow-hidden bg-slate-950 flex-shrink-0 shadow-inner">
-            <img src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb" alt="אווטר בוט עזרה" class="w-full h-full object-cover">
+        <div class="w-9 h-9 rounded-full border border-white/60 overflow-hidden bg-slate-900 flex-shrink-0 shadow-inner">
+            <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w200" alt="אווטר בוט עזרה" class="w-full h-full object-cover">
         </div>
-        <span>בוט עזרה</span>
+        <span class="text-base font-bold">בוט עזרה</span>
     </button>
 </div>
 
-<!-- חלונית עזרה צפה (Modal) עם אווטר מורחב -->
-<div id="helpModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 transition-all duration-300">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl shadow-cyan-500/5 transform scale-95 transition-transform duration-300" id="helpModalContent">
+<!-- חלונית עזרה צפה (Modal) -->
+<div id="helpModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4 transition-all duration-300">
+    <div class="bg-white border border-stone-200 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl transform scale-95 transition-transform duration-300" id="helpModalContent">
         <!-- כפתור סגירה X -->
-        <button id="closeHelpModalBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-slate-800">
+        <button id="closeHelpModalBtn" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 transition-colors p-1 rounded-lg hover:bg-stone-100">
             <i data-lucide="x" class="w-5 h-5"></i>
         </button>
         
         <!-- אווטר התמונה בחלונית -->
-        <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-cyan-400/50 p-1 bg-slate-950 shadow-lg shadow-cyan-500/20 overflow-hidden">
-            <img src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb" alt="תמונת בוט עזרה" class="w-full h-full object-cover rounded-full">
+        <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-purple-500/50 p-1 bg-stone-100 shadow-lg shadow-purple-500/10 overflow-hidden">
+            <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w300" alt="תמונת בוט עזרה" class="w-full h-full object-cover rounded-full">
         </div>
 
-        <h3 class="text-lg font-black text-white mb-2">צריך עזרה במשימה?</h3>
-        <p class="text-sm text-slate-400 mb-6 leading-relaxed">בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ולכוון אותך לפתרון המלא!</p>
+        <h3 class="text-lg font-black text-stone-900 mb-2">צריך עזרה במשימה?</h3>
+        <p class="text-sm text-stone-600 mb-6 leading-relaxed">בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ולכוון אותך לפתרון המלא!</p>
         
         <!-- כפתור הפניה לקישור הבוט -->
-        <a href="https://gemini.google.com/gem/167016ac4a4b/66c3b83daa7940ef?usp=sharing" target="_blank" class="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-black py-3 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-cyan-500/10">
+        <a href="https://gemini.google.com/gem/167016ac4a4b/66c3b83daa7940ef?usp=sharing" target="_blank" class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black py-3 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-purple-600/20">
             <span>הפעל את בוט העזרה</span>
             <i data-lucide="external-link" class="w-4 h-4"></i>
         </a>
     </div>
 </div>
 
-<!-- סקריפט להפעלת החלונית -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // אתחול האייקונים של Lucide
         if (window.lucide) {
             lucide.createIcons();
         }
@@ -436,8 +467,7 @@ function toggleAcc(id){
   document.getElementById(id).classList.toggle("open");
 }
 
-// קואורדינטות קבועות בדיאגרמה המוגדלת
-const srvColors = { DNS: "#F59E0B", DHCP: "#EF4444", Web: "#10B981", FTP: "#3B82F6" };
+const srvColors = { DNS: "#D97706", DHCP: "#DC2626", Web: "#059669", FTP: "#2563EB" };
 const coords = {
   client: { x: 500, y: 440 },
   switch: { x: 500, y: 255 },
@@ -473,22 +503,17 @@ async function selectService(srv) {
   const logPanel = document.getElementById("simLog");
   logPanel.innerHTML = "";
   
-  // 1. קליינט לסוויטש
   log("<span class='lbl'>[שלב 1]</span> תחנת הקצה מייצרת בקשת " + srv + " ושולחת אותה דרך כרטיס הרשת אל מתג הגישה הארגוני.");
   await animatePacket(coords.client.x, coords.client.y, coords.switch.x, coords.switch.y, srvColors[srv], "REQ", 700);
   
-  // 2. סוויטש לשרת
   log("<span class='lbl'>[שלב 2]</span> ה-Switch מקבל את ה-Frame, קורא את כתובת ה-MAC של היעד ומעביר את החבילה במדויק לשרת ה-" + srv + ".");
   await animatePacket(coords.switch.x, coords.switch.y, coords[srv].x, coords[srv].y, srvColors[srv], srv, 800);
   
-  // 3. עיבוד בשרת
   log("<span class='lbl'>[שלב 3]</span> שרת ה-" + srv + " מעבד את השאילתה בשכבת האפליקציה ומחזיר תשובה (Reply) עם המידע המבוקש.");
   await new Promise(r => setTimeout(r, 1000));
   
-  // 4. שרת חזרה לסוויטש
   await animatePacket(coords[srv].x, coords[srv].y, coords.switch.x, coords.switch.y, srvColors[srv], "RES", 800);
   
-  // 5. סוויטש לקליינט
   log("<span class='lbl'>[שלב 4]</span> התשובה מגיעה בחזרה ללקוח. השירות בוצע בהצלחה!");
   await animatePacket(coords.switch.x, coords.switch.y, coords.client.x, coords.client.y, srvColors[srv], "OK", 700);
   
@@ -511,7 +536,6 @@ function log(text){
   panel.scrollTop = panel.scrollHeight;
 }
 
-// קוד ה-CLI
 const cliSteps = [
   {expect:/^ip\s+dns\s+name\s+academy\.local\s+a\s+192\.168\.1\.30\s*$/i, ok:"מעולה! הוספת בהצלחה רשומת מיפוי מסוג A עבור הדומיין הארגוני.", cmd:"ip dns name academy.local a 192.168.1.30"},
   {expect:/^exit\s*$/i, ok:"יצאת ממצב ההגדרות. הרשומה נשמרה ב-Cache של השרת ותופץ ברשת הארגונית! 🏆", cmd:"exit"}
@@ -545,7 +569,6 @@ function submitCmd(){
   output.scrollTop = output.scrollHeight;
 }
 
-// קוד החידון
 const quizData = [
   {
     q: "באיזה פרוטוקול תחנת קצה משתמשת כדי לקבל כתובת IP באופן אוטומטי מיד עם הדלקתה?",
