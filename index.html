@@ -54,7 +54,6 @@ h1.title{font-size:38px; margin-bottom:12px; color:#1C1917;}
 h1.title span{color:var(--stick);}
 .subtitle{font-size:16px; max-width:700px; margin:0;}
 
-/* אווטאר מסתובב במהירות 12 שניות */
 .avatar-wild-wrapper {
   position: relative;
   display: flex;
@@ -78,9 +77,6 @@ h1.title span{color:var(--stick);}
   0% { transform: rotate(0deg) scale(1); }
   50% { transform: rotate(180deg) scale(1.08); }
   100% { transform: rotate(360deg) scale(1); }
-}
-.avatar-wild-wrapper:hover .avatar-wild {
-  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.4), 0 0 0 5px #FFFFFF;
 }
 
 section{padding:50px 0; border-top:1px solid var(--border);}
@@ -122,17 +118,18 @@ button.btn.secondary{background:var(--panel3); color:var(--text); border:1px sol
 .log-line{margin-bottom:8px; animation:fadeIn .3s ease;}
 .log-line .lbl{color:var(--stick); font-weight:bold;}
 
-.terminal{background:#1E293B; border:1px solid var(--border2); border-radius:10px; padding:18px; font-family:'Fira Code',monospace; font-size:13px; color:#F8FAFC;}
-.term-topbar{display:flex; gap:6px; margin-bottom:12px; align-items:center;}
+/* התאמת המסוף לכללי כתיבה משמאל לימין (LTR) */
+.terminal{background:#1E293B; border:1px solid var(--border2); border-radius:10px; padding:18px; font-family:'Fira Code',monospace; font-size:13px; color:#F8FAFC; direction:ltr; text-align:left;}
+.term-topbar{display:flex; gap:6px; margin-bottom:12px; align-items:center; direction:ltr;}
 .dot{width:10px; height:10px; border-radius:50%;}
 .dot.r{background:#EF4444;} .dot.y{background:#F59E0B;} .dot.g{background:#10B981;}
-.term-output{white-space:pre-wrap; color:#94A3B8; margin-bottom:10px; min-height:40px;}
+.term-output{white-space:pre-wrap; color:#94A3B8; margin-bottom:10px; min-height:40px; direction:ltr; text-align:left;}
 .term-output .ok{color:#34D399;}
 .term-output .bad{color:#F87171;}
-.term-output .hint{color:#FBBF24;}
-.term-input-row{display:flex; align-items:center; gap:6px; border-top:1px solid #334155; padding-top:12px;}
+.term-output .hint{color:#FBBF24; direction:rtl; text-align:right; display:block; margin-top:6px;}
+.term-input-row{display:flex; align-items:center; gap:8px; border-top:1px solid #334155; padding-top:12px; direction:ltr;}
 .prompt{color:#34D399; white-space:nowrap;}
-input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; font-family:'Fira Code',monospace; font-size:13px; outline:none;}
+input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; font-family:'Fira Code',monospace; font-size:13px; outline:none; direction:ltr; text-align:left;}
 
 .task-box{background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:14px;}
 .task-title{font-weight:600; margin-bottom:4px; color:var(--dns);}
@@ -148,6 +145,8 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
 .quiz-opt.disabled{pointer-events:none;}
 .quiz-explain{margin-top:12px; padding:12px; background:var(--panel2); border-radius:8px; font-size:13px; display:none;}
 .quiz-explain.show{display:block;}
+
+.score-card{background:var(--panel); border:2px solid var(--stick); border-radius:var(--radius); padding:28px; text-align:center; margin-top:24px; display:none;}
 
 .completion{text-align:center; padding:40px 20px; background:var(--panel); border:2px solid var(--ok); border-radius:var(--radius); display:none;}
 .completion.show{display:block;}
@@ -176,7 +175,6 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
       <h1 class="title">ארכיטקטורת <span>שרת-לקוח</span></h1>
       <p class="subtitle">הבנה מעמיקה של שירותי הרשת המרכזיים המפעילים את רשת האינטרנט והרשת הארגונית: כיצד שרתי ה-DHCP, DNS, Web ו-FTP משרתים את תחנות הקצה.</p>
     </div>
-    <!-- האווטאר המטורלל ממוקם בצד שמאל -->
     <div class="avatar-wild-wrapper">
       <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w500" alt="מטורלל מסתובב" class="avatar-wild">
     </div>
@@ -233,7 +231,6 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
 
 <div class="diagram-wrap">
 <svg id="netDiagram" viewBox="0 0 1000 580" style="width:100%; display:block;">
-  
   <line x1="500" y1="460" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="4 4"/>
   <line x1="160" y1="120" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5"/>
   <line x1="380" y1="120" x2="500" y2="280" stroke="#CBD5E1" stroke-width="2.5"/>
@@ -295,7 +292,6 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
     <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
     <rect x="15" y="15" width="32" height="22" rx="3" fill="#F3EFEA" stroke="#7C3AED" stroke-width="1.5"/>
     <path d="M 25 37 L 37 37 M 31 37 L 31 42" stroke="#7C3AED" stroke-width="2"/>
-    
     <text x="115" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client (לקוח)</text>
     <text x="115" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11">IP: 192.168.1.150</text>
     <text x="115" y="72" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11">Subnet: /24</text>
@@ -332,18 +328,22 @@ input.term-input{flex:1; background:transparent; border:none; color:#FFFFFF; fon
 
 <div class="task-box">
   <div class="task-title">משימה: הוספת רשומת DNS מסוג A לכתובת 192.168.1.30</div>
-  <div class="task-progress" id="taskProgress">שלב 1 מתוך 3</div>
+  <div class="task-progress" id="taskProgress">שלב 1 מתוך 2</div>
 </div>
 
-<div class="terminal">
-  <div class="term-topbar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span style="margin-right:8px; color:#94A3B8; font-size:12px;">DNS-Server-CLI</span></div>
-  <div class="term-output" id="termOutput">DNS-Server> enable
+<!-- חלונית מסוף LTR מתוקנת מתאימה לכתיבת אנגלית ופקודות תקשורת -->
+<div class="terminal" dir="ltr">
+  <div class="term-topbar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <span style="margin-left:8px; color:#94A3B8; font-size:12px;">DNS-Server-CLI</span>
+  </div>
+  <div class="term-output" id="termOutput" dir="ltr">DNS-Server> enable
 DNS-Server# configure terminal
 DNS-Server(config)# ip dns server
-<span class="hint">הקלד את פקודת המיפוי: ip dns name academy.local a 192.168.1.30 ולחץ Enter</span></div>
-  <div class="term-input-row">
+<span class="hint" dir="rtl">הקלד את פקודת המיפוי: ip dns name academy.local a 192.168.1.30 ולחץ Enter</span></div>
+  <div class="term-input-row" dir="ltr">
     <span class="prompt" id="termPrompt">DNS-Server(config)#</span>
-    <input type="text" class="term-input" id="termInput" placeholder="הקלד פקודת קונפיגורציה..." onkeydown="if(event.key==='Enter')submitCmd()">
+    <input type="text" class="term-input" id="termInput" dir="ltr" placeholder="Type configuration command..." onkeydown="if(event.key==='Enter')submitCmd()">
   </div>
 </div>
 </section>
@@ -351,9 +351,18 @@ DNS-Server(config)# ip dns server
 <section id="s5">
 <div class="section-head">
   <div class="section-num">05 — בחינת הבנה</div>
-  <h2 class="section-title">בחן את עצמך: ארכיטקטורת שירותים</h2>
+  <h2 class="section-title">בחן את עצמך: ארכיטקטורת שירותים (10 שאלות)</h2>
 </div>
+
+<!-- מיכל השאלות -->
 <div id="quizContainer"></div>
+
+<!-- כרטיס ציון מחושב -->
+<div id="quizScoreCard" class="score-card">
+  <h3 style="font-size: 22px; color: #1C1917; margin-bottom: 6px;">תוצאת המבחן המסכם</h3>
+  <div id="scoreDisplay" class="mono" style="font-size: 38px; font-weight: 800; color: var(--stick); margin: 12px 0;">0 / 100</div>
+  <p id="scoreFeedback" style="font-size: 16px; font-weight: 600; color: var(--muted); margin: 0;"></p>
+</div>
 </section>
 
 <div class="completion" id="completionBox">
@@ -364,10 +373,9 @@ DNS-Server(config)# ip dns server
 <div class="footer-note">סימולטור לימוד אינטראקטיבי — מגמת הנדסת רשתות ותקשורת 2026</div>
 </div>
 
-<!-- כפתור עזרה צף קבוע בפינה התחתונה -->
+<!-- כפתור עזרה צף -->
 <div style="position: fixed; bottom: 24px; left: 24px; z-index: 9999;">
     <button id="openHelpModalBtn" class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3 px-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-white/50">
-        <!-- אווטר קטן בתוך הכפתור -->
         <div class="w-9 h-9 rounded-full border border-white/60 overflow-hidden bg-slate-900 flex-shrink-0 shadow-inner">
             <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w200" alt="אווטר בוט עזרה" class="w-full h-full object-cover">
         </div>
@@ -375,23 +383,17 @@ DNS-Server(config)# ip dns server
     </button>
 </div>
 
-<!-- חלונית עזרה צפה (Modal) -->
+<!-- חלונית עזרה צפה -->
 <div id="helpModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4 transition-all duration-300">
     <div class="bg-white border border-stone-200 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl transform scale-95 transition-transform duration-300" id="helpModalContent">
-        <!-- כפתור סגירה X -->
         <button id="closeHelpModalBtn" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 transition-colors p-1 rounded-lg hover:bg-stone-100">
             <i data-lucide="x" class="w-5 h-5"></i>
         </button>
-        
-        <!-- אווטר התמונה בחלונית -->
         <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-purple-500/50 p-1 bg-stone-100 shadow-lg shadow-purple-500/10 overflow-hidden">
             <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w300" alt="תמונת בוט עזרה" class="w-full h-full object-cover rounded-full">
         </div>
-
         <h3 class="text-lg font-black text-stone-900 mb-2">צריך עזרה במשימה?</h3>
         <p class="text-sm text-stone-600 mb-6 leading-relaxed">בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ולכוון אותך לפתרון המלא!</p>
-        
-        <!-- כפתור הפניה לקישור הבוט -->
         <a href="https://gemini.google.com/gem/167016ac4a4b/66c3b83daa7940ef?usp=sharing" target="_blank" class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black py-3 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-purple-600/20">
             <span>הפעל את בוט העזרה</span>
             <i data-lucide="external-link" class="w-4 h-4"></i>
@@ -401,10 +403,7 @@ DNS-Server(config)# ip dns server
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        if (window.lucide) {
-            lucide.createIcons();
-        }
-
+        if (window.lucide) { lucide.createIcons(); }
         const modal = document.getElementById('helpModal');
         const modalContent = document.getElementById('helpModalContent');
         const openBtn = document.getElementById('openHelpModalBtn');
@@ -415,12 +414,10 @@ DNS-Server(config)# ip dns server
                 modal.classList.remove('hidden');
                 setTimeout(() => modalContent.classList.remove('scale-95'), 10);
             });
-
             closeBtn.addEventListener('click', () => {
                 modalContent.classList.add('scale-95');
                 setTimeout(() => modal.classList.add('hidden'), 150);
             });
-
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modalContent.classList.add('scale-95');
@@ -540,6 +537,7 @@ function log(text){
   panel.scrollTop = panel.scrollHeight;
 }
 
+/* מעבדה מעשית */
 const cliSteps = [
   {expect:/^ip\s+dns\s+name\s+academy\.local\s+a\s+192\.168\.1\.30\s*$/i, ok:"מעולה! הוספת בהצלחה רשומת מיפוי מסוג A עבור הדומיין הארגוני.", cmd:"ip dns name academy.local a 192.168.1.30"},
   {expect:/^exit\s*$/i, ok:"יצאת ממצב ההגדרות. הרשומה נשמרה ב-Cache של השרת ותופץ ברשת הארגונית! 🏆", cmd:"exit"}
@@ -559,7 +557,7 @@ function submitCmd(){
     output.innerHTML += "\n" + prompt + " " + val + "\n<span class='ok'>✔ " + step.ok + "</span>";
     cliStep++;
     if(cliStep < cliSteps.length){
-      output.innerHTML += "\n<span class='hint'>שלב הבא: הזן את פקודת היציאה והשמירה</span>";
+      output.innerHTML += "\n<span class='hint'>שלב הבא: הזן את פקודת היציאה והשמירה (exit)</span>";
       document.getElementById("taskProgress").textContent = "שלב " + (cliStep+1) + " מתוך " + cliSteps.length;
       document.getElementById("termPrompt").textContent = "DNS-Server(config)#";
     } else {
@@ -567,36 +565,92 @@ function submitCmd(){
       markDone("s4");
     }
   } else {
-    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='bad'>✘ תחביר פקודה לא מדויק. נסה שוב או היעזר ברמז למעלה.</span>";
+    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='bad'>✘ תחביר פקודה לא מדויק. נסה שוב או היעזר ברמז.</span>";
   }
   input.value = "";
   output.scrollTop = output.scrollHeight;
 }
 
+/* 10 שאלות למבחן המסכם */
 const quizData = [
   {
-    q: "באיזה פרוטוקול תחנת קצה משתמשת כדי לקבל כתובת IP באופן אוטומטי מיד עם הדלקתה?",
+    q: "1. באיזה פרוטוקול תחנת קצה משתמשת כדי לקבל כתובת IP באופן אוטומטי מיד עם התחברותה לרשת?",
     opts: ["DNS", "DHCP", "HTTP", "FTP"],
     correct: 1,
-    explain: "שרת ה-DHCP אחראי על חלוקה וניהול דינמי של כתובות IP ופרמטרי רשת נוספים לתחנות הקצה בארגון."
+    explain: "שרת ה-DHCP אחראי על חלוקה וניהול דינמי של כתובות IP ופרמטרי רשת נוספים לתחנות הקצה."
   },
   {
-    q: "מה תפקידו המרכזי של שרת ה-DNS ברשת?",
-    opts: ["להעביר קבצים גדולים במהירות גבוהה", "לאבטח את תעבורת ה-Web באמצעות הצפנה", "לתרגם שמות דומיין קריאים (כמו academy.local) לכתובות IP", "לחלק כתובות IP דינמיות למחשבים"],
+    q: "2. מה תפקידו המרכזי של שרת ה-DNS ברשת התקשורת?",
+    opts: ["להעביר קבצים גדולים במהירות גבוהה", "לאבטח את תעבורת ה-Web באמצעות הצפנה", "לתרגם שמות דומיין קריאים לבני אדם (כמו academy.local) לכתובות IP", "לחלק כתובות IP דינמיות למחשבים"],
     correct: 2,
-    explain: "שרת ה-DNS משמש כספר הטלפונים של הרשת — הוא מתרגם שמות נוחים לזכירה לכתובות ה-IP האמיתיות של השרתים."
+    explain: "שרת ה-DNS מתרגם שמות דומיין נוחים לזכירה לכתובות ה-IP האמיתיות של השרתים ברשת."
+  },
+  {
+    q: "3. מהו הסדר הנכון של 4 השלבים בתהליך הקצאת כתובת IP ב-DHCP (תהליך DORA)?",
+    opts: ["Discover -> Offer -> Request -> ACK", "Offer -> Discover -> ACK -> Request", "Request -> ACK -> Discover -> Offer", "Discover -> Request -> Offer -> ACK"],
+    correct: 0,
+    explain: "תהליך DORA כולל: Discover (חיפוש בשרת), Offer (הצעת כתובת), Request (בקשה רשמית), ו-ACK (אישור ונעילה)."
+  },
+  {
+    q: "4. באיזה פורט משתמש פרוטוקול HTTPS המאובטח כברירת מחדל בשכבת האפליקציה?",
+    opts: ["80", "21", "443", "53"],
+    correct: 2,
+    explain: "שירות Web רגיל (HTTP) משתמש בפורט 80, בעוד שירות מאובטח ומוצפן (HTTPS) משתמש בפורט 443."
+  },
+  {
+    q: "5. בשירות העברת הקבצים FTP, באיזה פורט משתמש הרכיב להעברת פקודות ובקרה (Control Connection)?",
+    opts: ["פורט 20", "פורט 21", "פורט 22", "פורט 25"],
+    correct: 1,
+    explain: "פורט 21 ב-FTP מוקצה להעברת פקודות ובקרה, בעוד פורט 20 משמש להעברה הפיזית של נתוני הקבצים."
+  },
+  {
+    q: "6. מה מייצגת רשומת מיפוי מסוג 'A' בשרת ה-DNS?",
+    opts: ["מיפוי שם דומיין לכתובת IPv4", "מיפוי שרת דואר אלקטרוני (MX)", "כינוי (Alias) לדומיין אחר", "כתובת ה-MAC הפיזית של כרטיס הרשת"],
+    correct: 0,
+    explain: "רשומת A (Address Record) ממפה שם דומיין ישירות לכתובת IPv4 של השרת."
+  },
+  {
+    q: "7. באיזה פרוטוקול בשכבת התעבורה (Transport Layer) משתמשות שאילתות DNS סטנדרטיות?",
+    opts: ["TCP", "UDP", "ICMP", "ARP"],
+    correct: 1,
+    explain: "שאילתות DNS סטנדרטיות משתמשות ב-UDP (פורט 53) בשל המהירות והיעדר הצורך בניהול חיבור מורכב."
+  },
+  {
+    q: "8. באיזה פורט מאזין שרת ה-DHCP לבקשות המגיעות מלקוחות ברשת?",
+    opts: ["Port 53", "Port 67", "Port 68", "Port 80"],
+    correct: 1,
+    explain: "שרת ה-DHCP מאזין בפורט 67, בעוד מחשב הלקוח מקבל את התשובות בפורט 68."
+  },
+  {
+    q: "9. איזה מבין הפרוטוקולים הבאים מיועד באופן ייעודי להעלאה והורדת קבצים משרת מרוחק?",
+    opts: ["FTP", "DNS", "DHCP", "ARP"],
+    correct: 0,
+    explain: "FTP (File Transfer Protocol) הוא הפרוטוקול הייעודי להעברת קבצים ומסמכים ברשת."
+  },
+  {
+    q: "10. באיזו שכבה במודל ה-TCP/IP פועלים השירותים HTTP, DNS, DHCP ו-FTP?",
+    opts: ["שכבת הגישה לרשת (Network Access)", "שכבת האינטרנט (Internet Layer)", "שכבת התעבורה (Transport Layer)", "שכבת האפליקציה (Application Layer)"],
+    correct: 3,
+    explain: "כל ארבעת השירותים הללו מספקים שירותים ישירים לתוכנות ולמשתמשי קצה ולכן שייכים לשכבת האפליקציה."
   }
 ];
+
+let quizAnswers = {};
+let totalScore = 0;
 
 function renderQuiz(){
   const container = document.getElementById("quizContainer");
   if(!container) return;
+  container.innerHTML = "";
+  
   quizData.forEach((item, qi)=>{
     const qDiv = document.createElement("div");
     qDiv.className = "quiz-q";
     qDiv.innerHTML = "<div class='quiz-q-num'>שאלה " + (qi+1) + " מתוך " + quizData.length + "</div><div><b>" + item.q + "</b></div>";
+    
     const optsDiv = document.createElement("div");
     optsDiv.className = "quiz-opts";
+    
     item.opts.forEach((opt, oi)=>{
       const b = document.createElement("div");
       b.className = "quiz-opt";
@@ -604,31 +658,65 @@ function renderQuiz(){
       b.onclick = ()=>answerQuiz(qi, oi);
       optsDiv.appendChild(b);
     });
+    
     qDiv.appendChild(optsDiv);
+    
     const explainDiv = document.createElement("div");
     explainDiv.className = "quiz-explain";
     explainDiv.id = "explain-" + qi;
     explainDiv.textContent = item.explain;
     qDiv.appendChild(explainDiv);
+    
     container.appendChild(qDiv);
   });
 }
-let quizAnswered = {};
+
 function answerQuiz(qi, oi){
-  if(quizAnswered[qi]) return;
-  quizAnswered[qi] = true;
+  if(quizAnswers[qi] !== undefined) return;
+  
   const item = quizData[qi];
+  quizAnswers[qi] = (oi === item.correct);
+  if(oi === item.correct){
+    totalScore += 10;
+  }
+  
   const opts = document.querySelectorAll(".quiz-q")[qi].querySelectorAll(".quiz-opt");
   opts.forEach((el, i)=>{
     el.classList.add("disabled");
     if(i === item.correct) el.classList.add("correct");
     else if(i === oi) el.classList.add("wrong");
   });
+  
   document.getElementById("explain-"+qi).classList.add("show");
-  if(Object.keys(quizAnswered).length === quizData.length){
+  
+  // כאשר נענה על כל 10 השאלות, מחשבים ציון ומציגים
+  if(Object.keys(quizAnswers).length === quizData.length){
+    showQuizResults();
     markDone("s5");
   }
 }
+
+function showQuizResults(){
+  const card = document.getElementById("quizScoreCard");
+  const scoreDisp = document.getElementById("scoreDisplay");
+  const feedback = document.getElementById("scoreFeedback");
+  
+  scoreDisp.textContent = totalScore + " / 100";
+  
+  if(totalScore === 100){
+    feedback.textContent = "🏆 ציון מושלם! הוכחת שליטה מוחלטת בארכיטקטורת שרתים ושירותי רשת!";
+  } else if(totalScore >= 80){
+    feedback.textContent = "🌟 כל הכבוד! הפגנת הבנה מצוינת בשירותי שכבת האפליקציה.";
+  } else if(totalScore >= 60){
+    feedback.textContent = "👍 עבודה טובה! עברת את המבחן, אך מומלץ לחזור על הנושאים שפספסת.";
+  } else {
+    feedback.textContent = "💡 כדאי לעבור שוב על סקירת השירותים והסימולציה ולהתנסות שנית.";
+  }
+  
+  card.style.display = "block";
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
 renderQuiz();
 </script>
 </body>
