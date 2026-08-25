@@ -62,6 +62,8 @@ body{
 
 .mono{
   font-family:'Fira Code',monospace;
+  direction: ltr;
+  display: inline-block;
 }
 
 .wrap{
@@ -132,6 +134,7 @@ p{
   color:var(--muted);
   font-family:'Fira Code',monospace;
   white-space:nowrap;
+  direction: ltr;
 }
 
 header.hero{
@@ -162,6 +165,7 @@ header.hero{
   padding:5px 14px;
   border-radius:20px;
   margin-bottom:18px;
+  direction: ltr;
 }
 
 h1.title{
@@ -231,6 +235,7 @@ section{
   color:var(--muted2);
   font-size:13px;
   margin-bottom:6px;
+  direction: rtl;
 }
 
 .section-title{
@@ -282,6 +287,7 @@ section{
   padding:3px 8px;
   border-radius:6px;
   margin:2px 4px 2px 0;
+  direction: ltr;
 }
 
 .tag.dns{
@@ -418,6 +424,12 @@ button.btn.pause-btn{
   background:#D97706;
 }
 
+button.btn.teacher-btn{
+  background:#1E293B;
+  color:#F8FAFC;
+  border:1px solid #475569;
+}
+
 .log-panel{
   background:#FAF7F2;
   border:1px solid var(--border);
@@ -548,6 +560,22 @@ input.term-input{
   font-family:'Fira Code',monospace;
   font-size:12px;
   color:var(--muted);
+  direction: rtl;
+}
+
+.explanation-card {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-right: 4px solid #2563EB;
+  border-radius: 10px;
+  padding: 18px;
+  margin-top: 16px;
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.explanation-card.show {
+  display: block;
 }
 
 .quiz-q{
@@ -563,6 +591,7 @@ input.term-input{
   color:var(--muted2);
   font-size:12px;
   margin-bottom:6px;
+  direction: rtl;
 }
 
 .quiz-opts{
@@ -580,7 +609,7 @@ input.term-input{
   cursor:pointer;
   text-align:right;
   font-size:14px;
-  transition:border-color 0.15s;
+  transition:border-color 0.15s, background-color 0.15s;
 }
 
 .quiz-opt:hover{
@@ -591,12 +620,20 @@ input.term-input{
   background:rgba(5,150,105,0.15);
   border-color:var(--ok);
   color:var(--ok);
+  font-weight: 600;
 }
 
 .quiz-opt.wrong{
   background:rgba(220,38,38,0.15);
   border-color:var(--bad);
   color:var(--bad);
+}
+
+.quiz-opt.teacher-revealed{
+  background:rgba(5,150,105,0.2);
+  border: 2px dashed var(--ok);
+  color:var(--ok);
+  font-weight: 700;
 }
 
 .quiz-opt.disabled{
@@ -656,10 +693,7 @@ input.term-input{
   border-radius:4px;
 }
 
-/* =========================================================
-   PDU — מעטפה קשיחה
-   ========================================================= */
-
+/* PDU — מעטפה קשיחה */
 .pdu-envelope{
   pointer-events:none;
   overflow:visible;
@@ -719,7 +753,7 @@ input.term-input{
 
     <div class="hero-text">
 
-      <div class="eyebrow">
+      <div class="eyebrow" dir="ltr">
         Network Servers · Application Layer Services
       </div>
 
@@ -729,7 +763,7 @@ input.term-input{
 
       <p class="subtitle">
         הבנה מעמיקה של שירותי הרשת המרכזיים המפעילים את רשת האינטרנט והרשת הארגונית:
-        כיצד שרתי ה-DHCP, DNS, Web, FTP ו-Mail משרתים את תחנות הקצה.
+        כיצד שרתי ה-<span dir="ltr">DHCP</span>, <span dir="ltr">DNS</span>, <span dir="ltr">Web</span>, <span dir="ltr">FTP</span> ו-<span dir="ltr">Mail</span> משרתים את תחנות הקצה.
       </p>
 
     </div>
@@ -772,23 +806,23 @@ input.term-input{
     </h3>
 
     <p>
-      <span class="tag dns">
-        DNS · פורט 53
+      <span class="tag dns" dir="ltr">
+        DNS · Port 53
       </span>
 
       מתרגם שמות דומיין קריאים
-      (כמו google.com)
-      ורשומות דואר (MX)
-      לכתובות IP.
+      (כמו <span dir="ltr">google.com</span>)
+      ורשומות דואר (<span dir="ltr">MX</span>)
+      לכתובות <span dir="ltr">IP</span>.
     </p>
 
     <p>
-      <span class="tag dhcp">
-        DHCP · פורטים 67, 68
+      <span class="tag dhcp" dir="ltr">
+        DHCP · Ports 67, 68
       </span>
 
-      מחלק כתובות IP,
-      מסיכות רשת וכתובות Gateway
+      מחלק כתובות <span dir="ltr">IP</span>,
+      מסיכות רשת וכתובות <span dir="ltr">Gateway</span>
       באופן אוטומטי לכל מכשיר.
     </p>
 
@@ -801,29 +835,29 @@ input.term-input{
     </h3>
 
     <p>
-      <span class="tag web">
-        HTTP/HTTPS · פורטים 80, 443
+      <span class="tag web" dir="ltr">
+        HTTP/HTTPS · Ports 80, 443
       </span>
 
-      מגיש דפי HTML, תמונות ותוכן אינטרנטי
+      מגיש דפי <span dir="ltr">HTML</span>, תמונות ותוכן אינטרנטי
       לדפדפן הלקוח.
     </p>
 
     <p>
-      <span class="tag ftp">
-        FTP · פורטים 20, 21
+      <span class="tag ftp" dir="ltr">
+        FTP · Ports 20, 21
       </span>
 
       מאפשר העלאה והורדה של קבצים ומסמכים גדולים ברשת.
     </p>
 
     <p>
-      <span class="tag mail">
-        SMTP / POP3 · פורטים 25, 110
+      <span class="tag mail" dir="ltr">
+        SMTP / POP3 · Ports 25, 110
       </span>
 
       שירות דואר אלקטרוני:
-      SMTP לשליחת מיילים ו-POP3 לקבלתם.
+      <span dir="ltr">SMTP</span> לשליחת מיילים ו-<span dir="ltr">POP3</span> לקבלתם.
     </p>
 
   </div>
@@ -858,7 +892,7 @@ input.term-input{
   >
 
     <span>
-      כיצד פועל תהליך ה-DHCP (DORA)?
+      כיצד פועל תהליך ה-<span dir="ltr">DHCP</span> (<span dir="ltr">DORA</span>)?
     </span>
 
     <span class="acc-arrow">
@@ -873,13 +907,13 @@ input.term-input{
 
       <p>
         התהליך מורכב מ-4 שלבים רצופים:
-        <b>Discover</b>
-        (הלקוח מחפש שרת ב-Broadcast),
-        <b>Offer</b>
+        <b dir="ltr">Discover</b>
+        (הלקוח מחפש שרת ב-<span dir="ltr">Broadcast</span>),
+        <b dir="ltr">Offer</b>
         (השרת מציע כתובת),
-        <b>Request</b>
+        <b dir="ltr">Request</b>
         (הלקוח מבקש רשמית לאמץ אותה),
-        ו-<b>ACK</b>
+        ו-<b dir="ltr">ACK</b>
         (השרת מאשר ונועל את ההקצאה).
       </p>
 
@@ -897,7 +931,7 @@ input.term-input{
   >
 
     <span>
-      מה תפקיד שרת ה-DNS במשלוח דואר אלקטרוני?
+      מה תפקיד שרת ה-<span dir="ltr">DNS</span> במשלוח דואר אלקטרוני?
     </span>
 
     <span class="acc-arrow">
@@ -911,10 +945,10 @@ input.term-input{
     <div class="acc-body-inner">
 
       <p>
-        במשלוח מייל, שרת הלקוח פונה ל-DNS
+        במשלוח מייל, שרת הלקוח פונה ל-<span dir="ltr">DNS</span>
         ומבקש רשומה
-        <b>MX (Mail Exchange Record)</b>.
-        רשומה זו מכוונת את השולח אל כתובת ה-IP
+        <b dir="ltr">MX (Mail Exchange Record)</b>.
+        רשומה זו מכוונת את השולח אל כתובת ה-<span dir="ltr">IP</span>
         המדויקת של שרת הדואר שמקבל את ההודעות
         עבור הדומיין המבוקש.
       </p>
@@ -940,7 +974,7 @@ input.term-input{
   </div>
 
   <h2 class="section-title">
-    סימולטור תהליכי רשת ומעקב אחר חבילות (PDU)
+    סימולטור תהליכי רשת ומעקב אחר חבילות (<span dir="ltr">PDU</span>)
   </h2>
 
 </div>
@@ -958,12 +992,8 @@ input.term-input{
   style="width:100%; display:block;"
 >
 
-<!-- =====================================================
-     CLIP PATH עבור מעטפת PDU
-     ===================================================== -->
-
+<!-- CLIP PATH עבור מעטפת PDU -->
 <defs>
-
   <clipPath id="pduClip">
     <rect
       x="-115"
@@ -973,909 +1003,138 @@ input.term-input{
       rx="5"
     />
   </clipPath>
-
 </defs>
 
-<!-- =====================================================
-     NETWORK LINES
-     ===================================================== -->
+<!-- NETWORK LINES -->
+<line x1="550" y1="460" x2="550" y2="280" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="4 4" />
+<line x1="110" y1="120" x2="550" y2="280" stroke="#CBD5E1" stroke-width="2.5" />
+<line x1="330" y1="120" x2="550" y2="280" stroke="#CBD5E1" stroke-width="2.5" />
+<line x1="550" y1="120" x2="550" y2="280" stroke="#CBD5E1" stroke-width="2.5" />
+<line x1="770" y1="120" x2="550" y2="280" stroke="#CBD5E1" stroke-width="2.5" />
+<line x1="990" y1="120" x2="550" y2="280" stroke="#CBD5E1" stroke-width="2.5" />
 
-<line
-  x1="550"
-  y1="460"
-  x2="550"
-  y2="280"
-  stroke="#CBD5E1"
-  stroke-width="2.5"
-  stroke-dasharray="4 4"
-/>
-
-<line
-  x1="110"
-  y1="120"
-  x2="550"
-  y2="280"
-  stroke="#CBD5E1"
-  stroke-width="2.5"
-/>
-
-<line
-  x1="330"
-  y1="120"
-  x2="550"
-  y2="280"
-  stroke="#CBD5E1"
-  stroke-width="2.5"
-/>
-
-<line
-  x1="550"
-  y1="120"
-  x2="550"
-  y2="280"
-  stroke="#CBD5E1"
-  stroke-width="2.5"
-/>
-
-<line
-  x1="770"
-  y1="120"
-  x2="550"
-  y2="280"
-  stroke="#CBD5E1"
-  stroke-width="2.5"
-/>
-
-<line
-  x1="990"
-  y1="120"
-  x2="550"
-  y2="280"
-  stroke="#CBD5E1"
-  stroke-width="2.5"
-/>
-
-<!-- =====================================================
-     DNS SERVER
-     ===================================================== -->
-
-<g
-  class="srv-node"
-  onclick="runSimulation('DNS')"
->
-
-  <rect
-    x="30"
-    y="30"
-    width="160"
-    height="130"
-    rx="8"
-    fill="#FFFFFF"
-    stroke="#D97706"
-    stroke-width="2"
-  />
-
-  <rect
-    x="95"
-    y="45"
-    width="30"
-    height="35"
-    rx="3"
-    fill="#FEF3C7"
-    stroke="#D97706"
-    stroke-width="1.5"
-  />
-
-  <line
-    x1="100"
-    y1="55"
-    x2="120"
-    y2="55"
-    stroke="#D97706"
-    stroke-width="2"
-  />
-
-  <line
-    x1="100"
-    y1="65"
-    x2="120"
-    y2="65"
-    stroke="#D97706"
-    stroke-width="2"
-  />
-
-  <circle
-    cx="105"
-    cy="73"
-    r="2"
-    fill="#059669"
-  />
-
-  <text
-    x="110"
-    y="100"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="13"
-    font-weight="700"
-  >
-    DNS Server
-  </text>
-
-  <text
-    x="110"
-    y="118"
-    text-anchor="middle"
-    fill="#57534E"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    IP: 192.168.1.10
-  </text>
-
-  <text
-    x="110"
-    y="135"
-    text-anchor="middle"
-    fill="#78716C"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    Port: 53 (UDP)
-  </text>
-
+<!-- DNS SERVER -->
+<g class="srv-node" onclick="runSimulation('DNS')">
+  <rect x="30" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+  <rect x="95" y="45" width="30" height="35" rx="3" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+  <line x1="100" y1="55" x2="120" y2="55" stroke="#D97706" stroke-width="2"/>
+  <line x1="100" y1="65" x2="120" y2="65" stroke="#D97706" stroke-width="2"/>
+  <circle cx="105" cy="73" r="2" fill="#059669"/>
+  <text x="110" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">DNS Server</text>
+  <text x="110" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.10</text>
+  <text x="110" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 53 (UDP)</text>
 </g>
 
-<!-- =====================================================
-     DHCP SERVER
-     ===================================================== -->
-
-<g
-  class="srv-node"
-  onclick="runSimulation('DHCP')"
->
-
-  <rect
-    x="250"
-    y="30"
-    width="160"
-    height="130"
-    rx="8"
-    fill="#FFFFFF"
-    stroke="#DC2626"
-    stroke-width="2"
-  />
-
-  <rect
-    x="315"
-    y="45"
-    width="30"
-    height="35"
-    rx="3"
-    fill="#FEE2E2"
-    stroke="#DC2626"
-    stroke-width="1.5"
-  />
-
-  <line
-    x1="320"
-    y1="55"
-    x2="340"
-    y2="55"
-    stroke="#DC2626"
-    stroke-width="2"
-  />
-
-  <line
-    x1="320"
-    y1="65"
-    x2="340"
-    y2="65"
-    stroke="#DC2626"
-    stroke-width="2"
-  />
-
-  <circle
-    cx="325"
-    cy="73"
-    r="2"
-    fill="#059669"
-  />
-
-  <text
-    x="330"
-    y="100"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="13"
-    font-weight="700"
-  >
-    DHCP Server
-  </text>
-
-  <text
-    x="330"
-    y="118"
-    text-anchor="middle"
-    fill="#57534E"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    IP: 192.168.1.20
-  </text>
-
-  <text
-    x="330"
-    y="135"
-    text-anchor="middle"
-    fill="#78716C"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    Port: 67 (UDP)
-  </text>
-
+<!-- DHCP SERVER -->
+<g class="srv-node" onclick="runSimulation('DHCP')">
+  <rect x="250" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="2"/>
+  <rect x="315" y="45" width="30" height="35" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+  <line x1="320" y1="55" x2="340" y2="55" stroke="#DC2626" stroke-width="2"/>
+  <line x1="320" y1="65" x2="340" y2="65" stroke="#DC2626" stroke-width="2"/>
+  <circle cx="325" cy="73" r="2" fill="#059669"/>
+  <text x="330" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">DHCP Server</text>
+  <text x="330" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.20</text>
+  <text x="330" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 67 (UDP)</text>
 </g>
 
-<!-- =====================================================
-     WEB SERVER
-     ===================================================== -->
-
-<g
-  class="srv-node"
-  onclick="runSimulation('Web')"
->
-
-  <rect
-    x="470"
-    y="30"
-    width="160"
-    height="130"
-    rx="8"
-    fill="#FFFFFF"
-    stroke="#059669"
-    stroke-width="2"
-  />
-
-  <rect
-    x="535"
-    y="45"
-    width="30"
-    height="35"
-    rx="3"
-    fill="#D1FAE5"
-    stroke="#059669"
-    stroke-width="1.5"
-  />
-
-  <line
-    x1="540"
-    y1="55"
-    x2="560"
-    y2="55"
-    stroke="#059669"
-    stroke-width="2"
-  />
-
-  <line
-    x1="540"
-    y1="65"
-    x2="560"
-    y2="65"
-    stroke="#059669"
-    stroke-width="2"
-  />
-
-  <circle
-    cx="545"
-    cy="73"
-    r="2"
-    fill="#059669"
-  />
-
-  <text
-    x="550"
-    y="100"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="13"
-    font-weight="700"
-  >
-    Web Server
-  </text>
-
-  <text
-    x="550"
-    y="118"
-    text-anchor="middle"
-    fill="#57534E"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    IP: 192.168.1.30
-  </text>
-
-  <text
-    x="550"
-    y="135"
-    text-anchor="middle"
-    fill="#78716C"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    Port: 80 / 443
-  </text>
-
+<!-- WEB SERVER -->
+<g class="srv-node" onclick="runSimulation('Web')">
+  <rect x="470" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+  <rect x="535" y="45" width="30" height="35" rx="3" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <line x1="540" y1="55" x2="560" y2="55" stroke="#059669" stroke-width="2"/>
+  <line x1="540" y1="65" x2="560" y2="65" stroke="#059669" stroke-width="2"/>
+  <circle cx="545" cy="73" r="2" fill="#059669"/>
+  <text x="550" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">Web Server</text>
+  <text x="550" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.30</text>
+  <text x="550" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 80 / 443</text>
 </g>
 
-<!-- =====================================================
-     FTP SERVER
-     ===================================================== -->
-
-<g
-  class="srv-node"
-  onclick="runSimulation('FTP')"
->
-
-  <rect
-    x="690"
-    y="30"
-    width="160"
-    height="130"
-    rx="8"
-    fill="#FFFFFF"
-    stroke="#2563EB"
-    stroke-width="2"
-  />
-
-  <rect
-    x="755"
-    y="45"
-    width="30"
-    height="35"
-    rx="3"
-    fill="#DBEAFE"
-    stroke="#2563EB"
-    stroke-width="1.5"
-  />
-
-  <line
-    x1="760"
-    y1="55"
-    x2="780"
-    y2="55"
-    stroke="#2563EB"
-    stroke-width="2"
-  />
-
-  <line
-    x1="760"
-    y1="65"
-    x2="780"
-    y2="65"
-    stroke="#2563EB"
-    stroke-width="2"
-  />
-
-  <circle
-    cx="765"
-    cy="73"
-    r="2"
-    fill="#059669"
-  />
-
-  <text
-    x="770"
-    y="100"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="13"
-    font-weight="700"
-  >
-    FTP Server
-  </text>
-
-  <text
-    x="770"
-    y="118"
-    text-anchor="middle"
-    fill="#57534E"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    IP: 192.168.1.40
-  </text>
-
-  <text
-    x="770"
-    y="135"
-    text-anchor="middle"
-    fill="#78716C"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    Port: 20 / 21
-  </text>
-
+<!-- FTP SERVER -->
+<g class="srv-node" onclick="runSimulation('FTP')">
+  <rect x="690" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
+  <rect x="755" y="45" width="30" height="35" rx="3" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="760" y1="55" x2="780" y2="55" stroke="#2563EB" stroke-width="2"/>
+  <line x1="760" y1="65" x2="780" y2="65" stroke="#2563EB" stroke-width="2"/>
+  <circle cx="765" cy="73" r="2" fill="#059669"/>
+  <text x="770" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">FTP Server</text>
+  <text x="770" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.40</text>
+  <text x="770" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 20 / 21</text>
 </g>
 
-<!-- =====================================================
-     MAIL SERVER
-     ===================================================== -->
-
-<g
-  class="srv-node"
-  onclick="runSimulation('Mail')"
->
-
-  <rect
-    x="910"
-    y="30"
-    width="160"
-    height="130"
-    rx="8"
-    fill="#FFFFFF"
-    stroke="#9333EA"
-    stroke-width="2"
-  />
-
-  <rect
-    x="975"
-    y="45"
-    width="30"
-    height="35"
-    rx="3"
-    fill="#F3E8FF"
-    stroke="#9333EA"
-    stroke-width="1.5"
-  />
-
-  <line
-    x1="980"
-    y1="55"
-    x2="1000"
-    y2="55"
-    stroke="#9333EA"
-    stroke-width="2"
-  />
-
-  <line
-    x1="980"
-    y1="65"
-    x2="1000"
-    y2="65"
-    stroke="#9333EA"
-    stroke-width="2"
-  />
-
-  <circle
-    cx="985"
-    cy="73"
-    r="2"
-    fill="#059669"
-  />
-
-  <text
-    x="990"
-    y="100"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="13"
-    font-weight="700"
-  >
-    Mail Server
-  </text>
-
-  <text
-    x="990"
-    y="118"
-    text-anchor="middle"
-    fill="#57534E"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    IP: 192.168.1.50
-  </text>
-
-  <text
-    x="990"
-    y="135"
-    text-anchor="middle"
-    fill="#78716C"
-    font-family="Fira Code"
-    font-size="11"
-    direction="ltr"
-  >
-    SMTP:25 | POP3:110
-  </text>
-
+<!-- MAIL SERVER -->
+<g class="srv-node" onclick="runSimulation('Mail')">
+  <rect x="910" y="30" width="160" height="130" rx="8" fill="#FFFFFF" stroke="#9333EA" stroke-width="2"/>
+  <rect x="975" y="45" width="30" height="35" rx="3" fill="#F3E8FF" stroke="#9333EA" stroke-width="1.5"/>
+  <line x1="980" y1="55" x2="1000" y2="55" stroke="#9333EA" stroke-width="2"/>
+  <line x1="980" y1="65" x2="1000" y2="65" stroke="#9333EA" stroke-width="2"/>
+  <circle cx="985" cy="73" r="2" fill="#059669"/>
+  <text x="990" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">Mail Server</text>
+  <text x="990" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.50</text>
+  <text x="990" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">SMTP:25 | POP3:110</text>
 </g>
 
-<!-- =====================================================
-     SWITCH
-     ===================================================== -->
-
+<!-- SWITCH -->
 <g transform="translate(500, 230)">
-
-  <rect
-    width="100"
-    height="50"
-    rx="6"
-    fill="#FFFFFF"
-    stroke="#2563EB"
-    stroke-width="3"
-  />
-
-  <path
-    d="M 20 25 L 55 25 M 55 25 L 47 18 M 55 25 L 47 32"
-    stroke="#2563EB"
-    stroke-width="2.5"
-    fill="none"
-  />
-
-  <path
-    d="M 80 25 L 45 25 M 45 25 L 53 18 M 45 25 L 53 32"
-    stroke="#2563EB"
-    stroke-width="2.5"
-    fill="none"
-  />
-
-  <text
-    x="50"
-    y="72"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="14"
-    font-weight="700"
-  >
-    Switch_Main
-  </text>
-
+  <rect width="100" height="50" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="3"/>
+  <path d="M 20 25 L 55 25 M 55 25 L 47 18 M 55 25 L 47 32" stroke="#2563EB" stroke-width="2.5" fill="none"/>
+  <path d="M 80 25 L 45 25 M 45 25 L 53 18 M 45 25 L 53 32" stroke="#2563EB" stroke-width="2.5" fill="none"/>
+  <text x="50" y="72" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Switch_Main</text>
 </g>
 
-<!-- =====================================================
-     CLIENT 1
-     ===================================================== -->
-
+<!-- CLIENT 1 -->
 <g transform="translate(250, 430)">
-
-  <rect
-    width="190"
-    height="95"
-    rx="8"
-    fill="#FFFFFF"
-    stroke="#7C3AED"
-    stroke-width="2"
-  />
-
-  <rect
-    x="12"
-    y="15"
-    width="28"
-    height="20"
-    rx="3"
-    fill="#F3EFEA"
-    stroke="#7C3AED"
-    stroke-width="1.5"
-  />
-
-  <text
-    x="105"
-    y="32"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="12"
-    font-weight="700"
-  >
-    PC_Client 1 (Alice)
-  </text>
-
-  <text
-    x="105"
-    y="54"
-    text-anchor="middle"
-    fill="#57534E"
-    font-family="Fira Code"
-    font-size="10.5"
-    direction="ltr"
-    id="client1IpLabel"
-  >
-    IP: 192.168.1.150
-  </text>
-
-  <text
-    x="105"
-    y="74"
-    text-anchor="middle"
-    fill="#78716C"
-    font-family="Fira Code"
-    font-size="9.5"
-    direction="ltr"
-  >
-    alice@academy.local
-  </text>
-
+  <rect width="190" height="95" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
+  <rect x="12" y="15" width="28" height="20" rx="3" fill="#F3EFEA" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="12" font-weight="700">PC_Client 1 (Alice)</text>
+  <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10.5" direction="ltr" id="client1IpLabel">IP: 192.168.1.150</text>
+  <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9.5" direction="ltr">alice@academy.local</text>
 </g>
 
-<!-- =====================================================
-     CLIENT 2
-     ===================================================== -->
-
+<!-- CLIENT 2 -->
 <g transform="translate(660, 430)">
-
-  <rect
-    width="190"
-    height="95"
-    rx="8"
-    fill="#FFFFFF"
-    stroke="#059669"
-    stroke-width="2"
-  />
-
-  <rect
-    x="12"
-    y="15"
-    width="28"
-    height="20"
-    rx="3"
-    fill="#F3EFEA"
-    stroke="#059669"
-    stroke-width="1.5"
-  />
-
-  <text
-    x="105"
-    y="32"
-    text-anchor="middle"
-    fill="#1C1917"
-    font-family="Rubik"
-    font-size="12"
-    font-weight="700"
-  >
-    PC_Client 2 (Bob)
-  </text>
-
-  <text
-    x="105"
-    y="54"
-    text-anchor="middle"
-    fill="#57534E"
-    font-family="Fira Code"
-    font-size="10.5"
-    direction="ltr"
-    id="client2IpLabel"
-  >
-    IP: 192.168.1.160
-  </text>
-
-  <text
-    x="105"
-    y="74"
-    text-anchor="middle"
-    fill="#78716C"
-    font-family="Fira Code"
-    font-size="9.5"
-    direction="ltr"
-  >
-    bob@academy.local
-  </text>
-
+  <rect width="190" height="95" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+  <rect x="12" y="15" width="28" height="20" rx="3" fill="#F3EFEA" stroke="#059669" stroke-width="1.5"/>
+  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="12" font-weight="700">PC_Client 2 (Bob)</text>
+  <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10.5" direction="ltr" id="client2IpLabel">IP: 192.168.1.160</text>
+  <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9.5" direction="ltr">bob@academy.local</text>
 </g>
 
-<!-- =====================================================
-     PDU MOVING PACKET
-     ===================================================== -->
-
-<g
-  id="movingPacket"
-  class="pdu-envelope"
-  style="display:none;"
->
-
-  <rect
-    class="pdu-body"
-    x="-125"
-    y="-48"
-    width="250"
-    height="96"
-    rx="10"
-    fill="#0F172A"
-    stroke="#7C3AED"
-    stroke-width="2.5"
-  />
-
-  <rect
-    x="-125"
-    y="-48"
-    width="250"
-    height="24"
-    rx="10"
-    fill="#7C3AED"
-  />
-
-  <rect
-    x="-125"
-    y="-36"
-    width="250"
-    height="12"
-    fill="#7C3AED"
-  />
-
-  <text
-    id="pktProto"
-    class="pdu-text"
-    x="0"
-    y="-31"
-    fill="#FFFFFF"
-    font-size="10"
-    font-weight="800"
-  >
-    PDU
-  </text>
-
+<!-- PDU MOVING PACKET -->
+<g id="movingPacket" class="pdu-envelope" style="display:none;">
+  <rect class="pdu-body" x="-125" y="-48" width="250" height="96" rx="10" fill="#0F172A" stroke="#7C3AED" stroke-width="2.5"/>
+  <rect x="-125" y="-48" width="250" height="24" rx="10" fill="#7C3AED"/>
+  <rect x="-125" y="-36" width="250" height="12" fill="#7C3AED"/>
+  <text id="pktProto" class="pdu-text" x="0" y="-31" fill="#FFFFFF" font-size="10" font-weight="800">PDU</text>
   <g class="pdu-content">
-
-    <rect
-      x="-115"
-      y="-17"
-      width="230"
-      height="16"
-      rx="3"
-      fill="#1E293B"
-    />
-
-    <text
-      id="pktSrc"
-      class="pdu-text"
-      x="0"
-      y="-5"
-      fill="#38BDF8"
-      font-size="8"
-    >
-      SRC: 0.0.0.0:00
-    </text>
-
-    <rect
-      x="-115"
-      y="1"
-      width="230"
-      height="16"
-      rx="3"
-      fill="#1E293B"
-    />
-
-    <text
-      id="pktDst"
-      class="pdu-text"
-      x="0"
-      y="13"
-      fill="#FB7185"
-      font-size="8"
-    >
-      DST: 0.0.0.0:00
-    </text>
-
-    <rect
-      x="-115"
-      y="21"
-      width="230"
-      height="20"
-      rx="4"
-      fill="#172033"
-    />
-
-    <text
-      id="pktData"
-      class="pdu-text"
-      x="0"
-      y="32"
-      fill="#FACC15"
-      font-size="7.5"
-    >
-      Info: Payload
-    </text>
-
+    <rect x="-115" y="-17" width="230" height="16" rx="3" fill="#1E293B"/>
+    <text id="pktSrc" class="pdu-text" x="0" y="-5" fill="#38BDF8" font-size="8">SRC: 0.0.0.0:00</text>
+    <rect x="-115" y="1" width="230" height="16" rx="3" fill="#1E293B"/>
+    <text id="pktDst" class="pdu-text" x="0" y="13" fill="#FB7185" font-size="8">DST: 0.0.0.0:00</text>
+    <rect x="-115" y="21" width="230" height="20" rx="4" fill="#172033"/>
+    <text id="pktData" class="pdu-text" x="0" y="32" fill="#FACC15" font-size="7.5">Info: Payload</text>
   </g>
-
 </g>
 
 </svg>
 
 <div class="controls-row">
-
-  <span
-    id="selInfo"
-    style="
-      color:var(--muted);
-      font-size:14px;
-      font-weight:500;
-    "
-  >
+  <span id="selInfo" style="color:var(--muted); font-size:14px; font-weight:500;">
     לחץ על אחד התרחישים מטה כדי להתחיל בסימולציה מפורטת...
   </span>
-
 </div>
 
 <div class="controls-row">
-
-  <button
-    class="btn"
-    onclick="runSimulation('DHCP')"
-  >
-    תהליך DHCP (DORA) 🎫
-  </button>
-
-  <button
-    class="btn"
-    onclick="runSimulation('Web')"
-  >
-    גלישת Web (DNS + HTTP) 🌐
-  </button>
-
-  <button
-    class="btn"
-    style="background:var(--mail);"
-    onclick="runSimulation('Mail')"
-  >
-    משלוח מייל (DNS + SMTP + POP3) ✉️
-  </button>
-
-  <button
-    class="btn"
-    onclick="runSimulation('DNS')"
-  >
-    שאילתת DNS בלבד 🔍
-  </button>
-
-  <button
-    class="btn"
-    onclick="runSimulation('FTP')"
-  >
-    חיבור FTP (בקרה+נתונים) 📂
-  </button>
-
-  <button
-    class="btn pause-btn"
-    id="pauseBtn"
-    onclick="togglePause()"
-  >
-    השהה ⏸️
-  </button>
-
-  <button
-    class="btn secondary"
-    onclick="resetSim()"
-  >
-    איפוס
-  </button>
-
+  <button class="btn" onclick="runSimulation('DHCP')">תהליך <span dir="ltr">DHCP (DORA)</span> 🎫</button>
+  <button class="btn" onclick="runSimulation('Web')">גלישת <span dir="ltr">Web (DNS + HTTP)</span> 🌐</button>
+  <button class="btn" style="background:var(--mail);" onclick="runSimulation('Mail')">משלוח מייל (<span dir="ltr">DNS + SMTP + POP3</span>) ✉️</button>
+  <button class="btn" onclick="runSimulation('DNS')">שאילתת <span dir="ltr">DNS</span> בלבד 🔍</button>
+  <button class="btn" onclick="runSimulation('FTP')">חיבור <span dir="ltr">FTP</span> (בקרה+נתונים) 📂</button>
+  <button class="btn pause-btn" id="pauseBtn" onclick="togglePause()">השהה ⏸️</button>
+  <button class="btn secondary" onclick="resetSim()">איפוס</button>
 </div>
 
-<div
-  class="log-panel"
-  id="simLog"
->
-
-  <div class="log-line">
-    מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.
-  </div>
-
+<div class="log-panel" id="simLog">
+  <div class="log-line">מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.</div>
 </div>
 
 </div>
@@ -1895,15 +1154,15 @@ input.term-input{
   </div>
 
   <h2 class="section-title">
-    הגדר שרת DNS בארגון דרך שורת הפקודה
+    הגדר שרת <span dir="ltr">DNS</span> בארגון דרך שורת הפקודה
   </h2>
 
 </div>
 
 <p>
-  המשימה: להגדיר רשומת מיפוי (A Record)
-  בשרת ה-DNS עבור האתר הארגוני המקומי
-  <code>academy.local</code>
+  המשימה: להגדיר רשומת מיפוי (<span dir="ltr">A Record</span>)
+  בשרת ה-<span dir="ltr">DNS</span> עבור האתר הארגוני המקומי
+  <code dir="ltr">academy.local</code>
   שכתובתו
   <span dir="ltr">192.168.1.30</span>.
 </p>
@@ -1911,13 +1170,10 @@ input.term-input{
 <div class="task-box">
 
   <div class="task-title">
-    משימה: הוספת רשומת DNS מסוג A לכתובת 192.168.1.30
+    משימה: הוספת רשומת <span dir="ltr">DNS</span> מסוג <span dir="ltr">A</span> לכתובת <span dir="ltr">192.168.1.30</span>
   </div>
 
-  <div
-    class="task-progress"
-    id="taskProgress"
-  >
+  <div class="task-progress" id="taskProgress">
     שלב 1 מתוך 2
   </div>
 
@@ -1926,46 +1182,21 @@ input.term-input{
 <div class="terminal" dir="ltr">
 
   <div class="term-topbar">
-
     <div class="dot r"></div>
     <div class="dot y"></div>
     <div class="dot g"></div>
-
-    <span
-      style="
-        margin-left:8px;
-        color:#94A3B8;
-        font-size:12px;
-      "
-    >
-      DNS-Server-CLI
-    </span>
-
+    <span style="margin-left:8px; color:#94A3B8; font-size:12px;">DNS-Server-CLI</span>
   </div>
 
-  <div
-    class="term-output"
-    id="termOutput"
-    dir="ltr"
-  >
+  <div class="term-output" id="termOutput" dir="ltr">
 DNS-Server> enable
 DNS-Server# configure terminal
 DNS-Server(config)# ip dns server
-<span class="hint" dir="rtl">הקלד את פקודת המיפוי: ip dns name academy.local a 192.168.1.30 ולחץ Enter</span>
+<span class="hint" dir="rtl">הקלד את פקודת המיפוי: <code dir="ltr">ip dns name academy.local a 192.168.1.30</code> ולחץ Enter</span>
   </div>
 
-  <div
-    class="term-input-row"
-    dir="ltr"
-  >
-
-    <span
-      class="prompt"
-      id="termPrompt"
-    >
-      DNS-Server(config)#
-    </span>
-
+  <div class="term-input-row" dir="ltr">
+    <span class="prompt" id="termPrompt">DNS-Server(config)#</span>
     <input
       type="text"
       class="term-input"
@@ -1974,9 +1205,20 @@ DNS-Server(config)# ip dns server
       placeholder="Type configuration command..."
       onkeydown="if(event.key==='Enter')submitCmd()"
     >
-
   </div>
 
+</div>
+
+<!-- כרטיס הסבר פדגוגי שמופיע בסיום המשימה בחלק 4 -->
+<div id="dnsLabExplanation" class="explanation-card">
+  <h3 style="color:#1E3A8A; font-size:18px; margin-bottom:8px;">💡 מה בדיוק יצרנו ואיך זה עובד ברשת?</h3>
+  <p style="color:#1E40AF; margin-bottom:8px;">
+    <b>מה יצרת?</b> יצרת כעת רשומת מיפוי מסוג <b>A Record (Address Record)</b> בשרת ה-DNS של הארגון. רשומה זו לקחה את השם הקריא לבני אדם <code dir="ltr">academy.local</code> וקשרה אותו לכתובת ה-IP הפיזית <code dir="ltr">192.168.1.30</code> (שרת ה-Web שלנו).
+  </p>
+  <p style="color:#1E40AF; margin:0;">
+    <b>מה ניתן לעשות עם זה עכשיו?</b>
+    מהרגע שהרשומה נשמרה בשרת ה-DNS, כל משתמש ברשת הארגונית (כמו Alice או Bob) כבר לא צריך לזכור ולשרבט כתובות IP מסובכות. במידה ומשתמש יקליד בדפדפן שלו <code dir="ltr">http://academy.local</code>, המחשב שלו יפנה לשרת ה-DNS, יקבל את ה-IP המשויך (<span dir="ltr">192.168.1.30</span>), ויטען באופן מיידי את אתר האינטרנט הארגוני!
+  </p>
 </div>
 
 </section>
@@ -2001,43 +1243,24 @@ DNS-Server(config)# ip dns server
 
 <div id="quizContainer"></div>
 
-<div
-  id="quizScoreCard"
-  class="score-card"
->
+<!-- כפתור למורה -->
+<div style="margin-top:20px; text-align:center;">
+  <button class="btn teacher-btn" onclick="revealTeacherAnswers()">
+    🔑 למורה (הצגת תשובות נכונות)
+  </button>
+</div>
 
-  <h3
-    style="
-      font-size:22px;
-      color:#1C1917;
-      margin-bottom:6px;
-    "
-  >
+<div id="quizScoreCard" class="score-card">
+
+  <h3 style="font-size:22px; color:#1C1917; margin-bottom:6px;">
     תוצאת המבחן המסכם
   </h3>
 
-  <div
-    id="scoreDisplay"
-    class="mono"
-    style="
-      font-size:38px;
-      font-weight:800;
-      color:var(--stick);
-      margin:12px 0;
-    "
-  >
+  <div id="scoreDisplay" class="mono" style="font-size:38px; font-weight:800; color:var(--stick); margin:12px 0;" dir="ltr">
     0 / 100
   </div>
 
-  <p
-    id="scoreFeedback"
-    style="
-      font-size:16px;
-      font-weight:600;
-      color:var(--muted);
-      margin:0;
-    "
-  ></p>
+  <p id="scoreFeedback" style="font-size:16px; font-weight:600; color:var(--muted); margin:0;"></p>
 
 </div>
 
@@ -2047,21 +1270,15 @@ DNS-Server(config)# ip dns server
      COMPLETION
      ===================================================== -->
 
-<div
-  class="completion"
-  id="completionBox"
->
-
+<div class="completion" id="completionBox">
   <h2>
     🎉 כל הכבוד! השלמת את מעבדת השרתים בהצלחה!
   </h2>
-
   <p>
     הוכחת שליטה מעולה בפרוטוקולים,
     מספרי פורטים וקונפיגורציית שירותים
     בשכבת האפליקציה.
   </p>
-
 </div>
 
 <div class="footer-note">
@@ -2071,178 +1288,35 @@ DNS-Server(config)# ip dns server
 </div>
 
 <!-- =====================================================
-     HELP BUTTON
+     HELP BUTTON & MODAL
      ===================================================== -->
 
-<div
-  style="
-    position:fixed;
-    bottom:24px;
-    left:24px;
-    z-index:9999;
-  "
->
-
-  <button
-    id="openHelpModalBtn"
-    class="
-      flex items-center gap-3
-      bg-gradient-to-r from-purple-600 to-indigo-600
-      hover:from-purple-700 hover:to-indigo-700
-      text-white font-bold
-      py-3 px-5 rounded-full
-      shadow-2xl
-      transition-all duration-300
-      transform hover:scale-105
-      border-2 border-white/50
-    "
-  >
-
-    <div
-      class="
-        w-9 h-9
-        rounded-full
-        border border-white/60
-        overflow-hidden
-        bg-slate-900
-        flex-shrink-0
-        shadow-inner
-      "
-    >
-
-      <img
-        src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w200"
-        alt="אווטר בוט עזרה"
-        class="w-full h-full object-cover"
-      >
-
+<div style="position:fixed; bottom:24px; left:24px; z-index:9999;">
+  <button id="openHelpModalBtn" class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3 px-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-white/50">
+    <div class="w-9 h-9 rounded-full border border-white/60 overflow-hidden bg-slate-900 flex-shrink-0 shadow-inner">
+      <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w200" alt="אווטר בוט עזרה" class="w-full h-full object-cover">
     </div>
-
-    <span class="text-base font-bold">
-      בוט עזרה
-    </span>
-
+    <span class="text-base font-bold">בוט עזרה</span>
   </button>
-
 </div>
 
-<!-- =====================================================
-     HELP MODAL
-     ===================================================== -->
-
-<div
-  id="helpModal"
-  class="
-    fixed inset-0
-    bg-slate-950/70
-    backdrop-blur-sm
-    z-[10000]
-    hidden
-    flex items-center justify-center
-    p-4
-    transition-all duration-300
-  "
->
-
-  <div
-    class="
-      bg-white
-      border border-stone-200
-      rounded-2xl
-      p-6
-      max-w-sm
-      w-full
-      text-center
-      relative
-      shadow-2xl
-      transform scale-95
-      transition-transform duration-300
-    "
-    id="helpModalContent"
-  >
-
-    <button
-      id="closeHelpModalBtn"
-      class="
-        absolute
-        top-4 right-4
-        text-stone-400
-        hover:text-stone-700
-        transition-colors
-        p-1
-        rounded-lg
-        hover:bg-stone-100
-      "
-    >
-
-      <i
-        data-lucide="x"
-        class="w-5 h-5"
-      ></i>
-
+<div id="helpModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4 transition-all duration-300">
+  <div class="bg-white border border-stone-200 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl transform scale-95 transition-transform duration-300" id="helpModalContent">
+    <button id="closeHelpModalBtn" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 transition-colors p-1 rounded-lg hover:bg-stone-100">
+      <i data-lucide="x" class="w-5 h-5"></i>
     </button>
-
-    <div
-      class="
-        w-20 h-20
-        rounded-full
-        mx-auto mb-4
-        border-2 border-purple-500/50
-        p-1
-        bg-stone-100
-        shadow-lg shadow-purple-500/10
-        overflow-hidden
-      "
-    >
-
-      <img
-        src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w300"
-        alt="תמונת בוט עזרה"
-        class="w-full h-full object-cover rounded-full"
-      >
-
+    <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-purple-500/50 p-1 bg-stone-100 shadow-lg shadow-purple-500/10 overflow-hidden">
+      <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w300" alt="תמונת בוט עזרה" class="w-full h-full object-cover rounded-full">
     </div>
-
-    <h3 class="text-lg font-black text-stone-900 mb-2">
-      צריך עזרה במשימה?
-    </h3>
-
+    <h3 class="text-lg font-black text-stone-900 mb-2">צריך עזרה במשימה?</h3>
     <p class="text-sm text-stone-600 mb-6 leading-relaxed">
-      בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות,
-      להסביר מושגים ולכוון אותך לפתרון המלא!
+      בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ולכוון אותך לפתרון המלא!
     </p>
-
-    <a
-      href="https://gemini.google.com/gem/167016ac4a4b?usp=sharing"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="
-        w-full
-        flex items-center justify-center gap-2
-        bg-purple-600
-        hover:bg-purple-700
-        text-white
-        font-black
-        py-3 px-4
-        rounded-xl
-        transition-all duration-200
-        shadow-lg shadow-purple-600/20
-      "
-    >
-
-      <span>
-        הפעל את בוט העזרה
-      </span>
-
-      <i
-        data-lucide="external-link"
-        class="w-4 h-4"
-      ></i>
-
+    <a href="https://gemini.google.com/gem/167016ac4a4b?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black py-3 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-purple-600/20">
+      <span>הפעל את בוט העזרה</span>
+      <i data-lucide="external-link" class="w-4 h-4"></i>
     </a>
-
   </div>
-
 </div>
 
 <!-- =====================================================
@@ -2252,1844 +1326,544 @@ DNS-Server(config)# ip dns server
 <script>
 
 document.addEventListener('DOMContentLoaded', function(){
-
   if(window.lucide){
     lucide.createIcons();
   }
 
-  const modal =
-    document.getElementById('helpModal');
+  const modal = document.getElementById('helpModal');
+  const modalContent = document.getElementById('helpModalContent');
+  const openBtn = document.getElementById('openHelpModalBtn');
+  const closeBtn = document.getElementById('closeHelpModalBtn');
 
-  const modalContent =
-    document.getElementById('helpModalContent');
-
-  const openBtn =
-    document.getElementById('openHelpModalBtn');
-
-  const closeBtn =
-    document.getElementById('closeHelpModalBtn');
-
-  if(
-    openBtn &&
-    modal &&
-    modalContent &&
-    closeBtn
-  ){
-
+  if(openBtn && modal && modalContent && closeBtn){
     openBtn.addEventListener('click', () => {
-
       modal.classList.remove('hidden');
-
-      setTimeout(() => {
-        modalContent.classList.remove('scale-95');
-      },10);
-
+      setTimeout(() => { modalContent.classList.remove('scale-95'); },10);
     });
 
     closeBtn.addEventListener('click', () => {
-
       modalContent.classList.add('scale-95');
-
-      setTimeout(() => {
-        modal.classList.add('hidden');
-      },150);
-
+      setTimeout(() => { modal.classList.add('hidden'); },150);
     });
 
     modal.addEventListener('click',(e)=>{
-
       if(e.target === modal){
-
         modalContent.classList.add('scale-95');
-
-        setTimeout(() => {
-          modal.classList.add('hidden');
-        },150);
-
+        setTimeout(() => { modal.classList.add('hidden'); },150);
       }
-
     });
-
   }
-
 });
 
 
-// ======================================================
 // PROGRESS
-// ======================================================
-
 const PROGRESS_KEY = "srv_progress_v1";
-
-const stepIds = [
-  "s1",
-  "s2",
-  "s3",
-  "s4",
-  "s5"
-];
-
-let progress =
-  JSON.parse(
-    localStorage.getItem(PROGRESS_KEY) || "{}"
-  );
-
+const stepIds = ["s1", "s2", "s3", "s4", "s5"];
+let progress = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}");
 
 function renderStepsBar(){
-
-  const bar =
-    document.getElementById("stepsBar");
-
+  const bar = document.getElementById("stepsBar");
   if(!bar) return;
-
   bar.innerHTML = "";
 
   stepIds.forEach(id => {
-
-    const d =
-      document.createElement("div");
-
-    d.className =
-      "step" +
-      (progress[id] ? " done" : "");
-
+    const d = document.createElement("div");
+    d.className = "step" + (progress[id] ? " done" : "");
     bar.appendChild(d);
-
   });
 
-  const done =
-    stepIds.filter(
-      id => progress[id]
-    ).length;
-
-  document.getElementById(
-    "progressPct"
-  ).textContent =
-    Math.round(
-      done / stepIds.length * 100
-    ) + "%";
+  const done = stepIds.filter(id => progress[id]).length;
+  document.getElementById("progressPct").textContent = Math.round(done / stepIds.length * 100) + "%";
 
   if(done === stepIds.length){
-
-    document
-      .getElementById("completionBox")
-      .classList.add("show");
-
+    document.getElementById("completionBox").classList.add("show");
   }
-
 }
-
 
 function markDone(id){
-
   progress[id] = true;
-
-  localStorage.setItem(
-    PROGRESS_KEY,
-    JSON.stringify(progress)
-  );
-
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
   renderStepsBar();
-
 }
-
 
 renderStepsBar();
 
-
-const io =
-  new IntersectionObserver(
-    (entries) => {
-
-      entries.forEach(e => {
-
-        if(
-          e.isIntersecting &&
-          e.intersectionRatio > 0.4
-        ){
-
-          markDone(e.target.id);
-
-        }
-
-      });
-
-    },
-    {
-      threshold:0.4
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting && e.intersectionRatio > 0.4){
+      markDone(e.target.id);
     }
-  );
-
+  });
+}, { threshold:0.4 });
 
 stepIds.forEach(id => {
-
-  const el =
-    document.getElementById(id);
-
-  if(el){
-    io.observe(el);
-  }
-
+  const el = document.getElementById(id);
+  if(el){ io.observe(el); }
 });
 
 
-// ======================================================
 // ACCORDION
-// ======================================================
-
 function toggleAcc(id){
-
-  document
-    .getElementById(id)
-    .classList.toggle("open");
-
+  document.getElementById(id).classList.toggle("open");
 }
 
 
-// ======================================================
 // NETWORK COORDINATES
-// ======================================================
-
 const coords = {
-
-  client1:{
-    x:345,
-    y:440
-  },
-
-  client2:{
-    x:755,
-    y:440
-  },
-
-  switch:{
-    x:550,
-    y:255
-  },
-
-  DNS:{
-    x:110,
-    y:120
-  },
-
-  DHCP:{
-    x:330,
-    y:120
-  },
-
-  Web:{
-    x:550,
-    y:120
-  },
-
-  FTP:{
-    x:770,
-    y:120
-  },
-
-  Mail:{
-    x:990,
-    y:120
-  }
-
+  client1:{ x:345, y:440 },
+  client2:{ x:755, y:440 },
+  switch:{ x:550, y:255 },
+  DNS:{ x:110, y:120 },
+  DHCP:{ x:330, y:120 },
+  Web:{ x:550, y:120 },
+  FTP:{ x:770, y:120 },
+  Mail:{ x:990, y:120 }
 };
 
-
 let isSimulating = false;
-
 let isPaused = false;
-
 let pauseResolve = null;
 
-
-// ======================================================
-// PAUSE
-// ======================================================
-
 function togglePause(){
-
-  const btn =
-    document.getElementById("pauseBtn");
-
+  const btn = document.getElementById("pauseBtn");
   if(!isPaused){
-
     isPaused = true;
-
-    btn.textContent =
-      "המשך ▶️";
-
-    btn.style.background =
-      "#059669";
-
+    btn.textContent = "המשך ▶️";
+    btn.style.background = "#059669";
   }else{
-
     isPaused = false;
-
-    btn.textContent =
-      "השהה ⏸️";
-
-    btn.style.background =
-      "#D97706";
-
+    btn.textContent = "השהה ⏸️";
+    btn.style.background = "#D97706";
     if(pauseResolve){
-
       pauseResolve();
-
       pauseResolve = null;
-
     }
-
   }
-
 }
-
 
 async function checkPause(){
-
   if(isPaused){
-
-    await new Promise(resolve => {
-
-      pauseResolve = resolve;
-
-    });
-
+    await new Promise(resolve => { pauseResolve = resolve; });
   }
-
 }
 
-
-// ======================================================
-// PDU TEXT FIT
-// ======================================================
-
-function fitTextInEnvelope(
-  el,
-  text,
-  maxW
-){
-
+function fitTextInEnvelope(el, text, maxW){
   if(!el) return;
-
-  el.textContent =
-    text || "";
-
-  el.setAttribute(
-    "direction",
-    "ltr"
-  );
-
-  el.setAttribute(
-    "unicode-bidi",
-    "plaintext"
-  );
-
-  el.setAttribute(
-    "writing-mode",
-    "horizontal-tb"
-  );
-
-  el.setAttribute(
-    "text-anchor",
-    "middle"
-  );
-
-  el.setAttribute(
-    "dominant-baseline",
-    "middle"
-  );
-
-  el.removeAttribute(
-    "textLength"
-  );
-
-  el.removeAttribute(
-    "lengthAdjust"
-  );
+  el.textContent = text || "";
+  el.setAttribute("direction", "ltr");
+  el.setAttribute("unicode-bidi", "plaintext");
+  el.setAttribute("writing-mode", "horizontal-tb");
+  el.setAttribute("text-anchor", "middle");
+  el.setAttribute("dominant-baseline", "middle");
+  el.removeAttribute("textLength");
+  el.removeAttribute("lengthAdjust");
 
   try{
-
-    const currentW =
-      el.getComputedTextLength();
-
+    const currentW = el.getComputedTextLength();
     if(currentW > maxW){
-
-      el.setAttribute(
-        "textLength",
-        String(maxW)
-      );
-
-      el.setAttribute(
-        "lengthAdjust",
-        "spacingAndGlyphs"
-      );
-
+      el.setAttribute("textLength", String(maxW));
+      el.setAttribute("lengthAdjust", "spacingAndGlyphs");
     }
-
-  }catch(e){
-
-  }
-
+  }catch(e){}
 }
 
+async function animatePacketPDU(x1, y1, x2, y2, config, duration = 2200){
+  const pkt = document.getElementById("movingPacket");
+  const protoTxt = document.getElementById("pktProto");
+  const srcTxt = document.getElementById("pktSrc");
+  const dstTxt = document.getElementById("pktDst");
+  const dataTxt = document.getElementById("pktData");
 
-// ======================================================
-// PDU ANIMATION
-// ======================================================
+  fitTextInEnvelope(protoTxt, config.proto || "PDU", 210);
+  fitTextInEnvelope(srcTxt, "SRC: " + (config.src || "0.0.0.0"), 210);
+  fitTextInEnvelope(dstTxt, "DST: " + (config.dst || "0.0.0.0"), 210);
+  fitTextInEnvelope(dataTxt, config.data ? "Info: " + config.data : "", 210);
 
-async function animatePacketPDU(
-  x1,
-  y1,
-  x2,
-  y2,
-  config,
-  duration = 2200
-){
-
-  const pkt =
-    document.getElementById(
-      "movingPacket"
-    );
-
-  const protoTxt =
-    document.getElementById(
-      "pktProto"
-    );
-
-  const srcTxt =
-    document.getElementById(
-      "pktSrc"
-    );
-
-  const dstTxt =
-    document.getElementById(
-      "pktDst"
-    );
-
-  const dataTxt =
-    document.getElementById(
-      "pktData"
-    );
-
-
-  fitTextInEnvelope(
-    protoTxt,
-    config.proto || "PDU",
-    210
-  );
-
-  fitTextInEnvelope(
-    srcTxt,
-    "SRC: " +
-      (config.src || "0.0.0.0"),
-    210
-  );
-
-  fitTextInEnvelope(
-    dstTxt,
-    "DST: " +
-      (config.dst || "0.0.0.0"),
-    210
-  );
-
-  fitTextInEnvelope(
-    dataTxt,
-    config.data
-      ? "Info: " + config.data
-      : "",
-    210
-  );
-
-
-  pkt.style.display =
-    "block";
-
-
+  pkt.style.display = "block";
   const steps = 50;
 
-
-  for(
-    let i=0;
-    i<=steps;
-    i++
-  ){
-
+  for(let i=0; i<=steps; i++){
     await checkPause();
-
-    const t =
-      i / steps;
-
-    const currentX =
-      x1 +
-      (x2-x1) * t;
-
-    const currentY =
-      y1 +
-      (y2-y1) * t;
-
-
-    pkt.setAttribute(
-      "transform",
-      `translate(${currentX}, ${currentY})`
-    );
-
-
-    await new Promise(
-      r =>
-        setTimeout(
-          r,
-          duration / steps
-        )
-    );
-
+    const t = i / steps;
+    const currentX = x1 + (x2-x1) * t;
+    const currentY = y1 + (y2-y1) * t;
+    pkt.setAttribute("transform", `translate(${currentX}, ${currentY})`);
+    await new Promise(r => setTimeout(r, duration / steps));
   }
-
 }
 
 
-// ======================================================
 // SIMULATION
-// ======================================================
-
 async function runSimulation(type){
-
-  if(isSimulating)
-    return;
-
+  if(isSimulating) return;
   isSimulating = true;
 
-  const logPanel =
-    document.getElementById(
-      "simLog"
-    );
-
+  const logPanel = document.getElementById("simLog");
   logPanel.innerHTML = "";
 
-
-  // ====================================================
-  // DHCP
-  // ====================================================
-
   if(type === 'DHCP'){
+    document.getElementById("client1IpLabel").textContent = "IP: 0.0.0.0 (אין כתובת)";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--dhcp)'>סימולציית DHCP:</b> תהליך הקצאת IP אוטומטית (DORA)";
 
-    document.getElementById(
-      "client1IpLabel"
-    ).textContent =
-      "IP: 0.0.0.0 (אין כתובת)";
+    log("<span class='lbl'>[1. DISCOVER]</span> Alice מדליקה את המחשב ושולחת Broadcast לרשת בחיפוש אחר שרת DHCP.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DHCP DISCOVER", src:"0.0.0.0:68", dst:"255.255.255.255:67", data:"Who is DHCP?"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DHCP.x, coords.DHCP.y, {proto:"DHCP DISCOVER", src:"0.0.0.0:68", dst:"255.255.255.255:67", data:"Broadcast to Port 67"});
 
+    log("<span class='lbl'>[2. OFFER]</span> שרת ה-DHCP מציע ל-Alice את הכתובת 192.168.1.150.");
+    await animatePacketPDU(coords.DHCP.x, coords.DHCP.y, coords.switch.x, coords.switch.y, {proto:"DHCP OFFER", src:"192.168.1.20:67", dst:"255.255.255.255:68", data:"Offer IP: 192.168.1.150"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DHCP OFFER", src:"192.168.1.20:67", dst:"255.255.255.255:68", data:"Offer IP: 192.168.1.150"});
 
-    document.getElementById(
-      "selInfo"
-    ).innerHTML =
-      "<b style='color:var(--dhcp)'>סימולציית DHCP:</b> תהליך הקצאת IP אוטומטית (DORA)";
+    log("<span class='lbl'>[3. REQUEST]</span> Alice משיבה שהיא מבקשת לאמץ רשמית את הכתובת 192.168.1.150.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DHCP REQUEST", src:"0.0.0.0:68", dst:"255.255.255.255:67", data:"Requesting 192.168.1.150"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DHCP.x, coords.DHCP.y, {proto:"DHCP REQUEST", src:"0.0.0.0:68", dst:"255.255.255.255:67", data:"Requesting 192.168.1.150"});
 
+    log("<span class='lbl'>[4. ACK]</span> השרת מאשר (Acknowledge) ונועל את ההקצאה.");
+    await animatePacketPDU(coords.DHCP.x, coords.DHCP.y, coords.switch.x, coords.switch.y, {proto:"DHCP ACK", src:"192.168.1.20:67", dst:"192.168.1.150:68", data:"IP Assigned Successfully"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DHCP ACK", src:"192.168.1.20:67", dst:"192.168.1.150:68", data:"IP Assigned Successfully"});
 
-    log(
-      "<span class='lbl'>[1. DISCOVER]</span> Alice מדליקה את המחשב ושולחת Broadcast לרשת בחיפוש אחר שרת DHCP."
-    );
-
-
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DHCP DISCOVER",
-        src:"0.0.0.0:68",
-        dst:"255.255.255.255:67",
-        data:"Who is DHCP?"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.DHCP.x,
-      coords.DHCP.y,
-      {
-        proto:"DHCP DISCOVER",
-        src:"0.0.0.0:68",
-        dst:"255.255.255.255:67",
-        data:"Broadcast to Port 67"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[2. OFFER]</span> שרת ה-DHCP מציע ל-Alice את הכתובת 192.168.1.150."
-    );
-
-
-    await animatePacketPDU(
-      coords.DHCP.x,
-      coords.DHCP.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DHCP OFFER",
-        src:"192.168.1.20:67",
-        dst:"255.255.255.255:68",
-        data:"Offer IP: 192.168.1.150"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client1.x,
-      coords.client1.y,
-      {
-        proto:"DHCP OFFER",
-        src:"192.168.1.20:67",
-        dst:"255.255.255.255:68",
-        data:"Offer IP: 192.168.1.150"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[3. REQUEST]</span> Alice משיבה שהיא מבקשת לאמץ רשמית את הכתובת 192.168.1.150."
-    );
-
-
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DHCP REQUEST",
-        src:"0.0.0.0:68",
-        dst:"255.255.255.255:67",
-        data:"Requesting 192.168.1.150"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.DHCP.x,
-      coords.DHCP.y,
-      {
-        proto:"DHCP REQUEST",
-        src:"0.0.0.0:68",
-        dst:"255.255.255.255:67",
-        data:"Requesting 192.168.1.150"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[4. ACK]</span> השרת מאשר (Acknowledge) ונועל את ההקצאה."
-    );
-
-
-    await animatePacketPDU(
-      coords.DHCP.x,
-      coords.DHCP.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DHCP ACK",
-        src:"192.168.1.20:67",
-        dst:"192.168.1.150:68",
-        data:"IP Assigned Successfully"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client1.x,
-      coords.client1.y,
-      {
-        proto:"DHCP ACK",
-        src:"192.168.1.20:67",
-        dst:"192.168.1.150:68",
-        data:"IP Assigned Successfully"
-      }
-    );
-
-
-    document.getElementById(
-      "client1IpLabel"
-    ).textContent =
-      "IP: 192.168.1.150";
-
-
-    log(
-      "<span class='lbl' style='color:var(--ok)'>[הושלם]</span> כתובת ה-IP הוקצתה בהצלחה!"
-    );
-
+    document.getElementById("client1IpLabel").textContent = "IP: 192.168.1.150";
+    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> כתובת ה-IP הוקצתה בהצלחה!");
   }
-
-
-  // ====================================================
-  // WEB
-  // ====================================================
-
   else if(type === 'Web'){
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--web)'>גלישת Web:</b> תרגום DNS לדומיין ופנייה לשרת HTTP";
 
-    document.getElementById(
-      "selInfo"
-    ).innerHTML =
-      "<b style='color:var(--web)'>גלישת Web:</b> תרגום DNS לדומיין ופנייה לשרת HTTP";
+    log("<span class='lbl'>[1. DNS Lookup]</span> Alice מקלידה <code dir='ltr'>www.site.local</code>. המחשב פונה ל-DNS בפורט 53 לבירור כתובת IP.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS QUERY", src:"192.168.1.150:51200", dst:"192.168.1.10:53", data:"Where is www.site.local?"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS QUERY", src:"192.168.1.150:51200", dst:"192.168.1.10:53", data:"Where is www.site.local?"});
 
+    log("<span class='lbl'>[2. DNS Response]</span> ה-DNS משיב שהכתובת היא <code dir='ltr'>192.168.1.30</code>.");
+    await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS RESPONSE", src:"192.168.1.10:53", dst:"192.168.1.150:51200", data:"IP = 192.168.1.30"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS RESPONSE", src:"192.168.1.10:53", dst:"192.168.1.150:51200", data:"IP = 192.168.1.30"});
 
-    log(
-      "<span class='lbl'>[1. DNS Lookup]</span> Alice מקלידה <code>www.site.local</code>. המחשב פונה ל-DNS בפורט 53 לבירור כתובת IP."
-    );
+    log("<span class='lbl'>[3. HTTP Request]</span> Alice פונה לשרת ה-Web בפורט 80 ומבקשת את דף הבית.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"HTTP GET", src:"192.168.1.150:51201", dst:"192.168.1.30:80", data:"GET /index.html HTTP/1.1"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Web.x, coords.Web.y, {proto:"HTTP GET", src:"192.168.1.150:51201", dst:"192.168.1.30:80", data:"GET /index.html HTTP/1.1"});
 
+    log("<span class='lbl'>[4. HTTP Response]</span> שרת ה-Web מחזיר את קוד הדף (HTTP 200 OK).");
+    await animatePacketPDU(coords.Web.x, coords.Web.y, coords.switch.x, coords.switch.y, {proto:"HTTP 200 OK", src:"192.168.1.30:80", dst:"192.168.1.150:51201", data:"Rendering Web Page..."});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"HTTP 200 OK", src:"192.168.1.30:80", dst:"192.168.1.150:51201", data:"Rendering Web Page..."});
 
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DNS QUERY",
-        src:"192.168.1.150:51200",
-        dst:"192.168.1.10:53",
-        data:"Where is www.site.local?"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.DNS.x,
-      coords.DNS.y,
-      {
-        proto:"DNS QUERY",
-        src:"192.168.1.150:51200",
-        dst:"192.168.1.10:53",
-        data:"Where is www.site.local?"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[2. DNS Response]</span> ה-DNS משיב שהכתובת היא <code>192.168.1.30</code>."
-    );
-
-
-    await animatePacketPDU(
-      coords.DNS.x,
-      coords.DNS.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DNS RESPONSE",
-        src:"192.168.1.10:53",
-        dst:"192.168.1.150:51200",
-        data:"IP = 192.168.1.30"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client1.x,
-      coords.client1.y,
-      {
-        proto:"DNS RESPONSE",
-        src:"192.168.1.10:53",
-        dst:"192.168.1.150:51200",
-        data:"IP = 192.168.1.30"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[3. HTTP Request]</span> Alice פונה לשרת ה-Web בפורט 80 ומבקשת את דף הבית."
-    );
-
-
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"HTTP GET",
-        src:"192.168.1.150:51201",
-        dst:"192.168.1.30:80",
-        data:"GET /index.html HTTP/1.1"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.Web.x,
-      coords.Web.y,
-      {
-        proto:"HTTP GET",
-        src:"192.168.1.150:51201",
-        dst:"192.168.1.30:80",
-        data:"GET /index.html HTTP/1.1"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[4. HTTP Response]</span> שרת ה-Web מחזיר את קוד הדף (HTTP 200 OK)."
-    );
-
-
-    await animatePacketPDU(
-      coords.Web.x,
-      coords.Web.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"HTTP 200 OK",
-        src:"192.168.1.30:80",
-        dst:"192.168.1.150:51201",
-        data:"Rendering Web Page..."
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client1.x,
-      coords.client1.y,
-      {
-        proto:"HTTP 200 OK",
-        src:"192.168.1.30:80",
-        dst:"192.168.1.150:51201",
-        data:"Rendering Web Page..."
-      }
-    );
-
-
-    log(
-      "<span class='lbl' style='color:var(--ok)'>[הושלם]</span> עמוד ה-Web נטען בדפדפן בהצלחה!"
-    );
-
+    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> עמוד ה-Web נטען בדפדפן בהצלחה!");
   }
-
-
-  // ====================================================
-  // MAIL
-  // ====================================================
-
   else if(type === 'Mail'){
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--mail)'>משלוח מייל מלא:</b> תרחיש משולב DNS (MX) -> SMTP (Port 25) -> POP3 (Port 110)";
 
-    document.getElementById(
-      "selInfo"
-    ).innerHTML =
-      "<b style='color:var(--mail)'>משלוח מייל מלא:</b> תרחיש משולב DNS (MX) -> SMTP (Port 25) -> POP3 (Port 110)";
+    log("<span class='lbl'>[1. DNS MX Lookup]</span> Alice שולחת מייל ל-<code dir='ltr'>bob@academy.local</code>. תוכנת הדואר פונה ל-DNS לבירור רשומת ה-MX.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS MX QUERY", src:"192.168.1.150:53100", dst:"192.168.1.10:53", data:"MX for academy.local?"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS MX QUERY", src:"192.168.1.150:53100", dst:"192.168.1.10:53", data:"MX for academy.local?"});
 
+    log("<span class='lbl'>[2. DNS Response]</span> שרת ה-DNS משיב ששרת הדואר הוא <code dir='ltr'>192.168.1.50</code>.");
+    await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS MX REPLY", src:"192.168.1.10:53", dst:"192.168.1.150:53100", data:"Mail Server = 192.168.1.50"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS MX REPLY", src:"192.168.1.10:53", dst:"192.168.1.150:53100", data:"Mail Server = 192.168.1.50"});
 
-    log(
-      "<span class='lbl'>[1. DNS MX Lookup]</span> Alice שולחת מייל ל-<code>bob@academy.local</code>. תוכנת הדואר פונה ל-DNS לבירור רשומת ה-MX."
-    );
+    log("<span class='lbl'>[3. SMTP Send]</span> Alice שולחת את המייל לשרת הדואר ב-<b>SMTP</b> בפורט 25.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"SMTP SEND", src:"192.168.1.150:53101", dst:"192.168.1.50:25", data:"MAIL FROM:<alice> RCPT:<bob>"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Mail.x, coords.Mail.y, {proto:"SMTP SEND", src:"192.168.1.150:53101", dst:"192.168.1.50:25", data:"Msg: 'Hello Bob!'"});
 
+    log("<span class='lbl'>[4. Mail Stored]</span> שרת ה-Mail שומר את ההודעה בתיבת הדואר של Bob.");
+    await new Promise(r => setTimeout(r,800));
 
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DNS MX QUERY",
-        src:"192.168.1.150:53100",
-        dst:"192.168.1.10:53",
-        data:"MX for academy.local?"
-      }
-    );
+    log("<span class='lbl'>[5. POP3 Fetch]</span> Bob מבצע משוך/הורדה של ההודעה משרת ה-Mail בפורט 110 (<b>POP3</b>).");
+    await animatePacketPDU(coords.client2.x, coords.client2.y, coords.switch.x, coords.switch.y, {proto:"POP3 RETR", src:"192.168.1.160:54000", dst:"192.168.1.50:110", data:"USER bob / RETR 1"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Mail.x, coords.Mail.y, {proto:"POP3 RETR", src:"192.168.1.160:54000", dst:"192.168.1.50:110", data:"Fetch Mail ID 1"});
 
+    log("<span class='lbl'>[6. Mail Delivered]</span> שרת ה-Mail מעביר את תוכן ההודעה ל-Bob.");
+    await animatePacketPDU(coords.Mail.x, coords.Mail.y, coords.switch.x, coords.switch.y, {proto:"POP3 DATA", src:"192.168.1.50:110", dst:"192.168.1.160:54000", data:"Subject: 'Hello Bob!'"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client2.x, coords.client2.y, {proto:"POP3 DATA", src:"192.168.1.50:110", dst:"192.168.1.160:54000", data:"Subject: 'Hello Bob!'"});
 
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.DNS.x,
-      coords.DNS.y,
-      {
-        proto:"DNS MX QUERY",
-        src:"192.168.1.150:53100",
-        dst:"192.168.1.10:53",
-        data:"MX for academy.local?"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[2. DNS Response]</span> שרת ה-DNS משיב ששרת הדואר הוא <code>192.168.1.50</code>."
-    );
-
-
-    await animatePacketPDU(
-      coords.DNS.x,
-      coords.DNS.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DNS MX REPLY",
-        src:"192.168.1.10:53",
-        dst:"192.168.1.150:53100",
-        data:"Mail Server = 192.168.1.50"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client1.x,
-      coords.client1.y,
-      {
-        proto:"DNS MX REPLY",
-        src:"192.168.1.10:53",
-        dst:"192.168.1.150:53100",
-        data:"Mail Server = 192.168.1.50"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[3. SMTP Send]</span> Alice שולחת את המייל לשרת הדואר ב-<b>SMTP</b> בפורט 25."
-    );
-
-
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"SMTP SEND",
-        src:"192.168.1.150:53101",
-        dst:"192.168.1.50:25",
-        data:"MAIL FROM:<alice> RCPT:<bob>"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.Mail.x,
-      coords.Mail.y,
-      {
-        proto:"SMTP SEND",
-        src:"192.168.1.150:53101",
-        dst:"192.168.1.50:25",
-        data:"Msg: 'Hello Bob!'"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[4. Mail Stored]</span> שרת ה-Mail שומר את ההודעה בתיבת הדואר של Bob."
-    );
-
-
-    await new Promise(
-      r => setTimeout(r,800)
-    );
-
-
-    log(
-      "<span class='lbl'>[5. POP3 Fetch]</span> Bob מבצע משוך/הורדה של ההודעה משרת ה-Mail בפורט 110 (<b>POP3</b>)."
-    );
-
-
-    await animatePacketPDU(
-      coords.client2.x,
-      coords.client2.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"POP3 RETR",
-        src:"192.168.1.160:54000",
-        dst:"192.168.1.50:110",
-        data:"USER bob / RETR 1"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.Mail.x,
-      coords.Mail.y,
-      {
-        proto:"POP3 RETR",
-        src:"192.168.1.160:54000",
-        dst:"192.168.1.50:110",
-        data:"Fetch Mail ID 1"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[6. Mail Delivered]</span> שרת ה-Mail מעביר את תוכן ההודעה ל-Bob."
-    );
-
-
-    await animatePacketPDU(
-      coords.Mail.x,
-      coords.Mail.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"POP3 DATA",
-        src:"192.168.1.50:110",
-        dst:"192.168.1.160:54000",
-        data:"Subject: 'Hello Bob!'"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client2.x,
-      coords.client2.y,
-      {
-        proto:"POP3 DATA",
-        src:"192.168.1.50:110",
-        dst:"192.168.1.160:54000",
-        data:"Subject: 'Hello Bob!'"
-      }
-    );
-
-
-    log(
-      "<span class='lbl' style='color:var(--ok)'>[הושלם]</span> המייל הגיע בהצלחה לתיבת הדואר של Bob!"
-    );
-
+    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> המייל הגיע בהצלחה לתיבת הדואר של Bob!");
   }
-
-
-  // ====================================================
-  // DNS
-  // ====================================================
-
   else if(type === 'DNS'){
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--dns)'>שאילתת DNS:</b> בירור רשומת A עבור שם דומיין";
 
-    document.getElementById(
-      "selInfo"
-    ).innerHTML =
-      "<b style='color:var(--dns)'>שאילתת DNS:</b> בירור רשומת A עבור שם דומיין";
+    log("<span class='lbl'>[שאילתה]</span> הלקוח פונה לשרת ה-DNS (UDP Port 53) לבירור כתובת IP עבור <code dir='ltr'>academy.local</code>.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
 
-
-    log(
-      "<span class='lbl'>[שאילתה]</span> הלקוח פונה לשרת ה-DNS (UDP Port 53) לבירור כתובת IP עבור <code>academy.local</code>."
-    );
-
-
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DNS Query",
-        src:"192.168.1.150:61234",
-        dst:"192.168.1.10:53",
-        data:"Query: academy.local A?"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.DNS.x,
-      coords.DNS.y,
-      {
-        proto:"DNS Query",
-        src:"192.168.1.150:61234",
-        dst:"192.168.1.10:53",
-        data:"Query: academy.local A?"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[תשובה]</span> שרת ה-DNS שולף מרשומת ה-A Record ומחזיר: <code>192.168.1.30</code>."
-    );
-
-
-    await animatePacketPDU(
-      coords.DNS.x,
-      coords.DNS.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"DNS Response",
-        src:"192.168.1.10:53",
-        dst:"192.168.1.150:61234",
-        data:"academy.local -> 192.168.1.30"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client1.x,
-      coords.client1.y,
-      {
-        proto:"DNS Response",
-        src:"192.168.1.10:53",
-        dst:"192.168.1.150:61234",
-        data:"academy.local -> 192.168.1.30"
-      }
-    );
-
+    log("<span class='lbl'>[תשובה]</span> שרת ה-DNS שולף מרשומת ה-A Record ומחזיר: <code dir='ltr'>192.168.1.30</code>.");
+    await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS Response", src:"192.168.1.10:53", dst:"192.168.1.150:61234", data:"academy.local -> 192.168.1.30"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS Response", src:"192.168.1.10:53", dst:"192.168.1.150:61234", data:"academy.local -> 192.168.1.30"});
   }
-
-
-  // ====================================================
-  // FTP
-  // ====================================================
-
   else if(type === 'FTP'){
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--ftp)'>העברת קבצים ב-FTP:</b> הפרדה בין ערוץ בקרה (21) לערוץ נתונים (20)";
 
-    document.getElementById(
-      "selInfo"
-    ).innerHTML =
-      "<b style='color:var(--ftp)'>העברת קבצים ב-FTP:</b> הפרדה בין ערוץ בקרה (21) לערוץ נתונים (20)";
+    log("<span class='lbl'>[1. Control Connection]</span> פתיחת ערוץ בקרה מול פורט 21 בשרת FTP.");
+    await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"FTP CONTROL", src:"192.168.1.150:49152", dst:"192.168.1.40:21", data:"USER admin / PASS ***"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.FTP.x, coords.FTP.y, {proto:"FTP CONTROL", src:"192.168.1.150:49152", dst:"192.168.1.40:21", data:"USER admin / PASS ***"});
 
-
-    log(
-      "<span class='lbl'>[1. Control Connection]</span> פתיחת ערוץ בקרה מול פורט 21 בשרת FTP."
-    );
-
-
-    await animatePacketPDU(
-      coords.client1.x,
-      coords.client1.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"FTP CONTROL",
-        src:"192.168.1.150:49152",
-        dst:"192.168.1.40:21",
-        data:"USER admin / PASS ***"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.FTP.x,
-      coords.FTP.y,
-      {
-        proto:"FTP CONTROL",
-        src:"192.168.1.150:49152",
-        dst:"192.168.1.40:21",
-        data:"USER admin / PASS ***"
-      }
-    );
-
-
-    log(
-      "<span class='lbl'>[2. Data Connection]</span> פתיחת ערוץ נתונים נפרד בפורט 20 להעברת הקובץ בפועל."
-    );
-
-
-    await animatePacketPDU(
-      coords.FTP.x,
-      coords.FTP.y,
-      coords.switch.x,
-      coords.switch.y,
-      {
-        proto:"FTP DATA",
-        src:"192.168.1.40:20",
-        dst:"192.168.1.150:49153",
-        data:"Sending file: lab.pdf"
-      }
-    );
-
-
-    await animatePacketPDU(
-      coords.switch.x,
-      coords.switch.y,
-      coords.client1.x,
-      coords.client1.y,
-      {
-        proto:"FTP DATA",
-        src:"192.168.1.40:20",
-        dst:"192.168.1.150:49153",
-        data:"Sending file: lab.pdf"
-      }
-    );
-
+    log("<span class='lbl'>[2. Data Connection]</span> פתיחת ערוץ נתונים נפרד בפורט 20 להעברת הקובץ בפועל.");
+    await animatePacketPDU(coords.FTP.x, coords.FTP.y, coords.switch.x, coords.switch.y, {proto:"FTP DATA", src:"192.168.1.40:20", dst:"192.168.1.150:49153", data:"Sending file: lab.pdf"});
+    await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"FTP DATA", src:"192.168.1.40:20", dst:"192.168.1.150:49153", data:"Sending file: lab.pdf"});
   }
 
-
-  // ====================================================
-  // FINISH
-  // ====================================================
-
-  document.getElementById(
-    "movingPacket"
-  ).style.display =
-    "none";
-
-  isSimulating =
-    false;
-
+  document.getElementById("movingPacket").style.display = "none";
+  isSimulating = false;
   markDone("s3");
-
 }
-
-
-// ======================================================
-// RESET
-// ======================================================
 
 function resetSim(){
+  isSimulating = false;
+  if(isPaused){ togglePause(); }
 
-  isSimulating =
-    false;
-
-  if(isPaused){
-    togglePause();
-  }
-
-  document.getElementById(
-    "client1IpLabel"
-  ).textContent =
-    "IP: 192.168.1.150";
-
-  document.getElementById(
-    "selInfo"
-  ).textContent =
-    "לחץ על אחד התרחישים מטה כדי להתחיל בסימולציה מפורטת...";
-
-  document.getElementById(
-    "simLog"
-  ).innerHTML =
-    '<div class="log-line">מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.</div>';
-
-  document.getElementById(
-    "movingPacket"
-  ).style.display =
-    "none";
-
+  document.getElementById("client1IpLabel").textContent = "IP: 192.168.1.150";
+  document.getElementById("selInfo").textContent = "לחץ על אחד התרחישים מטה כדי להתחיל בסימולציה מפורטת...";
+  document.getElementById("simLog").innerHTML = '<div class="log-line">מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.</div>';
+  document.getElementById("movingPacket").style.display = "none";
 }
-
-
-// ======================================================
-// LOG
-// ======================================================
 
 function log(text){
-
-  const panel =
-    document.getElementById(
-      "simLog"
-    );
-
-  const line =
-    document.createElement(
-      "div"
-    );
-
-  line.className =
-    "log-line";
-
-  line.innerHTML =
-    text;
-
+  const panel = document.getElementById("simLog");
+  const line = document.createElement("div");
+  line.className = "log-line";
+  line.innerHTML = text;
   panel.appendChild(line);
-
-  panel.scrollTop =
-    panel.scrollHeight;
-
+  panel.scrollTop = panel.scrollHeight;
 }
 
 
-// ======================================================
-// CLI LAB
-// ======================================================
-
+// CLI LAB (SECTION 4)
 const cliSteps = [
-
   {
     expect:/^ip\s+dns\s+name\s+academy\.local\s+a\s+192\.168\.1\.30\s*$/i,
-
     ok:"מעולה! הוספת בהצלחה רשומת מיפוי מסוג A עבור הדומיין הארגוני.",
-
     cmd:"ip dns name academy.local a 192.168.1.30"
   },
-
   {
     expect:/^exit\s*$/i,
-
     ok:"יצאת ממצב ההגדרות. הרשומה נשמרה ב-Cache של השרת ותופץ ברשת הארגונית! 🏆",
-
     cmd:"exit"
   }
-
 ];
-
 
 let cliStep = 0;
 
-
 function submitCmd(){
+  const input = document.getElementById("termInput");
+  const val = input.value.trim();
+  const output = document.getElementById("termOutput");
+  const prompt = document.getElementById("termPrompt").textContent;
 
-  const input =
-    document.getElementById(
-      "termInput"
-    );
-
-  const val =
-    input.value.trim();
-
-  const output =
-    document.getElementById(
-      "termOutput"
-    );
-
-  const prompt =
-    document.getElementById(
-      "termPrompt"
-    ).textContent;
-
-
-  if(val === ""){
-    return;
-  }
-
-
+  if(val === ""){ return; }
   if(cliStep >= cliSteps.length){
-
     input.value = "";
-
     return;
-
   }
 
-
-  const step =
-    cliSteps[cliStep];
-
+  const step = cliSteps[cliStep];
 
   if(step.expect.test(val)){
-
-    output.innerHTML +=
-      "\n" +
-      prompt +
-      " " +
-      val +
-      "\n<span class='ok'>✔ " +
-      step.ok +
-      "</span>";
-
-
+    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='ok'>✔ " + step.ok + "</span>";
     cliStep++;
 
-
     if(cliStep < cliSteps.length){
-
-      output.innerHTML +=
-        "\n<span class='hint'>שלב הבא: הזן את פקודת היציאה והשמירה (exit)</span>";
-
-      document.getElementById(
-        "taskProgress"
-      ).textContent =
-        "שלב " +
-        (cliStep+1) +
-        " מתוך " +
-        cliSteps.length;
-
-      document.getElementById(
-        "termPrompt"
-      ).textContent =
-        "DNS-Server(config)#";
-
+      output.innerHTML += "\n<span class='hint'>שלב הבא: הזן את פקודת היציאה והשמירה (exit)</span>";
+      document.getElementById("taskProgress").textContent = "שלב " + (cliStep+1) + " מתוך " + cliSteps.length;
+      document.getElementById("termPrompt").textContent = "DNS-Server(config)#";
     }else{
-
-      document.getElementById(
-        "taskProgress"
-      ).textContent =
-        "הושלם בהצלחה! ✅";
-
+      document.getElementById("taskProgress").textContent = "הושלם בהצלחה! ✅";
+      // הצגת כרטיס ההסבר בסיום המעבדה בחלק 4
+      document.getElementById("dnsLabExplanation").classList.add("show");
       markDone("s4");
-
     }
-
   }else{
-
-    output.innerHTML +=
-      "\n" +
-      prompt +
-      " " +
-      val +
-      "\n<span class='bad'>✘ תחביר פקודה לא מדויק. נסה שוב או היעזר ברמז.</span>";
-
+    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='bad'>✘ תחביר פקודה לא מדויק. נסה שוב או היעזר ברמז.</span>";
   }
 
-
   input.value = "";
-
-  output.scrollTop =
-    output.scrollHeight;
-
+  output.scrollTop = output.scrollHeight;
 }
 
 
-// ======================================================
-// QUIZ
-// ======================================================
-
+// QUIZ (SECTION 5)
 const quizData = [
-
   {
     q:"1. באיזה פרוטוקול תחנת קצה משתמשת כדי לקבל כתובת IP באופן אוטומטי מיד עם התחברותה לרשת?",
-
-    opts:[
-      "DNS",
-      "DHCP",
-      "HTTP",
-      "FTP"
-    ],
-
+    opts:[ "DNS", "DHCP", "HTTP", "FTP" ],
     correct:1,
-
     explain:"שרת ה-DHCP אחראי על חלוקה וניהול דינמי של כתובות IP ופרמטרי רשת נוספים לתחנות הקצה."
   },
-
   {
-    q:"2. מה תפקידו המרכזי של שרת ה-DNS ברשת התקשורת?",
-
+    q:"2. מה תפקידו المרכזי של שרת ה-DNS ברשת התקשורת?",
     opts:[
       "להעביר קבצים גדולים במהירות גבוהה",
       "לאבטח את תעבורת ה-Web באמצעות הצפנה",
       "לתרגם שמות דומיין קריאים לבני אדם (כמו academy.local) לכתובות IP",
       "לחלק כתובות IP דינמיות למחשבים"
     ],
-
     correct:2,
-
     explain:"שרת ה-DNS מתרגם שמות דומיין נוחים לזכירה לכתובות ה-IP האמיתיות של השרתים ברשת."
   },
-
   {
     q:"3. מהו הסדר הנכון של 4 השלבים בתהליך הקצאת כתובת IP ב-DHCP (תהליך DORA)?",
-
     opts:[
       "Discover -> Offer -> Request -> ACK",
       "Offer -> Discover -> ACK -> Request",
       "Request -> ACK -> Discover -> Offer",
       "Discover -> Request -> Offer -> ACK"
     ],
-
     correct:0,
-
     explain:"תהליך DORA כולל: Discover (חיפוש בשרת), Offer (הצעת כתובת), Request (בקשה רשמית), ו-ACK (אישור ונעילה)."
   },
-
   {
     q:"4. באיזה פורט משתמש פרוטוקול HTTPS המאובטח כברירת מחדל בשכבת האפליקציה?",
-
-    opts:[
-      "80",
-      "21",
-      "443",
-      "53"
-    ],
-
+    opts:[ "80", "21", "443", "53" ],
     correct:2,
-
     explain:"שירות Web רגיל (HTTP) משתמש בפורט 80, בעוד שירות מאובטח ומוצפן (HTTPS) משתמש בפורט 443."
   },
-
   {
     q:"5. בשירות העברת הקבצים FTP, באיזה פורט משתמש הרכיב להעברת פקודות ובקרה (Control Connection)?",
-
-    opts:[
-      "פורט 20",
-      "פורט 21",
-      "פורט 22",
-      "פורט 25"
-    ],
-
+    opts:[ "פורט 20", "פורט 21", "פורט 22", "פורט 25" ],
     correct:1,
-
     explain:"פורט 21 ב-FTP מוקצה להעברת פקודות ובקרה, בעוד פורט 20 משמש להעברה הפיזית של נתוני הקבצים."
   },
-
   {
     q:"6. מה מייצגת רשומת מיפוי מסוג 'A' בשרת ה-DNS?",
-
     opts:[
       "מיפוי שם דומיין לכתובת IPv4",
       "מיפוי שרת דואר אלקטרוני (MX)",
       "כינוי (Alias) לדומיין אחר",
       "כתובת ה-MAC הפיזית של כרטיס הרשת"
     ],
-
     correct:0,
-
     explain:"רשומת A (Address Record) ממפה שם דומיין ישירות לכתובת IPv4 של השרת."
   },
-
   {
     q:"7. באיזה פרוטוקול בשכבת התעבורה (Transport Layer) משתמשות שאילתות DNS סטנדרטיות?",
-
-    opts:[
-      "TCP",
-      "UDP",
-      "ICMP",
-      "ARP"
-    ],
-
+    opts:[ "TCP", "UDP", "ICMP", "ARP" ],
     correct:1,
-
     explain:"שאילתות DNS סטנדרטיות משתמשות ב-UDP (פורט 53) בשל המהירות והיעדר הצורך בניהול חיבור מורכב."
   },
-
   {
     q:"8. באיזה פורט מאזין שרת ה-DHCP לבקשות המגיעות מלקוחות ברשת?",
-
-    opts:[
-      "Port 53",
-      "Port 67",
-      "Port 68",
-      "Port 80"
-    ],
-
+    opts:[ "Port 53", "Port 67", "Port 68", "Port 80" ],
     correct:1,
-
     explain:"שרת ה-DHCP מאזין בפורט 67, בעוד מחשב הלקוח מקבל את התשובות בפורט 68."
   },
-
   {
     q:"9. איזה מבין הפרוטוקולים הבאים מיועד באופן ייעודי להעלאה והורדת קבצים משרת מרוחק?",
-
-    opts:[
-      "FTP",
-      "DNS",
-      "DHCP",
-      "ARP"
-    ],
-
+    opts:[ "FTP", "DNS", "DHCP", "ARP" ],
     correct:0,
-
     explain:"FTP (File Transfer Protocol) הוא הפרוטוקול הייעודי להעברת קבצים ומסמכים ברשת."
   },
-
   {
     q:"10. באיזו שכבה במודל ה-TCP/IP פועלים השירותים HTTP, DNS, DHCP ו-FTP?",
-
     opts:[
       "שכבת הגישה לרשת (Network Access)",
       "שכבת האינטרנט (Internet Layer)",
       "שכבת התעבורה (Transport Layer)",
       "שכבת האפליקציה (Application Layer)"
     ],
-
     correct:3,
-
     explain:"כל ארבעת השירותים הללו מספקים שירותים ישירים לתוכנות ולמשתמשי קצה ולכן שייכים לשכבת האפליקציה."
   }
-
 ];
 
-
 let quizAnswers = {};
-
 let totalScore = 0;
 
-
-// ======================================================
-// RENDER QUIZ
-// ======================================================
-
 function renderQuiz(){
-
-  const container =
-    document.getElementById(
-      "quizContainer"
-    );
-
-  if(!container)
-    return;
-
+  const container = document.getElementById("quizContainer");
+  if(!container) return;
   container.innerHTML = "";
 
+  quizData.forEach((item, qi) => {
+    const qDiv = document.createElement("div");
+    qDiv.className = "quiz-q";
+    qDiv.innerHTML = "<div class='quiz-q-num'>שאלה " + (qi+1) + " מתוך " + quizData.length + "</div><div><b>" + item.q + "</b></div>";
 
-  quizData.forEach(
-    (item,qi)=>{
+    const optsDiv = document.createElement("div");
+    optsDiv.className = "quiz-opts";
 
-      const qDiv =
-        document.createElement(
-          "div"
-        );
+    item.opts.forEach((opt, oi) => {
+      const b = document.createElement("div");
+      b.className = "quiz-opt";
+      b.textContent = opt;
+      b.onclick = () => answerQuiz(qi, oi);
+      optsDiv.appendChild(b);
+    });
 
-      qDiv.className =
-        "quiz-q";
+    qDiv.appendChild(optsDiv);
 
+    const explainDiv = document.createElement("div");
+    explainDiv.className = "quiz-explain";
+    explainDiv.id = "explain-" + qi;
+    explainDiv.textContent = item.explain;
 
-      qDiv.innerHTML =
-        "<div class='quiz-q-num'>שאלה " +
-        (qi+1) +
-        " מתוך " +
-        quizData.length +
-        "</div>" +
-
-        "<div><b>" +
-        item.q +
-        "</b></div>";
-
-
-      const optsDiv =
-        document.createElement(
-          "div"
-        );
-
-      optsDiv.className =
-        "quiz-opts";
-
-
-      item.opts.forEach(
-        (opt,oi)=>{
-
-          const b =
-            document.createElement(
-              "div"
-            );
-
-          b.className =
-            "quiz-opt";
-
-          b.textContent =
-            opt;
-
-          b.onclick =
-            () =>
-              answerQuiz(
-                qi,
-                oi
-              );
-
-          optsDiv.appendChild(b);
-
-        }
-      );
-
-
-      qDiv.appendChild(
-        optsDiv
-      );
-
-
-      const explainDiv =
-        document.createElement(
-          "div"
-        );
-
-      explainDiv.className =
-        "quiz-explain";
-
-      explainDiv.id =
-        "explain-" +
-        qi;
-
-      explainDiv.textContent =
-        item.explain;
-
-
-      qDiv.appendChild(
-        explainDiv
-      );
-
-
-      container.appendChild(
-        qDiv
-      );
-
-    }
-  );
-
+    qDiv.appendChild(explainDiv);
+    container.appendChild(qDiv);
+  });
 }
 
+function answerQuiz(qi, oi){
+  if(quizAnswers[qi] !== undefined) return;
 
-// ======================================================
-// ANSWER QUIZ
-// ======================================================
+  const item = quizData[qi];
+  quizAnswers[qi] = (oi === item.correct);
 
-function answerQuiz(
-  qi,
-  oi
-){
-
-  if(
-    quizAnswers[qi] !== undefined
-  )
-    return;
-
-
-  const item =
-    quizData[qi];
-
-
-  quizAnswers[qi] =
-    (oi === item.correct);
-
-
-  if(
-    oi === item.correct
-  ){
-
+  if(oi === item.correct){
     totalScore += 10;
-
   }
 
-
-  const opts =
-    document
-      .querySelectorAll(
-        ".quiz-q"
-      )[qi]
-      .querySelectorAll(
-        ".quiz-opt"
-      );
-
-
-  opts.forEach(
-    (el,i)=>{
-
-      el.classList.add(
-        "disabled"
-      );
-
-      if(
-        i === item.correct
-      ){
-
-        el.classList.add(
-          "correct"
-        );
-
-      }else if(
-        i === oi
-      ){
-
-        el.classList.add(
-          "wrong"
-        );
-
-      }
-
+  const opts = document.querySelectorAll(".quiz-q")[qi].querySelectorAll(".quiz-opt");
+  opts.forEach((el, i) => {
+    el.classList.add("disabled");
+    if(i === item.correct){
+      el.classList.add("correct");
+    }else if(i === oi){
+      el.classList.add("wrong");
     }
-  );
-
-
-  document
-    .getElementById(
-      "explain-" + qi
-    )
-    .classList.add(
-      "show"
-    );
-
-
-  if(
-    Object.keys(
-      quizAnswers
-    ).length === quizData.length
-  ){
-
-    showQuizResults();
-
-    markDone("s5");
-
-  }
-
-}
-
-
-// ======================================================
-// QUIZ RESULTS
-// ======================================================
-
-function showQuizResults(){
-
-  const card =
-    document.getElementById(
-      "quizScoreCard"
-    );
-
-  const scoreDisp =
-    document.getElementById(
-      "scoreDisplay"
-    );
-
-  const feedback =
-    document.getElementById(
-      "scoreFeedback"
-    );
-
-
-  scoreDisp.textContent =
-    totalScore +
-    " / 100";
-
-
-  if(
-    totalScore === 100
-  ){
-
-    feedback.textContent =
-      "🏆 ציון מושלם! הוכחת שליטה מוחלטת בארכיטקטורת שרתים ושירותי רשת!";
-
-  }else if(
-    totalScore >= 80
-  ){
-
-    feedback.textContent =
-      "🌟 כל הכבוד! הפגנת הבנה מצוינת בשירותי שכבת האפליקציה.";
-
-  }else if(
-    totalScore >= 60
-  ){
-
-    feedback.textContent =
-      "👍 עבודה טובה! עברת את המבחן, אך מומלץ לחזור על הנושאים שפספסת.";
-
-  }else{
-
-    feedback.textContent =
-      "💡 כדאי לעבור שוב על סקירת השירותים והסימולציה ולהתנסות שנית.";
-
-  }
-
-
-  card.style.display =
-    "block";
-
-
-  card.scrollIntoView({
-    behavior:"smooth"
   });
 
+  document.getElementById("explain-" + qi).classList.add("show");
+
+  if(Object.keys(quizAnswers).length === quizData.length){
+    showQuizResults();
+    markDone("s5");
+  }
 }
 
+function showQuizResults(){
+  const card = document.getElementById("quizScoreCard");
+  const scoreDisp = document.getElementById("scoreDisplay");
+  const feedback = document.getElementById("scoreFeedback");
 
-// ======================================================
-// INITIALIZE
-// ======================================================
+  scoreDisp.textContent = totalScore + " / 100";
+
+  if(totalScore === 100){
+    feedback.textContent = "🏆 ציון מושלם! הוכחת שליטה מוחלטת בארכיטקטורת שרתים ושירותי רשת!";
+  }else if(totalScore >= 80){
+    feedback.textContent = "🌟 כל הכבוד! הפגנת הבנה מצוינת בשירותי שכבת האפליקציה.";
+  }else if(totalScore >= 60){
+    feedback.textContent = "👍 עבודה טובה! עברת את המבחן, אך מומלץ לחזור על הנושאים שפספסת.";
+  }else{
+    feedback.textContent = "💡 כדאי לעבור שוב על סקירת השירותים והסימולציה ולהתנסות שנית.";
+  }
+
+  card.style.display = "block";
+  card.scrollIntoView({ behavior:"smooth" });
+}
+
+// פונקציית כפתור המורה
+function revealTeacherAnswers(){
+  const password = prompt("אנא הזן סיסמת מורה:");
+  if(password === "sahar"){
+    alert("הסיסמה אושרה! התשובות הנכונות וההסברים הוצגו על המסך.");
+    quizData.forEach((item, qi) => {
+      const opts = document.querySelectorAll(".quiz-q")[qi].querySelectorAll(".quiz-opt");
+      opts.forEach((el, i) => {
+        if(i === item.correct){
+          el.classList.add("teacher-revealed");
+          if(!el.textContent.includes("✔")){
+            el.textContent = "✔ " + el.textContent + " (תשובה נכונה)";
+          }
+        }
+      });
+      document.getElementById("explain-" + qi).classList.add("show");
+    });
+  } else if(password !== null){
+    alert("סיסמה שגויה! אין לך הרשאה לצפות בתשובות המורה.");
+  }
+}
 
 renderQuiz();
 
