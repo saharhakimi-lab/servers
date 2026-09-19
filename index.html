@@ -72,7 +72,7 @@ body{
   padding:0 20px;
 }
 
-h1,h2,h3{
+h1,h2,h3,h4{
   font-weight:700;
   margin:0 0 8px;
 }
@@ -208,17 +208,9 @@ h1.title span{
 }
 
 @keyframes crazySpin{
-  0%{
-    transform:rotate(0deg) scale(1);
-  }
-
-  50%{
-    transform:rotate(180deg) scale(1.08);
-  }
-
-  100%{
-    transform:rotate(360deg) scale(1);
-  }
+  0%{ transform:rotate(0deg) scale(1); }
+  50%{ transform:rotate(180deg) scale(1.08); }
+  100%{ transform:rotate(360deg) scale(1); }
 }
 
 section{
@@ -258,22 +250,10 @@ section{
 }
 
 @media(max-width:720px){
-  .grid2{
-    grid-template-columns:1fr;
-  }
-
-  .hero-flex{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .avatar-wild-wrapper{
-    margin-left:0;
-  }
-
-  .progressbar-title{
-    display:none;
-  }
+  .grid2{ grid-template-columns:1fr; }
+  .hero-flex{ flex-direction:column; text-align:center; }
+  .avatar-wild-wrapper{ margin-left:0; }
+  .progressbar-title{ display:none; }
 }
 
 .concept-card{
@@ -290,76 +270,11 @@ section{
   direction: ltr;
 }
 
-.tag.dns{
-  background:var(--dns-dim);
-  color:var(--dns);
-}
-
-.tag.dhcp{
-  background:var(--dhcp-dim);
-  color:var(--dhcp);
-}
-
-.tag.web{
-  background:var(--web-dim);
-  color:var(--web);
-}
-
-.tag.ftp{
-  background:var(--ftp-dim);
-  color:var(--ftp);
-}
-
-.tag.mail{
-  background:var(--mail-dim);
-  color:var(--mail);
-}
-
-.accordion{
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  overflow:hidden;
-  margin-bottom:12px;
-  background:var(--panel);
-}
-
-.acc-head{
-  padding:16px 18px;
-  background:var(--panel);
-  cursor:pointer;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-weight:600;
-}
-
-.acc-head:hover{
-  background:var(--panel2);
-}
-
-.acc-body{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .3s ease;
-  background:var(--panel);
-}
-
-.acc-body-inner{
-  padding:0 18px 18px;
-}
-
-.accordion.open .acc-body{
-  max-height:600px;
-}
-
-.acc-arrow{
-  transition:transform .3s;
-  color:var(--muted);
-}
-
-.accordion.open .acc-arrow{
-  transform:rotate(180deg);
-}
+.tag.dns{ background:var(--dns-dim); color:var(--dns); }
+.tag.dhcp{ background:var(--dhcp-dim); color:var(--dhcp); }
+.tag.web{ background:var(--web-dim); color:var(--web); }
+.tag.ftp{ background:var(--ftp-dim); color:var(--ftp); }
+.tag.mail{ background:var(--mail-dim); color:var(--mail); }
 
 .diagram-wrap{
   background:#F5F0E8;
@@ -398,21 +313,12 @@ button.btn{
   font-weight:600;
   font-size:15px;
   cursor:pointer;
-  transition:transform .1s, opacity .15s;
+  transition:transform .1s, opacity .15s, background-color .2s;
 }
 
-button.btn:hover{
-  opacity:0.9;
-}
-
-button.btn:active{
-  transform:scale(0.97);
-}
-
-button.btn:disabled{
-  opacity:0.3;
-  cursor:not-allowed;
-}
+button.btn:hover{ opacity:0.9; }
+button.btn:active{ transform:scale(0.97); }
+button.btn:disabled{ opacity:0.3; cursor:not-allowed; }
 
 button.btn.secondary{
   background:var(--panel3);
@@ -420,10 +326,7 @@ button.btn.secondary{
   border:1px solid var(--border2);
 }
 
-button.btn.pause-btn{
-  background:#D97706;
-}
-
+button.btn.pause-btn{ background:#D97706; }
 button.btn.teacher-btn{
   background:#1E293B;
   color:#F8FAFC;
@@ -473,23 +376,10 @@ button.btn.teacher-btn{
   direction:ltr;
 }
 
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-}
-
-.dot.r{
-  background:#EF4444;
-}
-
-.dot.y{
-  background:#F59E0B;
-}
-
-.dot.g{
-  background:#10B981;
-}
+.dot{ width:10px; height:10px; border-radius:50%; }
+.dot.r{ background:#EF4444; }
+.dot.y{ background:#F59E0B; }
+.dot.g{ background:#10B981; }
 
 .term-output{
   white-space:pre-wrap;
@@ -500,14 +390,8 @@ button.btn.teacher-btn{
   text-align:left;
 }
 
-.term-output .ok{
-  color:#34D399;
-}
-
-.term-output .bad{
-  color:#F87171;
-}
-
+.term-output .ok{ color:#34D399; }
+.term-output .bad{ color:#F87171; }
 .term-output .hint{
   color:#FBBF24;
   direction:rtl;
@@ -525,10 +409,7 @@ button.btn.teacher-btn{
   direction:ltr;
 }
 
-.prompt{
-  color:#34D399;
-  white-space:nowrap;
-}
+.prompt{ color:#34D399; white-space:nowrap; }
 
 input.term-input{
   flex:1;
@@ -574,9 +455,7 @@ input.term-input{
   animation: fadeIn 0.4s ease;
 }
 
-.explanation-card.show {
-  display: block;
-}
+.explanation-card.show { display: block; }
 
 .quiz-q{
   background:var(--panel);
@@ -612,9 +491,7 @@ input.term-input{
   transition:border-color 0.15s, background-color 0.15s;
 }
 
-.quiz-opt:hover{
-  border-color:var(--muted);
-}
+.quiz-opt:hover{ border-color:var(--muted); }
 
 .quiz-opt.correct{
   background:rgba(5,150,105,0.15);
@@ -636,9 +513,7 @@ input.term-input{
   font-weight: 700;
 }
 
-.quiz-opt.disabled{
-  pointer-events:none;
-}
+.quiz-opt.disabled{ pointer-events:none; }
 
 .quiz-explain{
   margin-top:12px;
@@ -649,9 +524,7 @@ input.term-input{
   display:none;
 }
 
-.quiz-explain.show{
-  display:block;
-}
+.quiz-explain.show{ display:block; }
 
 .score-card{
   background:var(--panel);
@@ -672,9 +545,7 @@ input.term-input{
   display:none;
 }
 
-.completion.show{
-  display:block;
-}
+.completion.show{ display:block; }
 
 .footer-note{
   text-align:center;
@@ -683,21 +554,11 @@ input.term-input{
   margin-top:50px;
 }
 
-::-webkit-scrollbar{
-  width:8px;
-  height:8px;
-}
-
-::-webkit-scrollbar-thumb{
-  background:var(--border2);
-  border-radius:4px;
-}
+::-webkit-scrollbar{ width:8px; height:8px; }
+::-webkit-scrollbar-thumb{ background:var(--border2); border-radius:4px; }
 
 /* PDU — מעטפה קשיחה */
-.pdu-envelope{
-  pointer-events:none;
-  overflow:visible;
-}
+.pdu-envelope{ pointer-events:none; overflow:visible; }
 
 .pdu-text{
   font-family:'Fira Code',monospace;
@@ -714,24 +575,12 @@ input.term-input{
   writing-mode:horizontal-tb;
 }
 
-#movingPacket .pdu-body{
-  filter:drop-shadow(0 5px 8px rgba(15,23,42,0.22));
-}
-
-#movingPacket .pdu-content{
-  clip-path:url(#pduClip);
-}
+#movingPacket .pdu-body{ filter:drop-shadow(0 5px 8px rgba(15,23,42,0.22)); }
+#movingPacket .pdu-content{ clip-path:url(#pduClip); }
 
 @keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(3px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{ opacity:0; transform:translateY(3px); }
+  to{ opacity:1; transform:translateY(0); }
 }
 </style>
 </head>
@@ -752,7 +601,6 @@ input.term-input{
   <div class="hero-flex">
 
     <div class="hero-text">
-
       <div class="eyebrow" dir="ltr">
         Network Servers · Application Layer Services
       </div>
@@ -765,7 +613,6 @@ input.term-input{
         הבנה מעמיקה של שירותי הרשת המרכזיים המפעילים את רשת האינטרנט והרשת הארגונית:
         כיצד שרתי ה-<span dir="ltr">DHCP</span>, <span dir="ltr">DNS</span>, <span dir="ltr">Web</span>, <span dir="ltr">FTP</span> ו-<span dir="ltr">Mail</span> משרתים את תחנות הקצה.
       </p>
-
     </div>
 
     <div class="avatar-wild-wrapper">
@@ -786,80 +633,42 @@ input.term-input{
 <section id="s1">
 
 <div class="section-head">
-
   <div class="section-num">
     01 — מבוא ושירותים
   </div>
-
   <h2 class="section-title">
     עמודי התווך של שירותי הרשת
   </h2>
-
 </div>
 
 <div class="grid2">
 
   <div class="card concept-card">
-
-    <h3>
-      🔍 שירותי זיהוי ומיפוי
-    </h3>
-
+    <h3>🔍 שירותי זיהוי ומיפוי</h3>
     <p>
-      <span class="tag dns" dir="ltr">
-        DNS · Port 53
-      </span>
-
-      מתרגם שמות דומיין קריאים
-      (כמו <span dir="ltr">google.com</span>)
-      ורשומות דואר (<span dir="ltr">MX</span>)
-      לכתובות <span dir="ltr">IP</span>.
+      <span class="tag dns" dir="ltr">DNS · Port 53</span>
+      מתרגם שמות דומיין קריאים (כמו <span dir="ltr">google.com</span>) ורשומות דואר (<span dir="ltr">MX</span>) לכתובות <span dir="ltr">IP</span>.
     </p>
-
     <p>
-      <span class="tag dhcp" dir="ltr">
-        DHCP · Ports 67, 68
-      </span>
-
-      מחלק כתובות <span dir="ltr">IP</span>,
-      מסיכות רשת וכתובות <span dir="ltr">Gateway</span>
-      באופן אוטומטי לכל מכשיר.
+      <span class="tag dhcp" dir="ltr">DHCP · Ports 67, 68</span>
+      מחלק כתובות <span dir="ltr">IP</span>, מסיכות רשת וכתובות <span dir="ltr">Gateway</span> באופן אוטומטי לכל מכשיר.
     </p>
-
   </div>
 
   <div class="card concept-card">
-
-    <h3>
-      🌐 שירותי תוכן, קבצים ודואר
-    </h3>
-
+    <h3>🌐 שירותי תוכן, קבצים ודואר</h3>
     <p>
-      <span class="tag web" dir="ltr">
-        HTTP/HTTPS · Ports 80, 443
-      </span>
-
-      מגיש דפי <span dir="ltr">HTML</span>, תמונות ותוכן אינטרנטי
-      לדפדפן הלקוח.
+      <span class="tag web" dir="ltr">HTTP/HTTPS · Ports 80, 443</span>
+      מגיש דפי <span dir="ltr">HTML</span>, תמונות ותוכן אינטרנטי לדפדפן הלקוח.
     </p>
-
     <p>
-      <span class="tag ftp" dir="ltr">
-        FTP · Ports 20, 21
-      </span>
-
+      <span class="tag ftp" dir="ltr">FTP · Ports 20, 21</span>
       מאפשר העלאה והורדה של קבצים ומסמכים גדולים ברשת.
     </p>
-
     <p>
-      <span class="tag mail" dir="ltr">
-        SMTP / POP3 · Ports 25, 110
-      </span>
-
-      שירות דואר אלקטרוני:
-      <span dir="ltr">SMTP</span> לשליחת מיילים ו-<span dir="ltr">POP3</span> לקבלתם.
+      <span class="tag mail" dir="ltr">SMTP / POP3 · Ports 25, 110</span>
+      שירות דואר אלקטרוני: <span dir="ltr">SMTP</span> לשליחת מיילים ו-<span dir="ltr">POP3</span> לקבלתם.
     </p>
-
   </div>
 
 </div>
@@ -867,96 +676,45 @@ input.term-input{
 </section>
 
 <!-- =====================================================
-     SECTION 2
+     SECTION 2 (משודרג: תשובה כללית, תמציתית ואינטראקטיבית)
      ===================================================== -->
 
 <section id="s2">
 
 <div class="section-head">
-
   <div class="section-num">
-    02 — פרוטוקולי האפליקציה
+    02 — מנגנון הניתוב בשכבת האפליקציה
   </div>
-
   <h2 class="section-title">
     כיצד הבקשות מנותבות בשכבת האפליקציה?
   </h2>
-
 </div>
 
-<div id="acc1" class="accordion">
-
-  <div
-    class="acc-head"
-    onclick="toggleAcc('acc1')"
-  >
-
-    <span>
-      כיצד פועל תהליך ה-<span dir="ltr">DHCP</span> (<span dir="ltr">DORA</span>)?
-    </span>
-
-    <span class="acc-arrow">
-      ▾
-    </span>
-
-  </div>
-
-  <div class="acc-body">
-
-    <div class="acc-body-inner">
-
-      <p>
-        התהליך מורכב מ-4 שלבים רצופים:
-        <b dir="ltr">Discover</b>
-        (הלקוח מחפש שרת ב-<span dir="ltr">Broadcast</span>),
-        <b dir="ltr">Offer</b>
-        (השרת מציע כתובת),
-        <b dir="ltr">Request</b>
-        (הלקוח מבקש רשמית לאמץ אותה),
-        ו-<b dir="ltr">ACK</b>
-        (השרת מאשר ונועל את ההקצאה).
-      </p>
-
-    </div>
-
-  </div>
-
+<div class="card" style="margin-bottom: 20px; border-right: 4px solid var(--stick);">
+  <h3 style="color: #1C1917; font-size: 18px; margin-bottom: 8px;">
+    ⚙️ העיקרון הכללי: מודל בקשה-תגובה (Client-Server) ופורטים
+  </h3>
+  <p style="margin: 0; font-size: 15px; color: var(--muted);">
+    בשכבת האפליקציה, תחנת הקצה יוצרת <b>בקשה (Request)</b> ממוקדת. הניתוב אל השירות הנכון בשרת מבוסס על <b>מספר הפורט (Port Number)</b> — מספר המזהה את תהליך התוכנה הספציפי שממתין לקבלת המידע. השרת מעבד את הבקשה ומחזיר <b>תגובה (Response)</b> מתאימה.
+  </p>
 </div>
 
-<div id="acc2" class="accordion">
+<div class="card" style="background: var(--panel2); border: 1px solid var(--border);">
+  <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #1C1917;">
+    🖱️ לחץ על שירות כדי לראות כיצד הבקשה מנוסחת ומנותבת ברמת האפליקציה:
+  </h4>
 
-  <div
-    class="acc-head"
-    onclick="toggleAcc('acc2')"
-  >
-
-    <span>
-      מה תפקיד שרת ה-<span dir="ltr">DNS</span> במשלוח דואר אלקטרוני?
-    </span>
-
-    <span class="acc-arrow">
-      ▾
-    </span>
-
+  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
+    <button class="btn secondary s2-btn active" onclick="showAppRouting('dns', this)">🔍 תרגום שם (DNS)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('dhcp', this)">🎫 קבלת IP (DHCP)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('web', this)">🌐 טעינת אתר (HTTP)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('ftp', this)">📂 העברת קובץ (FTP)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('mail', this)">✉️ שליחת דואר (SMTP)</button>
   </div>
 
-  <div class="acc-body">
-
-    <div class="acc-body-inner">
-
-      <p>
-        במשלוח מייל, שרת הלקוח פונה ל-<span dir="ltr">DNS</span>
-        ומבקש רשומה
-        <b dir="ltr">MX (Mail Exchange Record)</b>.
-        רשומה זו מכוונת את השולח אל כתובת ה-<span dir="ltr">IP</span>
-        המדויקת של שרת הדואר שמקבל את ההודעות
-        עבור הדומיין המבוקש.
-      </p>
-
-    </div>
-
+  <div id="appRoutingBox" style="background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px;">
+    <!-- מוזרק דינמית דרך JS -->
   </div>
-
 </div>
 
 </section>
@@ -968,15 +726,12 @@ input.term-input{
 <section id="s3">
 
 <div class="section-head">
-
   <div class="section-num">
     03 — הדמיית תעבורה אינטראקטיבית
   </div>
-
   <h2 class="section-title">
     סימולטור תהליכי רשת ומעקב אחר חבילות (<span dir="ltr">PDU</span>)
   </h2>
-
 </div>
 
 <p>
@@ -986,22 +741,12 @@ input.term-input{
 
 <div class="diagram-wrap">
 
-<svg
-  id="netDiagram"
-  viewBox="0 0 1100 580"
-  style="width:100%; display:block;"
->
+<svg id="netDiagram" viewBox="0 0 1100 580" style="width:100%; display:block;">
 
 <!-- CLIP PATH עבור מעטפת PDU -->
 <defs>
   <clipPath id="pduClip">
-    <rect
-      x="-115"
-      y="-17"
-      width="230"
-      height="58"
-      rx="5"
-    />
+    <rect x="-115" y="-17" width="230" height="58" rx="5" />
   </clipPath>
 </defs>
 
@@ -1148,15 +893,12 @@ input.term-input{
 <section id="s4">
 
 <div class="section-head">
-
   <div class="section-num">
     04 — מעבדה מעשית
   </div>
-
   <h2 class="section-title">
     הגדר שרת <span dir="ltr">DNS</span> בארגון דרך שורת הפקודה
   </h2>
-
 </div>
 
 <p>
@@ -1168,19 +910,15 @@ input.term-input{
 </p>
 
 <div class="task-box">
-
   <div class="task-title">
     משימה: הוספת רשומת <span dir="ltr">DNS</span> מסוג <span dir="ltr">A</span> לכתובת <span dir="ltr">192.168.1.30</span>
   </div>
-
   <div class="task-progress" id="taskProgress">
     שלב 1 מתוך 2
   </div>
-
 </div>
 
 <div class="terminal" dir="ltr">
-
   <div class="term-topbar">
     <div class="dot r"></div>
     <div class="dot y"></div>
@@ -1206,10 +944,8 @@ DNS-Server(config)# ip dns server
       onkeydown="if(event.key==='Enter')submitCmd()"
     >
   </div>
-
 </div>
 
-<!-- כרטיס הסבר פדגוגי שמופיע בסיום המשימה בחלק 4 -->
 <div id="dnsLabExplanation" class="explanation-card">
   <h3 style="color:#1E3A8A; font-size:18px; margin-bottom:8px;">💡 מה בדיוק יצרנו ואיך זה עובד ברשת?</h3>
   <p style="color:#1E40AF; margin-bottom:8px;">
@@ -1230,20 +966,16 @@ DNS-Server(config)# ip dns server
 <section id="s5">
 
 <div class="section-head">
-
   <div class="section-num">
     05 — בחינת הבנה
   </div>
-
   <h2 class="section-title">
     בחן את עצמך: ארכיטקטורת שירותים (10 שאלות)
   </h2>
-
 </div>
 
 <div id="quizContainer"></div>
 
-<!-- כפתור למורה -->
 <div style="margin-top:20px; text-align:center;">
   <button class="btn teacher-btn" onclick="revealTeacherAnswers()">
     🔑 למורה (הצגת תשובות נכונות)
@@ -1251,17 +983,13 @@ DNS-Server(config)# ip dns server
 </div>
 
 <div id="quizScoreCard" class="score-card">
-
   <h3 style="font-size:22px; color:#1C1917; margin-bottom:6px;">
     תוצאת המבחן המסכם
   </h3>
-
   <div id="scoreDisplay" class="mono" style="font-size:38px; font-weight:800; color:var(--stick); margin:12px 0;" dir="ltr">
     0 / 100
   </div>
-
   <p id="scoreFeedback" style="font-size:16px; font-weight:600; color:var(--muted); margin:0;"></p>
-
 </div>
 
 </section>
@@ -1353,6 +1081,9 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   }
+
+  // הפעלה ראשונית של חלק 2
+  showAppRouting('dns', document.querySelector('.s2-btn'));
 });
 
 
@@ -1402,9 +1133,80 @@ stepIds.forEach(id => {
 });
 
 
-// ACCORDION
-function toggleAcc(id){
-  document.getElementById(id).classList.toggle("open");
+// SECTION 2 INTERACTIVE ROUTING LOGIC
+const appRoutingData = {
+  dns: {
+    title: "🔍 ניתוב שאילתת DNS",
+    port: "Port 53 (UDP)",
+    request: "QUERY: מהי כתובת ה-IP של academy.local?",
+    routing: "הבקשה מנותבת לתהליך ה-DNS Server המאזין בפורט 53. השרת מחפש בטבלת הרשומות הארגונית.",
+    response: "RESPONSE: הכתובת היא 192.168.1.30 (A Record)"
+  },
+  dhcp: {
+    title: "🎫 ניתוב בקשת DHCP",
+    port: "Port 67 (UDP)",
+    request: "DISCOVER: אני מחשב חדש ברשת, למי יש כתובת IP עבורי?",
+    routing: "הבקשה מופצת ברשת (Broadcast) ומגיעה לפורט 67 בשרת ה-DHCP שמנהל את מאגר הכתובות הדינמי.",
+    response: "OFFER: קבל הצעה לכתובת 192.168.1.150 למשך 24 שעות"
+  },
+  web: {
+    title: "🌐 ניתוב בקשת HTTP / Web",
+    port: "Port 80 / 443 (TCP)",
+    request: "GET /index.html HTTP/1.1 (בקשת עמוד הבית)",
+    routing: "שכבת האפליקציה פונה לפורט 80 בשרת ה-Web. שרת ה-Web שולף את קובץ ה-HTML המבוקש ומכין אותו לשליחה.",
+    response: "HTTP 200 OK + קוד ה-HTML של הדף"
+  },
+  ftp: {
+    title: "📂 ניתוב בקשת FTP",
+    port: "Port 21 (Control) / 20 (Data)",
+    request: "USER admin / RETR document.pdf (בקשת הורדת קובץ)",
+    routing: "הפקודה מנותבת לערוץ הבקרה (Port 21). בעת העברת הקובץ הפיזית נפתח ערוץ נתונים נפרד (Port 20).",
+    response: "250 Transfer Complete + תוכן הקובץ הבינארי"
+  },
+  mail: {
+    title: "✉️ ניתוב בקשת SMTP הדואר",
+    port: "Port 25 (TCP)",
+    request: "MAIL FROM:<alice> RCPT:<bob> DATA (משלוח הודעה)",
+    routing: "הודעת הדואר מועברת לפורט 25 בשרת ה-SMTP שמנתב אותה לתיבת הדואר של הנמען.",
+    response: "250 OK Message accepted for delivery"
+  }
+};
+
+function showAppRouting(key, btnEl) {
+  document.querySelectorAll('.s2-btn').forEach(b => {
+    b.style.background = 'var(--panel3)';
+    b.style.color = 'var(--text)';
+  });
+  if(btnEl) {
+    btnEl.style.background = 'var(--stick)';
+    btnEl.style.color = '#FFFFFF';
+  }
+
+  const data = appRoutingData[key];
+  const box = document.getElementById('appRoutingBox');
+
+  box.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:10px;">
+      <h3 style="margin:0; font-size:18px; color:var(--stick);">${data.title}</h3>
+      <span class="tag" style="background:var(--dns-dim); color:var(--stick); font-weight:bold; font-size:12px;">פורט יעד: ${data.port}</span>
+    </div>
+    
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:10px;">
+      <div style="background:var(--panel2); padding:12px; border-radius:8px; border-right:3px solid var(--info);">
+        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">1. הבקשה מהלקוח (Client Request):</strong>
+        <code class="mono" style="font-size:12px; color:#1E293B;">${data.request}</code>
+      </div>
+      
+      <div style="background:var(--panel2); padding:12px; border-radius:8px; border-right:3px solid var(--ok);">
+        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">3. התגובה מהשרת (Server Response):</strong>
+        <code class="mono" style="font-size:12px; color:#1E293B;">${data.response}</code>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; background:#FAF7F2; padding:10px 14px; border-radius:8px; font-size:13px; color:var(--muted);">
+      💡 <b>איך השרת מנתב?</b> ${data.routing}
+    </div>
+  `;
 }
 
 
@@ -1493,7 +1295,7 @@ async function animatePacketPDU(x1, y1, x2, y2, config, duration = 2200){
 }
 
 
-// SIMULATION
+// SIMULATION (SECTION 3)
 async function runSimulation(type){
   if(isSimulating) return;
   isSimulating = true;
@@ -1661,7 +1463,6 @@ function submitCmd(){
       document.getElementById("termPrompt").textContent = "DNS-Server(config)#";
     }else{
       document.getElementById("taskProgress").textContent = "הושלם בהצלחה! ✅";
-      // הצגת כרטיס ההסבר בסיום המעבדה בחלק 4
       document.getElementById("dnsLabExplanation").classList.add("show");
       markDone("s4");
     }
@@ -1683,7 +1484,7 @@ const quizData = [
     explain:"שרת ה-DHCP אחראי על חלוקה וניהול דינמי של כתובות IP ופרמטרי רשת נוספים לתחנות הקצה."
   },
   {
-    q:"2. מה תפקידו المרכזי של שרת ה-DNS ברשת התקשורת?",
+    q:"2. מה תפקידו המרכזי של שרת ה-DNS ברשת התקשורת?",
     opts:[
       "להעביר קבצים גדולים במהירות גבוהה",
       "לאבטח את תעבורת ה-Web באמצעות הצפנה",
@@ -1843,7 +1644,6 @@ function showQuizResults(){
   card.scrollIntoView({ behavior:"smooth" });
 }
 
-// פונקציית כפתור המורה
 function revealTeacherAnswers(){
   const password = prompt("אנא הזן סיסמת מורה:");
   if(password === "sahar"){
