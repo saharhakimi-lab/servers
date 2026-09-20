@@ -64,6 +64,7 @@ body{
   font-family:'Fira Code',monospace;
   direction: ltr;
   display: inline-block;
+  unicode-bidi: isolate;
 }
 
 .wrap{
@@ -268,6 +269,7 @@ section{
   border-radius:6px;
   margin:2px 4px 2px 0;
   direction: ltr;
+  unicode-bidi: isolate;
 }
 
 .tag.dns{ background:var(--dns-dim); color:var(--dns); }
@@ -647,11 +649,11 @@ input.term-input{
     <h3>🔍 שירותי זיהוי ומיפוי</h3>
     <p>
       <span class="tag dns" dir="ltr">DNS · Port 53</span>
-      מתרגם שמות דומיין קריאים (כמו <span dir="ltr">google.com</span>) ורשומות דואר (<span dir="ltr">MX</span>) לכתובות <span dir="ltr">IP</span>.
+      מתרגם שמות דומיין קריאים (כמו <span dir="ltr">google.com</span>) ורשומות דואר (<span dir="ltr">MX Record</span>) לכתובות <span dir="ltr">IP</span>.
     </p>
     <p>
       <span class="tag dhcp" dir="ltr">DHCP · Ports 67, 68</span>
-      מחלק כתובות <span dir="ltr">IP</span>, מסיכות רשת וכתובות <span dir="ltr">Gateway</span> באופן אוטומטי לכל מכשיר.
+      מחלק כתובות <span dir="ltr">IP</span>, מסיכות רשת וכתובות <span dir="ltr">Default Gateway</span> באופן אוטומטי לכל מכשיר.
     </p>
   </div>
 
@@ -676,7 +678,7 @@ input.term-input{
 </section>
 
 <!-- =====================================================
-     SECTION 2 (משודרג: תשובה כללית, תמציתית ואינטראקטיבית)
+     SECTION 2 (משודרג ומדויק: LTR/RTL מלא ומסגור מושגים)
      ===================================================== -->
 
 <section id="s2">
@@ -692,10 +694,10 @@ input.term-input{
 
 <div class="card" style="margin-bottom: 20px; border-right: 4px solid var(--stick);">
   <h3 style="color: #1C1917; font-size: 18px; margin-bottom: 8px;">
-    ⚙️ העיקרון הכללי: מודל בקשה-תגובה (Client-Server) ופורטים
+    ⚙️ העיקרון הכללי: מודל בקשה-תגובה (<span dir="ltr">Client-Server</span>) ופורטים (<span dir="ltr">Ports</span>)
   </h3>
   <p style="margin: 0; font-size: 15px; color: var(--muted);">
-    בשכבת האפליקציה, תחנת הקצה יוצרת <b>בקשה (Request)</b> ממוקדת. הניתוב אל השירות הנכון בשרת מבוסס על <b>מספר הפורט (Port Number)</b> — מספר המזהה את תהליך התוכנה הספציפי שממתין לקבלת המידע. השרת מעבד את הבקשה ומחזיר <b>תגובה (Response)</b> מתאימה.
+    בשכבת האפליקציה, תחנת הקצה יוצרת הודעת <b>בקשה (<span dir="ltr">Request</span>)</b> ממוקדת. הניתוב אל השירות הנכון בשרת מבוסס על <b>מספר הפורט (<span dir="ltr">Port Number</span>)</b> — מספר ייחודי המזהה את תהליך התוכנה הספציפי שממתין לקבלת המידע. השרת מעבד את הבקשה ומחזיר הודעת <b>תגובה (<span dir="ltr">Response</span>)</b> מתאימה.
   </p>
 </div>
 
@@ -705,11 +707,11 @@ input.term-input{
   </h4>
 
   <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
-    <button class="btn secondary s2-btn active" onclick="showAppRouting('dns', this)">🔍 תרגום שם (DNS)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('dhcp', this)">🎫 קבלת IP (DHCP)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('web', this)">🌐 טעינת אתר (HTTP)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('ftp', this)">📂 העברת קובץ (FTP)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('mail', this)">✉️ שליחת דואר (SMTP)</button>
+    <button class="btn secondary s2-btn active" onclick="showAppRouting('dns', this)">🔍 תרגום שם (<span dir="ltr">DNS</span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('dhcp', this)">🎫 קבלת <span dir="ltr">IP</span> (<span dir="ltr">DHCP</span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('web', this)">🌐 טעינת אתר (<span dir="ltr">HTTP</span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('ftp', this)">📂 העברת קובץ (<span dir="ltr">FTP</span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('mail', this)">✉️ שליחת דואר (<span dir="ltr">SMTP</span>)</button>
   </div>
 
   <div id="appRoutingBox" style="background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px;">
@@ -949,11 +951,11 @@ DNS-Server(config)# ip dns server
 <div id="dnsLabExplanation" class="explanation-card">
   <h3 style="color:#1E3A8A; font-size:18px; margin-bottom:8px;">💡 מה בדיוק יצרנו ואיך זה עובד ברשת?</h3>
   <p style="color:#1E40AF; margin-bottom:8px;">
-    <b>מה יצרת?</b> יצרת כעת רשומת מיפוי מסוג <b>A Record (Address Record)</b> בשרת ה-DNS של הארגון. רשומה זו לקחה את השם הקריא לבני אדם <code dir="ltr">academy.local</code> וקשרה אותו לכתובת ה-IP הפיזית <code dir="ltr">192.168.1.30</code> (שרת ה-Web שלנו).
+    <b>מה יצרת?</b> יצרת כעת רשומת מיפוי מסוג <b><span dir="ltr">A Record (Address Record)</span></b> בשרת ה-<span dir="ltr">DNS</span> של הארגון. רשומה זו לקחה את השם הקריא לבני אדם <code dir="ltr">academy.local</code> וקשרה אותו לכתובת ה-<span dir="ltr">IP</span> הפיזית <code dir="ltr">192.168.1.30</code> (שרת ה-<span dir="ltr">Web</span> שלנו).
   </p>
   <p style="color:#1E40AF; margin:0;">
     <b>מה ניתן לעשות עם זה עכשיו?</b>
-    מהרגע שהרשומה נשמרה בשרת ה-DNS, כל משתמש ברשת הארגונית (כמו Alice או Bob) כבר לא צריך לזכור ולשרבט כתובות IP מסובכות. במידה ומשתמש יקליד בדפדפן שלו <code dir="ltr">http://academy.local</code>, המחשב שלו יפנה לשרת ה-DNS, יקבל את ה-IP המשויך (<span dir="ltr">192.168.1.30</span>), ויטען באופן מיידי את אתר האינטרנט הארגוני!
+    מהרגע שהרשומה נשמרה בשרת ה-<span dir="ltr">DNS</span>, כל משתמש ברשת הארגונית (כמו <span dir="ltr">Alice</span> או <span dir="ltr">Bob</span>) כבר לא צריך לזכור ולשרבט כתובות <span dir="ltr">IP</span> מסובכות. במידה ומשתמש יקליד בדפדפן שלו <code dir="ltr">http://academy.local</code>, המחשב שלו יפנה לשרת ה-<span dir="ltr">DNS</span>, יקבל את ה-<span dir="ltr">IP</span> המשויך (<span dir="ltr">192.168.1.30</span>), ויטען באופן מיידי את אתר האינטרנט הארגוני!
   </p>
 </div>
 
@@ -1133,42 +1135,42 @@ stepIds.forEach(id => {
 });
 
 
-// SECTION 2 INTERACTIVE ROUTING LOGIC
+// SECTION 2 INTERACTIVE ROUTING LOGIC (עם הקפדה על ניתוח LTR/RTL מלא)
 const appRoutingData = {
   dns: {
-    title: "🔍 ניתוב שאילתת DNS",
-    port: "Port 53 (UDP)",
-    request: "QUERY: מהי כתובת ה-IP של academy.local?",
-    routing: "הבקשה מנותבת לתהליך ה-DNS Server המאזין בפורט 53. השרת מחפש בטבלת הרשומות הארגונית.",
-    response: "RESPONSE: הכתובת היא 192.168.1.30 (A Record)"
+    title: '🔍 ניתוב שאילתת <span dir="ltr">DNS</span>',
+    port: 'Port 53 (UDP)',
+    request: 'QUERY: What is IP for academy.local?',
+    routing: 'הבקשה מנותבת לתהליך ה-<span dir="ltr">DNS Server</span> המאזין בפורט <span dir="ltr">53</span>. השרת מחפש בטבלת הרשומות הארגונית.',
+    response: 'RESPONSE: IP = 192.168.1.30 (A Record)'
   },
   dhcp: {
-    title: "🎫 ניתוב בקשת DHCP",
-    port: "Port 67 (UDP)",
-    request: "DISCOVER: אני מחשב חדש ברשת, למי יש כתובת IP עבורי?",
-    routing: "הבקשה מופצת ברשת (Broadcast) ומגיעה לפורט 67 בשרת ה-DHCP שמנהל את מאגר הכתובות הדינמי.",
-    response: "OFFER: קבל הצעה לכתובת 192.168.1.150 למשך 24 שעות"
+    title: '🎫 ניתוב בקשת <span dir="ltr">DHCP</span>',
+    port: 'Port 67 (UDP)',
+    request: 'DISCOVER: Looking for DHCP Server...',
+    routing: 'הבקשה מופצת ברשת (<span dir="ltr">Broadcast</span>) ומגיעה לפורט <span dir="ltr">67</span> בשרת ה-<span dir="ltr">DHCP</span> שמנהל את מאגר הכתובות הדינמי.',
+    response: 'OFFER: Offered IP 192.168.1.150'
   },
   web: {
-    title: "🌐 ניתוב בקשת HTTP / Web",
-    port: "Port 80 / 443 (TCP)",
-    request: "GET /index.html HTTP/1.1 (בקשת עמוד הבית)",
-    routing: "שכבת האפליקציה פונה לפורט 80 בשרת ה-Web. שרת ה-Web שולף את קובץ ה-HTML המבוקש ומכין אותו לשליחה.",
-    response: "HTTP 200 OK + קוד ה-HTML של הדף"
+    title: '🌐 ניתוב בקשת <span dir="ltr">HTTP / Web</span>',
+    port: 'Port 80 / 443 (TCP)',
+    request: 'GET /index.html HTTP/1.1',
+    routing: 'שכבת האפליקציה פונה לפורט <span dir="ltr">80</span> בשרת ה-<span dir="ltr">Web</span>. תהליך השרת שולף את קובץ ה-<span dir="ltr">HTML</span> המבוקש ומכין אותו לשליחה.',
+    response: 'HTTP 200 OK (Serving HTML Page)'
   },
   ftp: {
-    title: "📂 ניתוב בקשת FTP",
-    port: "Port 21 (Control) / 20 (Data)",
-    request: "USER admin / RETR document.pdf (בקשת הורדת קובץ)",
-    routing: "הפקודה מנותבת לערוץ הבקרה (Port 21). בעת העברת הקובץ הפיזית נפתח ערוץ נתונים נפרד (Port 20).",
-    response: "250 Transfer Complete + תוכן הקובץ הבינארי"
+    title: '📂 ניתוב בקשת <span dir="ltr">FTP</span>',
+    port: 'Port 21 (Control) / 20 (Data)',
+    request: 'USER admin / RETR document.pdf',
+    routing: 'הפקודה מנותבת לערוץ הבקרה (<span dir="ltr">Port 21</span>). בעת העברת הקובץ הפיזית נפתח ערוץ נתונים נפרד (<span dir="ltr">Port 20</span>).',
+    response: '250 Transfer Complete (File Sent)'
   },
   mail: {
-    title: "✉️ ניתוב בקשת SMTP הדואר",
-    port: "Port 25 (TCP)",
-    request: "MAIL FROM:<alice> RCPT:<bob> DATA (משלוח הודעה)",
-    routing: "הודעת הדואר מועברת לפורט 25 בשרת ה-SMTP שמנתב אותה לתיבת הדואר של הנמען.",
-    response: "250 OK Message accepted for delivery"
+    title: '✉️ ניתוב בקשת <span dir="ltr">SMTP</span> (דואר)',
+    port: 'Port 25 (TCP)',
+    request: 'MAIL FROM:<alice> RCPT:<bob> DATA',
+    routing: 'הודעת הדואר מועברת לפורט <span dir="ltr">25</span> בשרת ה-<span dir="ltr">SMTP</span> שמנתב אותה לתיבת הדואר של הנמען.',
+    response: '250 OK Message accepted for delivery'
   }
 };
 
@@ -1188,18 +1190,18 @@ function showAppRouting(key, btnEl) {
   box.innerHTML = `
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:10px;">
       <h3 style="margin:0; font-size:18px; color:var(--stick);">${data.title}</h3>
-      <span class="tag" style="background:var(--dns-dim); color:var(--stick); font-weight:bold; font-size:12px;">פורט יעד: ${data.port}</span>
+      <span class="tag" style="background:var(--dns-dim); color:var(--stick); font-weight:bold; font-size:12px;" dir="ltr">${data.port}</span>
     </div>
     
     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:10px;">
       <div style="background:var(--panel2); padding:12px; border-radius:8px; border-right:3px solid var(--info);">
-        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">1. הבקשה מהלקוח (Client Request):</strong>
-        <code class="mono" style="font-size:12px; color:#1E293B;">${data.request}</code>
+        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">1. הבקשה מהלקוח (<span dir="ltr">Client Request</span>):</strong>
+        <span class="mono" style="font-size:12px; color:#1E293B;">${data.request}</span>
       </div>
       
       <div style="background:var(--panel2); padding:12px; border-radius:8px; border-right:3px solid var(--ok);">
-        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">3. התגובה מהשרת (Server Response):</strong>
-        <code class="mono" style="font-size:12px; color:#1E293B;">${data.response}</code>
+        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">2. התגובה מהשרת (<span dir="ltr">Server Response</span>):</strong>
+        <span class="mono" style="font-size:12px; color:#1E293B;">${data.response}</span>
       </div>
     </div>
 
