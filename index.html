@@ -20,9 +20,9 @@
   --panel3:#EBE5DD;
   --border:#E2D9CE;
   --border2:#CBD5E1;
-  --text:#292524;
-  --muted:#57534E;
-  --muted2:#78716C;
+  --text:#1C1917;
+  --muted:#44403C;
+  --muted2:#66605B;
 
   --dns:#D97706;
   --dns-dim:rgba(217,119,6,0.15);
@@ -56,7 +56,8 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:'Rubik',sans-serif;
-  line-height:1.6;
+  line-height:1.7;
+  font-size:18px; /* הגדלת פונט בסיסי */
   padding-bottom:140px;
 }
 
@@ -65,81 +66,82 @@ body{
   direction: ltr;
   display: inline-block;
   unicode-bidi: isolate;
+  background: rgba(124,58,237,0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(124,58,237,0.2);
 }
 
 .wrap{
-  max-width:1100px;
+  max-width:1150px;
   margin:0 auto;
   padding:0 20px;
 }
 
 h1,h2,h3,h4{
   font-weight:700;
-  margin:0 0 8px;
+  margin:0 0 10px;
 }
 
 p{
-  margin:0 0 12px;
+  margin:0 0 14px;
   color:var(--muted);
+  font-size:18px;
 }
 
 .progressbar{
   position:sticky;
   top:0;
   z-index:40;
-  background:rgba(250,247,242,0.92);
+  background:rgba(250,247,242,0.95);
   backdrop-filter:blur(8px);
   border-bottom:1px solid var(--border);
-  padding:14px 20px;
+  padding:16px 20px;
 }
 
 .progressbar-inner{
-  max-width:1100px;
+  max-width:1150px;
   margin:0 auto;
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:16px;
 }
 
 .progressbar-title{
-  font-weight:700;
-  font-size:15px;
+  font-weight:800;
+  font-size:18px;
   white-space:nowrap;
 }
 
 .steps{
   display:flex;
-  gap:6px;
+  gap:8px;
   flex:1;
 }
 
 .step{
   flex:1;
-  height:6px;
+  height:8px;
   border-radius:4px;
   background:var(--panel3);
   position:relative;
   overflow:hidden;
 }
 
-.step.done{
-  background:var(--ok);
-}
-
-.step.active{
-  background:var(--info);
-}
+.step.done{ background:var(--ok); }
+.step.active{ background:var(--info); }
 
 .progress-pct{
-  font-size:13px;
+  font-size:15px;
   color:var(--muted);
   font-family:'Fira Code',monospace;
   white-space:nowrap;
   direction: ltr;
+  font-weight: 700;
 }
 
 header.hero{
-  padding:60px 0 30px;
+  padding:60px 0 35px;
   border-bottom:1px solid var(--border);
 }
 
@@ -151,38 +153,36 @@ header.hero{
   direction:rtl;
 }
 
-.hero-text{
-  flex:1;
-}
+.hero-text{ flex:1; }
 
 .eyebrow{
   display:inline-block;
   font-family:'Fira Code',monospace;
-  font-size:12px;
+  font-size:14px;
+  font-weight: 600;
   letter-spacing:1px;
   color:var(--stick);
   background:rgba(124,58,237,0.1);
   border:1px solid rgba(124,58,237,0.3);
-  padding:5px 14px;
+  padding:6px 16px;
   border-radius:20px;
   margin-bottom:18px;
   direction: ltr;
 }
 
 h1.title{
-  font-size:38px;
-  margin-bottom:12px;
+  font-size:42px;
+  margin-bottom:14px;
   color:#1C1917;
 }
 
-h1.title span{
-  color:var(--stick);
-}
+h1.title span{ color:var(--stick); }
 
 .subtitle{
-  font-size:16px;
-  max-width:700px;
+  font-size:19px;
+  max-width:750px;
   margin:0;
+  line-height: 1.8;
 }
 
 .avatar-wild-wrapper{
@@ -195,8 +195,8 @@ h1.title span{
 }
 
 .avatar-wild{
-  width:130px;
-  height:130px;
+  width:140px;
+  height:140px;
   border-radius:50%;
   box-shadow:
     0 15px 30px rgba(124,58,237,0.3),
@@ -215,24 +215,23 @@ h1.title span{
 }
 
 section{
-  padding:50px 0;
+  padding:55px 0;
   border-top:1px solid var(--border);
 }
 
-.section-head{
-  margin-bottom:26px;
-}
+.section-head{ margin-bottom:28px; }
 
 .section-num{
   font-family:'Fira Code',monospace;
   color:var(--muted2);
-  font-size:13px;
+  font-size:15px;
+  font-weight: 600;
   margin-bottom:6px;
   direction: rtl;
 }
 
 .section-title{
-  font-size:24px;
+  font-size:28px;
   color:#1C1917;
 }
 
@@ -240,36 +239,42 @@ section{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:24px;
-  box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);
+  padding:28px;
+  box-shadow:0 4px 8px -1px rgba(0,0,0,0.03);
 }
 
 .grid2{
   display:grid;
   grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
   gap:20px;
 }
 
-@media(max-width:720px){
-  .grid2{ grid-template-columns:1fr; }
+@media(max-width:850px){
+  .grid2, .grid3{ grid-template-columns:1fr; }
   .hero-flex{ flex-direction:column; text-align:center; }
   .avatar-wild-wrapper{ margin-left:0; }
   .progressbar-title{ display:none; }
 }
 
-.concept-card{
-  border-right:4px solid var(--stick);
-}
+.concept-card{ border-right:5px solid var(--stick); }
 
 .tag{
   display:inline-block;
   font-family:'Fira Code',monospace;
-  font-size:11px;
-  padding:3px 8px;
+  font-size:13px;
+  font-weight: 600;
+  padding:4px 10px;
   border-radius:6px;
   margin:2px 4px 2px 0;
   direction: ltr;
   unicode-bidi: isolate;
+  border: 1px solid currentColor;
 }
 
 .tag.dns{ background:var(--dns-dim); color:var(--dns); }
@@ -310,15 +315,15 @@ button.btn{
   color:#FFFFFF;
   border:none;
   border-radius:8px;
-  padding:12px 22px;
+  padding:14px 24px;
   font-family:'Rubik';
-  font-weight:600;
-  font-size:15px;
+  font-weight:700;
+  font-size:16px;
   cursor:pointer;
   transition:transform .1s, opacity .15s, background-color .2s;
 }
 
-button.btn:hover{ opacity:0.9; }
+button.btn:hover{ opacity:0.92; }
 button.btn:active{ transform:scale(0.97); }
 button.btn:disabled{ opacity:0.3; cursor:not-allowed; }
 
@@ -340,16 +345,16 @@ button.btn.teacher-btn{
   border:1px solid var(--border);
   border-radius:10px;
   margin-top:16px;
-  padding:16px;
+  padding:18px;
   font-family:'Fira Code',monospace;
-  font-size:13px;
-  max-height:240px;
+  font-size:15px;
+  max-height:260px;
   overflow-y:auto;
-  color:#44403C;
+  color:#292524;
 }
 
 .log-line{
-  margin-bottom:8px;
+  margin-bottom:10px;
   animation:fadeIn .3s ease;
 }
 
@@ -362,9 +367,9 @@ button.btn.teacher-btn{
   background:#1E293B;
   border:1px solid var(--border2);
   border-radius:10px;
-  padding:18px;
+  padding:20px;
   font-family:'Fira Code',monospace;
-  font-size:13px;
+  font-size:15px;
   color:#F8FAFC;
   direction:ltr;
   text-align:left;
@@ -373,12 +378,12 @@ button.btn.teacher-btn{
 .term-topbar{
   display:flex;
   gap:6px;
-  margin-bottom:12px;
+  margin-bottom:14px;
   align-items:center;
   direction:ltr;
 }
 
-.dot{ width:10px; height:10px; border-radius:50%; }
+.dot{ width:12px; height:12px; border-radius:50%; }
 .dot.r{ background:#EF4444; }
 .dot.y{ background:#F59E0B; }
 .dot.g{ background:#10B981; }
@@ -386,20 +391,23 @@ button.btn.teacher-btn{
 .term-output{
   white-space:pre-wrap;
   color:#94A3B8;
-  margin-bottom:10px;
-  min-height:40px;
+  margin-bottom:12px;
+  min-height:50px;
   direction:ltr;
   text-align:left;
+  font-size:15px;
 }
 
-.term-output .ok{ color:#34D399; }
-.term-output .bad{ color:#F87171; }
+.term-output .ok{ color:#34D399; font-weight: bold; }
+.term-output .bad{ color:#F87171; font-weight: bold; }
 .term-output .hint{
   color:#FBBF24;
   direction:rtl;
   text-align:right;
   display:block;
-  margin-top:6px;
+  margin-top:8px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
 }
 
 .term-input-row{
@@ -407,11 +415,11 @@ button.btn.teacher-btn{
   align-items:center;
   gap:8px;
   border-top:1px solid #334155;
-  padding-top:12px;
+  padding-top:14px;
   direction:ltr;
 }
 
-.prompt{ color:#34D399; white-space:nowrap; }
+.prompt{ color:#34D399; white-space:nowrap; font-weight: bold; }
 
 input.term-input{
   flex:1;
@@ -419,7 +427,7 @@ input.term-input{
   border:none;
   color:#FFFFFF;
   font-family:'Fira Code',monospace;
-  font-size:13px;
+  font-size:15px;
   outline:none;
   direction:ltr;
   text-align:left;
@@ -429,19 +437,20 @@ input.term-input{
   background:var(--panel2);
   border:1px solid var(--border);
   border-radius:10px;
-  padding:14px 16px;
-  margin-bottom:14px;
+  padding:16px 20px;
+  margin-bottom:16px;
 }
 
 .task-title{
-  font-weight:600;
-  margin-bottom:4px;
+  font-weight:700;
+  font-size: 18px;
+  margin-bottom:6px;
   color:var(--dns);
 }
 
 .task-progress{
   font-family:'Fira Code',monospace;
-  font-size:12px;
+  font-size:14px;
   color:var(--muted);
   direction: rtl;
 }
@@ -449,10 +458,10 @@ input.term-input{
 .explanation-card {
   background: #EFF6FF;
   border: 1px solid #BFDBFE;
-  border-right: 4px solid #2563EB;
+  border-right: 5px solid #2563EB;
   border-radius: 10px;
-  padding: 18px;
-  margin-top: 16px;
+  padding: 22px;
+  margin-top: 18px;
   display: none;
   animation: fadeIn 0.4s ease;
 }
@@ -463,43 +472,45 @@ input.term-input{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:24px;
-  margin-bottom:20px;
+  padding:26px;
+  margin-bottom:22px;
 }
 
 .quiz-q-num{
   font-family:'Fira Code',monospace;
   color:var(--muted2);
-  font-size:12px;
-  margin-bottom:6px;
+  font-size:14px;
+  font-weight: 600;
+  margin-bottom:8px;
   direction: rtl;
 }
 
 .quiz-opts{
   display:flex;
   flex-direction:column;
-  gap:10px;
-  margin-top:14px;
+  gap:12px;
+  margin-top:16px;
 }
 
 .quiz-opt{
   background:var(--panel2);
   border:1px solid var(--border);
-  border-radius:8px;
-  padding:14px;
+  border-radius:10px;
+  padding:16px;
   cursor:pointer;
   text-align:right;
-  font-size:14px;
+  font-size:16px;
+  font-weight: 500;
   transition:border-color 0.15s, background-color 0.15s;
 }
 
-.quiz-opt:hover{ border-color:var(--muted); }
+.quiz-opt:hover{ border-color:var(--stick); }
 
 .quiz-opt.correct{
   background:rgba(5,150,105,0.15);
   border-color:var(--ok);
   color:var(--ok);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .quiz-opt.wrong{
@@ -512,17 +523,18 @@ input.term-input{
   background:rgba(5,150,105,0.2);
   border: 2px dashed var(--ok);
   color:var(--ok);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .quiz-opt.disabled{ pointer-events:none; }
 
 .quiz-explain{
-  margin-top:12px;
-  padding:12px;
+  margin-top:14px;
+  padding:14px 18px;
   background:var(--panel2);
   border-radius:8px;
-  font-size:13px;
+  font-size:15px;
+  color: var(--muted);
   display:none;
 }
 
@@ -530,19 +542,19 @@ input.term-input{
 
 .score-card{
   background:var(--panel);
-  border:2px solid var(--stick);
+  border:3px solid var(--stick);
   border-radius:var(--radius);
-  padding:28px;
+  padding:32px;
   text-align:center;
-  margin-top:24px;
+  margin-top:28px;
   display:none;
 }
 
 .completion{
   text-align:center;
-  padding:40px 20px;
+  padding:45px 24px;
   background:var(--panel);
-  border:2px solid var(--ok);
+  border:3px solid var(--ok);
   border-radius:var(--radius);
   display:none;
 }
@@ -552,7 +564,7 @@ input.term-input{
 .footer-note{
   text-align:center;
   color:var(--muted2);
-  font-size:12px;
+  font-size:14px;
   margin-top:50px;
 }
 
@@ -584,6 +596,34 @@ input.term-input{
   from{ opacity:0; transform:translateY(3px); }
   to{ opacity:1; transform:translateY(0); }
 }
+
+/* Lightbox Modal for Image */
+.img-lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.img-lightbox-modal.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.img-lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 3px solid #FFFFFF;
+  object-fit: contain;
+  background: #FFFFFF;
+}
 </style>
 </head>
 
@@ -608,12 +648,12 @@ input.term-input{
       </div>
 
       <h1 class="title">
-        ארכיטקטורת <span>שרת-לקוח</span>
+        ארכיטקטורת <span dir="ltr">Client-Server</span> (שרת-לקוח)
       </h1>
 
       <p class="subtitle">
         הבנה מעמיקה של שירותי הרשת המרכזיים המפעילים את רשת האינטרנט והרשת הארגונית:
-        כיצד שרתי ה-<span dir="ltr">DHCP</span>, <span dir="ltr">DNS</span>, <span dir="ltr">Web</span>, <span dir="ltr">FTP</span> ו-<span dir="ltr">Mail</span> משרתים את תחנות הקצה.
+        כיצד שרתי ה-<code class="mono">DHCP</code>, <code class="mono">DNS</code>, <code class="mono">Web</code>, <code class="mono">FTP</code> ו-<code class="mono">Mail</code> משרתים את תחנות הקצה.
       </p>
     </div>
 
@@ -629,7 +669,7 @@ input.term-input{
 </header>
 
 <!-- =====================================================
-     SECTION 1
+     SECTION 1 - מבוא وشירותים + חלונית תמונה מוגדלת
      ===================================================== -->
 
 <section id="s1">
@@ -643,34 +683,54 @@ input.term-input{
   </h2>
 </div>
 
-<div class="grid2">
+<div class="grid3">
 
   <div class="card concept-card">
-    <h3>🔍 שירותי זיהוי ומיפוי</h3>
+    <h3 style="font-size: 20px;">🔍 שירותי זיהוי ומיפוי</h3>
     <p>
-      <span class="tag dns" dir="ltr">DNS · Port 53</span>
-      מתרגם שמות דומיין קריאים (כמו <span dir="ltr">google.com</span>) ורשומות דואר (<span dir="ltr">MX Record</span>) לכתובות <span dir="ltr">IP</span>.
+      <span class="tag dns" dir="ltr">DNS · Port 53</span><br>
+      מתרגם שמות דומיין קריאים (כמו <code class="mono">google.com</code>) ורשומות דואר (<code class="mono">MX Record</code>) לכתובות <code class="mono">IP Address</code>.
     </p>
     <p>
-      <span class="tag dhcp" dir="ltr">DHCP · Ports 67, 68</span>
-      מחלק כתובות <span dir="ltr">IP</span>, מסיכות רשת וכתובות <span dir="ltr">Default Gateway</span> באופן אוטומטי לכל מכשיר.
+      <span class="tag dhcp" dir="ltr">DHCP · Ports 67, 68</span><br>
+      מחלק כתובות <code class="mono">IP Address</code>, מסיכות רשת (<code class="mono">Subnet Mask</code>) וכתובות <code class="mono">Default Gateway</code> באופן אוטומטי.
     </p>
   </div>
 
   <div class="card concept-card">
-    <h3>🌐 שירותי תוכן, קבצים ודואר</h3>
+    <h3 style="font-size: 20px;">🌐 שירותי תוכן, קבצים ודואר</h3>
     <p>
-      <span class="tag web" dir="ltr">HTTP/HTTPS · Ports 80, 443</span>
-      מגיש דפי <span dir="ltr">HTML</span>, תמונות ותוכן אינטרנטי לדפדפן הלקוח.
+      <span class="tag web" dir="ltr">HTTP/HTTPS · Ports 80, 443</span><br>
+      מגיש דפי <code class="mono">HTML</code>, תמונות ותוכן אינטרנטי לדפדפן הלקוח.
     </p>
     <p>
-      <span class="tag ftp" dir="ltr">FTP · Ports 20, 21</span>
+      <span class="tag ftp" dir="ltr">FTP · Ports 20, 21</span><br>
       מאפשר העלאה והורדה של קבצים ומסמכים גדולים ברשת.
     </p>
     <p>
-      <span class="tag mail" dir="ltr">SMTP / POP3 · Ports 25, 110</span>
-      שירות דואר אלקטרוני: <span dir="ltr">SMTP</span> לשליחת מיילים ו-<span dir="ltr">POP3</span> לקבלתם.
+      <span class="tag mail" dir="ltr">SMTP / POP3 · Ports 25, 110</span><br>
+      שירות דואר אלקטרוני: <code class="mono">SMTP</code> לשליחת מיילים ו-<code class="mono">POP3</code> לקבלתם.
     </p>
+  </div>
+
+  <!-- חלונית תמונה חדשה ומורחבת עם תרשים השירותים -->
+  <div class="card concept-card" style="border-right-color: var(--dns); background: #FEF3C7; border: 1px solid #FCD34D;">
+    <h3 style="font-size: 20px; color: #92400E;">📸 תרשים מרכז השירותים</h3>
+    <p style="font-size: 16px; color: #78350F; margin-bottom: 12px;">
+      מפת סיכום ויזואלית של כל השרתים, התפקידים והפרוטוקולים ברשת התקשורת:
+    </p>
+    
+    <div style="position: relative; cursor: pointer; text-align: center; overflow: hidden; border-radius: 10px; border: 2px solid #F59E0B;" onclick="openImageModal()">
+      <img 
+        src="https://drive.google.com/thumbnail?id=1T0qe9RHwMtWe_V0w4TVyifsb04cvoT74&sz=w800" 
+        alt="שרתים ברשתות תקשורת" 
+        style="width: 100%; height: 160px; object-fit: cover; transition: transform 0.3s ease;"
+        class="hover:scale-105"
+      >
+      <div style="position: absolute; bottom: 0; inset-x: 0; background: rgba(15,23,42,0.75); color: #FFF; font-size: 13px; padding: 6px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <i data-lucide="zoom-in" class="w-4 h-4"></i> לחץ להגדלת התרשים
+      </div>
+    </div>
   </div>
 
 </div>
@@ -678,7 +738,7 @@ input.term-input{
 </section>
 
 <!-- =====================================================
-     SECTION 2 (משודרג ומדויק: LTR/RTL מלא ומסגור מושגים)
+     SECTION 2 — מנגנון הניתוב בשכבת האפליקציה
      ===================================================== -->
 
 <section id="s2">
@@ -688,33 +748,33 @@ input.term-input{
     02 — מנגנון הניתוב בשכבת האפליקציה
   </div>
   <h2 class="section-title">
-    כיצד הבקשות מנותבות בשכבת האפליקציה?
+    כיצד הבקשות מנותבות בשכבת האפליקציה (<span dir="ltr">Application Layer</span>)?
   </h2>
 </div>
 
-<div class="card" style="margin-bottom: 20px; border-right: 4px solid var(--stick);">
-  <h3 style="color: #1C1917; font-size: 18px; margin-bottom: 8px;">
-    ⚙️ העיקרון הכללי: מודל בקשה-תגובה (<span dir="ltr">Client-Server</span>) ופורטים (<span dir="ltr">Ports</span>)
+<div class="card" style="margin-bottom: 24px; border-right: 5px solid var(--stick);">
+  <h3 style="color: #1C1917; font-size: 22px; margin-bottom: 10px;">
+    ⚙️ העיקרון הכללי: מודל בקשה-תגובה (<span dir="ltr"><code class="mono">Client-Server Model</code></span>) ומספרי פורטים (<span dir="ltr"><code class="mono">Port Numbers</code></span>)
   </h3>
-  <p style="margin: 0; font-size: 15px; color: var(--muted);">
-    בשכבת האפליקציה, תחנת הקצה יוצרת הודעת <b>בקשה (<span dir="ltr">Request</span>)</b> ממוקדת. הניתוב אל השירות הנכון בשרת מבוסס על <b>מספר הפורט (<span dir="ltr">Port Number</span>)</b> — מספר ייחודי המזהה את תהליך התוכנה הספציפי שממתין לקבלת המידע. השרת מעבד את הבקשה ומחזיר הודעת <b>תגובה (<span dir="ltr">Response</span>)</b> מתאימה.
+  <p style="margin: 0; font-size: 18px; color: var(--muted);">
+    בשכבת האפליקציה, תחנת הקצה יוצרת הודעת <b>בקשה (<span dir="ltr"><code class="mono">Request</code></span>)</b> ממוקדת. הניתוב אל השירות הנכון בשרת מבוסס על <b>מספר הפורט (<span dir="ltr"><code class="mono">Port Number</code></span>)</b> — מספר ייחודי המזהה את תהליך התוכנה הספציפי שממתין לקבלת המידע. השרת מעבד את הבקשה ומחזיר הודעת <b>תגובה (<span dir="ltr"><code class="mono">Response</code></span>)</b> מתאימה.
   </p>
 </div>
 
 <div class="card" style="background: var(--panel2); border: 1px solid var(--border);">
-  <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #1C1917;">
+  <h4 style="font-size: 19px; font-weight: 700; margin-bottom: 14px; color: #1C1917;">
     🖱️ לחץ על שירות כדי לראות כיצד הבקשה מנוסחת ומנותבת ברמת האפליקציה:
   </h4>
 
-  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
-    <button class="btn secondary s2-btn active" onclick="showAppRouting('dns', this)">🔍 תרגום שם (<span dir="ltr">DNS</span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('dhcp', this)">🎫 קבלת <span dir="ltr">IP</span> (<span dir="ltr">DHCP</span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('web', this)">🌐 טעינת אתר (<span dir="ltr">HTTP</span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('ftp', this)">📂 העברת קובץ (<span dir="ltr">FTP</span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('mail', this)">✉️ שליחת דואר (<span dir="ltr">SMTP</span>)</button>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px;">
+    <button class="btn secondary s2-btn active" onclick="showAppRouting('dns', this)">🔍 תרגום שם (<span dir="ltr"><code class="mono">DNS</code></span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('dhcp', this)">🎫 קבלת <code class="mono">IP</code> (<span dir="ltr"><code class="mono">DHCP</code></span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('web', this)">🌐 טעינת אתר (<span dir="ltr"><code class="mono">HTTP</code></span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('ftp', this)">📂 העברת קובץ (<span dir="ltr"><code class="mono">FTP</code></span>)</button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('mail', this)">✉️ שליחת דואר (<span dir="ltr"><code class="mono">SMTP</code></span>)</button>
   </div>
 
-  <div id="appRoutingBox" style="background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px;">
+  <div id="appRoutingBox" style="background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
     <!-- מוזרק דינמית דרך JS -->
   </div>
 </div>
@@ -722,7 +782,7 @@ input.term-input{
 </section>
 
 <!-- =====================================================
-     SECTION 3
+     SECTION 3 — סימולטור תעבורה
      ===================================================== -->
 
 <section id="s3">
@@ -732,7 +792,7 @@ input.term-input{
     03 — הדמיית תעבורה אינטראקטיבית
   </div>
   <h2 class="section-title">
-    סימולטור תהליכי רשת ומעקב אחר חבילות (<span dir="ltr">PDU</span>)
+    סימולטור תהליכי רשת ומעקב אחר חבילות (<span dir="ltr"><code class="mono">PDU - Protocol Data Unit</code></span>)
   </h2>
 </div>
 
@@ -767,7 +827,7 @@ input.term-input{
   <line x1="100" y1="55" x2="120" y2="55" stroke="#D97706" stroke-width="2"/>
   <line x1="100" y1="65" x2="120" y2="65" stroke="#D97706" stroke-width="2"/>
   <circle cx="105" cy="73" r="2" fill="#059669"/>
-  <text x="110" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">DNS Server</text>
+  <text x="110" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">DNS Server</text>
   <text x="110" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.10</text>
   <text x="110" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 53 (UDP)</text>
 </g>
@@ -779,7 +839,7 @@ input.term-input{
   <line x1="320" y1="55" x2="340" y2="55" stroke="#DC2626" stroke-width="2"/>
   <line x1="320" y1="65" x2="340" y2="65" stroke="#DC2626" stroke-width="2"/>
   <circle cx="325" cy="73" r="2" fill="#059669"/>
-  <text x="330" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">DHCP Server</text>
+  <text x="330" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">DHCP Server</text>
   <text x="330" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.20</text>
   <text x="330" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 67 (UDP)</text>
 </g>
@@ -791,7 +851,7 @@ input.term-input{
   <line x1="540" y1="55" x2="560" y2="55" stroke="#059669" stroke-width="2"/>
   <line x1="540" y1="65" x2="560" y2="65" stroke="#059669" stroke-width="2"/>
   <circle cx="545" cy="73" r="2" fill="#059669"/>
-  <text x="550" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">Web Server</text>
+  <text x="550" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Web Server</text>
   <text x="550" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.30</text>
   <text x="550" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 80 / 443</text>
 </g>
@@ -803,7 +863,7 @@ input.term-input{
   <line x1="760" y1="55" x2="780" y2="55" stroke="#2563EB" stroke-width="2"/>
   <line x1="760" y1="65" x2="780" y2="65" stroke="#2563EB" stroke-width="2"/>
   <circle cx="765" cy="73" r="2" fill="#059669"/>
-  <text x="770" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">FTP Server</text>
+  <text x="770" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">FTP Server</text>
   <text x="770" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.40</text>
   <text x="770" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 20 / 21</text>
 </g>
@@ -815,7 +875,7 @@ input.term-input{
   <line x1="980" y1="55" x2="1000" y2="55" stroke="#9333EA" stroke-width="2"/>
   <line x1="980" y1="65" x2="1000" y2="65" stroke="#9333EA" stroke-width="2"/>
   <circle cx="985" cy="73" r="2" fill="#059669"/>
-  <text x="990" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">Mail Server</text>
+  <text x="990" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Mail Server</text>
   <text x="990" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.50</text>
   <text x="990" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">SMTP:25 | POP3:110</text>
 </g>
@@ -825,25 +885,25 @@ input.term-input{
   <rect width="100" height="50" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="3"/>
   <path d="M 20 25 L 55 25 M 55 25 L 47 18 M 55 25 L 47 32" stroke="#2563EB" stroke-width="2.5" fill="none"/>
   <path d="M 80 25 L 45 25 M 45 25 L 53 18 M 45 25 L 53 32" stroke="#2563EB" stroke-width="2.5" fill="none"/>
-  <text x="50" y="72" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Switch_Main</text>
+  <text x="50" y="72" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="15" font-weight="700">Switch_Main</text>
 </g>
 
 <!-- CLIENT 1 -->
 <g transform="translate(250, 430)">
   <rect width="190" height="95" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
   <rect x="12" y="15" width="28" height="20" rx="3" fill="#F3EFEA" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="12" font-weight="700">PC_Client 1 (Alice)</text>
-  <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10.5" direction="ltr" id="client1IpLabel">IP: 192.168.1.150</text>
-  <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9.5" direction="ltr">alice@academy.local</text>
+  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client 1 (Alice)</text>
+  <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr" id="client1IpLabel">IP: 192.168.1.150</text>
+  <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="10" direction="ltr">alice@academy.local</text>
 </g>
 
 <!-- CLIENT 2 -->
 <g transform="translate(660, 430)">
   <rect width="190" height="95" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
   <rect x="12" y="15" width="28" height="20" rx="3" fill="#F3EFEA" stroke="#059669" stroke-width="1.5"/>
-  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="12" font-weight="700">PC_Client 2 (Bob)</text>
-  <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10.5" direction="ltr" id="client2IpLabel">IP: 192.168.1.160</text>
-  <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9.5" direction="ltr">bob@academy.local</text>
+  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client 2 (Bob)</text>
+  <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr" id="client2IpLabel">IP: 192.168.1.160</text>
+  <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="10" direction="ltr">bob@academy.local</text>
 </g>
 
 <!-- PDU MOVING PACKET -->
@@ -851,31 +911,31 @@ input.term-input{
   <rect class="pdu-body" x="-125" y="-48" width="250" height="96" rx="10" fill="#0F172A" stroke="#7C3AED" stroke-width="2.5"/>
   <rect x="-125" y="-48" width="250" height="24" rx="10" fill="#7C3AED"/>
   <rect x="-125" y="-36" width="250" height="12" fill="#7C3AED"/>
-  <text id="pktProto" class="pdu-text" x="0" y="-31" fill="#FFFFFF" font-size="10" font-weight="800">PDU</text>
+  <text id="pktProto" class="pdu-text" x="0" y="-31" fill="#FFFFFF" font-size="11" font-weight="800">PDU</text>
   <g class="pdu-content">
     <rect x="-115" y="-17" width="230" height="16" rx="3" fill="#1E293B"/>
-    <text id="pktSrc" class="pdu-text" x="0" y="-5" fill="#38BDF8" font-size="8">SRC: 0.0.0.0:00</text>
+    <text id="pktSrc" class="pdu-text" x="0" y="-5" fill="#38BDF8" font-size="9">SRC: 0.0.0.0:00</text>
     <rect x="-115" y="1" width="230" height="16" rx="3" fill="#1E293B"/>
-    <text id="pktDst" class="pdu-text" x="0" y="13" fill="#FB7185" font-size="8">DST: 0.0.0.0:00</text>
+    <text id="pktDst" class="pdu-text" x="0" y="13" fill="#FB7185" font-size="9">DST: 0.0.0.0:00</text>
     <rect x="-115" y="21" width="230" height="20" rx="4" fill="#172033"/>
-    <text id="pktData" class="pdu-text" x="0" y="32" fill="#FACC15" font-size="7.5">Info: Payload</text>
+    <text id="pktData" class="pdu-text" x="0" y="32" fill="#FACC15" font-size="8.5">Info: Payload</text>
   </g>
 </g>
 
 </svg>
 
 <div class="controls-row">
-  <span id="selInfo" style="color:var(--muted); font-size:14px; font-weight:500;">
+  <span id="selInfo" style="color:var(--muted); font-size:16px; font-weight:600;">
     לחץ על אחד התרחישים מטה כדי להתחיל בסימולציה מפורטת...
   </span>
 </div>
 
 <div class="controls-row">
-  <button class="btn" onclick="runSimulation('DHCP')">תהליך <span dir="ltr">DHCP (DORA)</span> 🎫</button>
-  <button class="btn" onclick="runSimulation('Web')">גלישת <span dir="ltr">Web (DNS + HTTP)</span> 🌐</button>
-  <button class="btn" style="background:var(--mail);" onclick="runSimulation('Mail')">משלוח מייל (<span dir="ltr">DNS + SMTP + POP3</span>) ✉️</button>
-  <button class="btn" onclick="runSimulation('DNS')">שאילתת <span dir="ltr">DNS</span> בלבד 🔍</button>
-  <button class="btn" onclick="runSimulation('FTP')">חיבור <span dir="ltr">FTP</span> (בקרה+נתונים) 📂</button>
+  <button class="btn" onclick="runSimulation('DHCP')">תהליך <code class="mono">DHCP (DORA)</code> 🎫</button>
+  <button class="btn" onclick="runSimulation('Web')">גלישת <code class="mono">Web (DNS + HTTP)</code> 🌐</button>
+  <button class="btn" style="background:var(--mail);" onclick="runSimulation('Mail')">משלוח מייל (<code class="mono">DNS + SMTP + POP3</code>) ✉️</button>
+  <button class="btn" onclick="runSimulation('DNS')">שאילתת <code class="mono">DNS</code> 🔍</button>
+  <button class="btn" onclick="runSimulation('FTP')">חיבור <code class="mono">FTP</code> (בקרה+נתונים) 📂</button>
   <button class="btn pause-btn" id="pauseBtn" onclick="togglePause()">השהה ⏸️</button>
   <button class="btn secondary" onclick="resetSim()">איפוס</button>
 </div>
@@ -889,7 +949,7 @@ input.term-input{
 </section>
 
 <!-- =====================================================
-     SECTION 4
+     SECTION 4 — מעבדה מעשית
      ===================================================== -->
 
 <section id="s4">
@@ -899,21 +959,21 @@ input.term-input{
     04 — מעבדה מעשית
   </div>
   <h2 class="section-title">
-    הגדר שרת <span dir="ltr">DNS</span> בארגון דרך שורת הפקודה
+    הגדר שרת <span dir="ltr"><code class="mono">DNS Server</code></span> בארגון דרך שורת הפקודה (<span dir="ltr"><code class="mono">CLI</code></span>)
   </h2>
 </div>
 
 <p>
-  המשימה: להגדיר רשומת מיפוי (<span dir="ltr">A Record</span>)
-  בשרת ה-<span dir="ltr">DNS</span> עבור האתר הארגוני המקומי
-  <code dir="ltr">academy.local</code>
+  המשימה: להגדיר רשומת מיפוי (<span dir="ltr"><code class="mono">A Record</code></span>)
+  בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span> עבור האתר הארגוני המקומי
+  <code class="mono">academy.local</code>
   שכתובתו
-  <span dir="ltr">192.168.1.30</span>.
+  <code class="mono">192.168.1.30</code>.
 </p>
 
 <div class="task-box">
   <div class="task-title">
-    משימה: הוספת רשומת <span dir="ltr">DNS</span> מסוג <span dir="ltr">A</span> לכתובת <span dir="ltr">192.168.1.30</span>
+    משימה: הוספת רשומת <code class="mono">DNS</code> מסוג <code class="mono">A Record</code> לכתובת <code class="mono">192.168.1.30</code>
   </div>
   <div class="task-progress" id="taskProgress">
     שלב 1 מתוך 2
@@ -925,14 +985,14 @@ input.term-input{
     <div class="dot r"></div>
     <div class="dot y"></div>
     <div class="dot g"></div>
-    <span style="margin-left:8px; color:#94A3B8; font-size:12px;">DNS-Server-CLI</span>
+    <span style="margin-left:8px; color:#94A3B8; font-size:13px; font-weight: 600;">DNS-Server-CLI</span>
   </div>
 
   <div class="term-output" id="termOutput" dir="ltr">
 DNS-Server> enable
 DNS-Server# configure terminal
 DNS-Server(config)# ip dns server
-<span class="hint" dir="rtl">הקלד את פקודת המיפוי: <code dir="ltr">ip dns name academy.local a 192.168.1.30</code> ולחץ Enter</span>
+<span class="hint" dir="rtl">הקלד את פקודת המיפוי: <code dir="ltr" class="mono">ip dns name academy.local a 192.168.1.30</code> ולחץ Enter</span>
   </div>
 
   <div class="term-input-row" dir="ltr">
@@ -949,20 +1009,20 @@ DNS-Server(config)# ip dns server
 </div>
 
 <div id="dnsLabExplanation" class="explanation-card">
-  <h3 style="color:#1E3A8A; font-size:18px; margin-bottom:8px;">💡 מה בדיוק יצרנו ואיך זה עובד ברשת?</h3>
-  <p style="color:#1E40AF; margin-bottom:8px;">
-    <b>מה יצרת?</b> יצרת כעת רשומת מיפוי מסוג <b><span dir="ltr">A Record (Address Record)</span></b> בשרת ה-<span dir="ltr">DNS</span> של הארגון. רשומה זו לקחה את השם הקריא לבני אדם <code dir="ltr">academy.local</code> וקשרה אותו לכתובת ה-<span dir="ltr">IP</span> הפיזית <code dir="ltr">192.168.1.30</code> (שרת ה-<span dir="ltr">Web</span> שלנו).
+  <h3 style="color:#1E3A8A; font-size:20px; margin-bottom:10px;">💡 מה בדיוק יצרנו ואיך זה עובד ברשת?</h3>
+  <p style="color:#1E40AF; margin-bottom:10px; font-size: 17px;">
+    <b>מה יצרת?</b> יצרת כעת רשומת מיפוי מסוג <b><span dir="ltr"><code class="mono">A Record (Address Record)</code></span></b> בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span> של הארגון. רשומה זו לקחה את השם הקריא לבני אדם <code class="mono">academy.local</code> וקשרה אותו לכתובת ה-<span dir="ltr"><code class="mono">IP Address</code></span> הפיזית <code class="mono">192.168.1.30</code> (שרת ה-<span dir="ltr"><code class="mono">Web Server</code></span> שלנו).
   </p>
-  <p style="color:#1E40AF; margin:0;">
+  <p style="color:#1E40AF; margin:0; font-size: 17px;">
     <b>מה ניתן לעשות עם זה עכשיו?</b>
-    מהרגע שהרשומה נשמרה בשרת ה-<span dir="ltr">DNS</span>, כל משתמש ברשת הארגונית (כמו <span dir="ltr">Alice</span> או <span dir="ltr">Bob</span>) כבר לא צריך לזכור ולשרבט כתובות <span dir="ltr">IP</span> מסובכות. במידה ומשתמש יקליד בדפדפן שלו <code dir="ltr">http://academy.local</code>, המחשב שלו יפנה לשרת ה-<span dir="ltr">DNS</span>, יקבל את ה-<span dir="ltr">IP</span> המשויך (<span dir="ltr">192.168.1.30</span>), ויטען באופן מיידי את אתר האינטרנט הארגוני!
+    מהרגע שהרשומה נשמרה בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span>, כל משתמש ברשת הארגונית (כמו <code class="mono">Alice</code> או <code class="mono">Bob</code>) כבר לא צריך לזכור ולשרבט כתובות <code class="mono">IP</code> מסובכות. במידה ומשתמש יקליד בדפדפן שלו <code class="mono">http://academy.local</code>, המחשב שלו יפנה לשרת ה-<code class="mono">DNS</code>, יקבל את ה-<code class="mono">IP</code> המשויך (<code class="mono">192.168.1.30</code>), ויטען באופן מיידי את אתר האינטרנט הארגוני!
   </p>
 </div>
 
 </section>
 
 <!-- =====================================================
-     SECTION 5
+     SECTION 5 — בחינת הבנה
      ===================================================== -->
 
 <section id="s5">
@@ -972,26 +1032,26 @@ DNS-Server(config)# ip dns server
     05 — בחינת הבנה
   </div>
   <h2 class="section-title">
-    בחן את עצמך: ארכיטקטורת שירותים (10 שאלות)
+    בחן את עצמך: ארכיטקטורת שירותים (10 שאלות מסכמות)
   </h2>
 </div>
 
 <div id="quizContainer"></div>
 
-<div style="margin-top:20px; text-align:center;">
+<div style="margin-top:24px; text-align:center;">
   <button class="btn teacher-btn" onclick="revealTeacherAnswers()">
     🔑 למורה (הצגת תשובות נכונות)
   </button>
 </div>
 
 <div id="quizScoreCard" class="score-card">
-  <h3 style="font-size:22px; color:#1C1917; margin-bottom:6px;">
+  <h3 style="font-size:24px; color:#1C1917; margin-bottom:8px;">
     תוצאת המבחן המסכם
   </h3>
-  <div id="scoreDisplay" class="mono" style="font-size:38px; font-weight:800; color:var(--stick); margin:12px 0;" dir="ltr">
+  <div id="scoreDisplay" class="mono" style="font-size:42px; font-weight:800; color:var(--stick); margin:14px 0;" dir="ltr">
     0 / 100
   </div>
-  <p id="scoreFeedback" style="font-size:16px; font-weight:600; color:var(--muted); margin:0;"></p>
+  <p id="scoreFeedback" style="font-size:18px; font-weight:600; color:var(--muted); margin:0;"></p>
 </div>
 
 </section>
@@ -1001,13 +1061,13 @@ DNS-Server(config)# ip dns server
      ===================================================== -->
 
 <div class="completion" id="completionBox">
-  <h2>
+  <h2 style="font-size: 26px;">
     🎉 כל הכבוד! השלמת את מעבדת השרתים בהצלחה!
   </h2>
-  <p>
+  <p style="font-size: 19px;">
     הוכחת שליטה מעולה בפרוטוקולים,
     מספרי פורטים וקונפיגורציית שירותים
-    בשכבת האפליקציה.
+    בשכבת האפליקציה (<span dir="ltr"><code class="mono">Application Layer</code></span>).
   </p>
 </div>
 
@@ -1015,6 +1075,23 @@ DNS-Server(config)# ip dns server
   סימולטור לימוד אינטראקטיבי — מגמת הנדסת רשתות ותקשורת 2026
 </div>
 
+</div>
+
+<!-- =====================================================
+     LIGHTBOX MODAL FOR ENLARGED IMAGE
+     ===================================================== -->
+
+<div id="imageLightbox" class="img-lightbox-modal" onclick="closeImageModal()">
+  <div style="position: relative;" onclick="event.stopPropagation()">
+    <button onclick="closeImageModal()" style="position: absolute; top: -18px; right: -18px; background: #DC2626; color: #FFF; border: 2px solid #FFF; width: 36px; height: 36px; border-radius: 50%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+      ✕
+    </button>
+    <img 
+      src="https://drive.google.com/thumbnail?id=1T0qe9RHwMtWe_V0w4TVyifsb04cvoT74&sz=w1600" 
+      alt="שרתים ברשתות תקשורת - תרשים מורחב" 
+      class="img-lightbox-content"
+    >
+  </div>
 </div>
 
 <!-- =====================================================
@@ -1054,6 +1131,14 @@ DNS-Server(config)# ip dns server
      ===================================================== -->
 
 <script>
+
+function openImageModal(){
+  document.getElementById('imageLightbox').classList.add('show');
+}
+
+function closeImageModal(){
+  document.getElementById('imageLightbox').classList.remove('show');
+}
 
 document.addEventListener('DOMContentLoaded', function(){
   if(window.lucide){
@@ -1135,41 +1220,41 @@ stepIds.forEach(id => {
 });
 
 
-// SECTION 2 INTERACTIVE ROUTING LOGIC (עם הקפדה על ניתוח LTR/RTL מלא)
+// SECTION 2 INTERACTIVE ROUTING LOGIC
 const appRoutingData = {
   dns: {
-    title: '🔍 ניתוב שאילתת <span dir="ltr">DNS</span>',
+    title: '🔍 ניתוב שאילתת <code class="mono">DNS</code>',
     port: 'Port 53 (UDP)',
     request: 'QUERY: What is IP for academy.local?',
-    routing: 'הבקשה מנותבת לתהליך ה-<span dir="ltr">DNS Server</span> המאזין בפורט <span dir="ltr">53</span>. השרת מחפש בטבלת הרשומות הארגונית.',
+    routing: 'הבקשה מנותבת לתהליך ה-<code class="mono">DNS Server</code> המאזין בפורט <code class="mono">53</code>. השרת מחפש בטבלת הרשומות הארגונית.',
     response: 'RESPONSE: IP = 192.168.1.30 (A Record)'
   },
   dhcp: {
-    title: '🎫 ניתוב בקשת <span dir="ltr">DHCP</span>',
+    title: '🎫 ניתוב בקשת <code class="mono">DHCP</code>',
     port: 'Port 67 (UDP)',
     request: 'DISCOVER: Looking for DHCP Server...',
-    routing: 'הבקשה מופצת ברשת (<span dir="ltr">Broadcast</span>) ומגיעה לפורט <span dir="ltr">67</span> בשרת ה-<span dir="ltr">DHCP</span> שמנהל את מאגר הכתובות הדינמי.',
+    routing: 'הבקשה מופצת ברשת (<code class="mono">Broadcast</code>) ומגיעה לפורט <code class="mono">67</code> בשרת ה-<code class="mono">DHCP</code> שמנהל את מאגר הכתובות הדינמי.',
     response: 'OFFER: Offered IP 192.168.1.150'
   },
   web: {
-    title: '🌐 ניתוב בקשת <span dir="ltr">HTTP / Web</span>',
+    title: '🌐 ניתוב בקשת <code class="mono">HTTP / Web</code>',
     port: 'Port 80 / 443 (TCP)',
     request: 'GET /index.html HTTP/1.1',
-    routing: 'שכבת האפליקציה פונה לפורט <span dir="ltr">80</span> בשרת ה-<span dir="ltr">Web</span>. תהליך השרת שולף את קובץ ה-<span dir="ltr">HTML</span> המבוקש ומכין אותו לשליחה.',
+    routing: 'שכבת האפליקציה פונה לפורט <code class="mono">80</code> בשרת ה-<code class="mono">Web</code>. תהליך השרת שולף את קובץ ה-<code class="mono">HTML</code> המבוקש ומכין אותו לשליחה.',
     response: 'HTTP 200 OK (Serving HTML Page)'
   },
   ftp: {
-    title: '📂 ניתוב בקשת <span dir="ltr">FTP</span>',
+    title: '📂 ניתוב בקשת <code class="mono">FTP</code>',
     port: 'Port 21 (Control) / 20 (Data)',
     request: 'USER admin / RETR document.pdf',
-    routing: 'הפקודה מנותבת לערוץ הבקרה (<span dir="ltr">Port 21</span>). בעת העברת הקובץ הפיזית נפתח ערוץ נתונים נפרד (<span dir="ltr">Port 20</span>).',
+    routing: 'הפקודה מנותבת לערוץ הבקרה (<code class="mono">Port 21</code>). בעת העברת הקובץ הפיזית נפתח ערוץ נתונים נפרד (<code class="mono">Port 20</code>).',
     response: '250 Transfer Complete (File Sent)'
   },
   mail: {
-    title: '✉️ ניתוב בקשת <span dir="ltr">SMTP</span> (דואר)',
+    title: '✉️ ניתוב בקשת <code class="mono">SMTP</code> (דואר)',
     port: 'Port 25 (TCP)',
     request: 'MAIL FROM:<alice> RCPT:<bob> DATA',
-    routing: 'הודעת הדואר מועברת לפורט <span dir="ltr">25</span> בשרת ה-<span dir="ltr">SMTP</span> שמנתב אותה לתיבת הדואר של הנמען.',
+    routing: 'הודעת הדואר מועברת לפורט <code class="mono">25</code> בשרת ה-<code class="mono">SMTP</code> שמנתב אותה לתיבת הדואר של הנמען.',
     response: '250 OK Message accepted for delivery'
   }
 };
@@ -1188,24 +1273,24 @@ function showAppRouting(key, btnEl) {
   const box = document.getElementById('appRoutingBox');
 
   box.innerHTML = `
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:10px;">
-      <h3 style="margin:0; font-size:18px; color:var(--stick);">${data.title}</h3>
-      <span class="tag" style="background:var(--dns-dim); color:var(--stick); font-weight:bold; font-size:12px;" dir="ltr">${data.port}</span>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+      <h3 style="margin:0; font-size:20px; color:var(--stick);">${data.title}</h3>
+      <span class="tag" style="background:var(--dns-dim); color:var(--stick); font-weight:bold; font-size:14px;" dir="ltr">${data.port}</span>
     </div>
     
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:10px;">
-      <div style="background:var(--panel2); padding:12px; border-radius:8px; border-right:3px solid var(--info);">
-        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">1. הבקשה מהלקוח (<span dir="ltr">Client Request</span>):</strong>
-        <span class="mono" style="font-size:12px; color:#1E293B;">${data.request}</span>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:12px;">
+      <div style="background:var(--panel2); padding:14px; border-radius:10px; border-right:4px solid var(--info);">
+        <strong style="display:block; font-size:15px; color:var(--muted); margin-bottom:6px;">1. הבקשה מהלקוח (<code class="mono">Client Request</code>):</strong>
+        <span class="mono" style="font-size:13px; color:#1E293B;">${data.request}</span>
       </div>
       
-      <div style="background:var(--panel2); padding:12px; border-radius:8px; border-right:3px solid var(--ok);">
-        <strong style="display:block; font-size:13px; color:var(--muted); margin-bottom:4px;">2. התגובה מהשרת (<span dir="ltr">Server Response</span>):</strong>
-        <span class="mono" style="font-size:12px; color:#1E293B;">${data.response}</span>
+      <div style="background:var(--panel2); padding:14px; border-radius:10px; border-right:4px solid var(--ok);">
+        <strong style="display:block; font-size:15px; color:var(--muted); margin-bottom:6px;">2. התגובה מהשרת (<code class="mono">Server Response</code>):</strong>
+        <span class="mono" style="font-size:13px; color:#1E293B;">${data.response}</span>
       </div>
     </div>
 
-    <div style="margin-top:14px; background:#FAF7F2; padding:10px 14px; border-radius:8px; font-size:13px; color:var(--muted);">
+    <div style="margin-top:16px; background:#FAF7F2; padding:12px 16px; border-radius:10px; font-size:16px; color:var(--muted);">
       💡 <b>איך השרת מנתב?</b> ${data.routing}
     </div>
   `;
@@ -1331,11 +1416,11 @@ async function runSimulation(type){
   else if(type === 'Web'){
     document.getElementById("selInfo").innerHTML = "<b style='color:var(--web)'>גלישת Web:</b> תרגום DNS לדומיין ופנייה לשרת HTTP";
 
-    log("<span class='lbl'>[1. DNS Lookup]</span> Alice מקלידה <code dir='ltr'>www.site.local</code>. המחשב פונה ל-DNS בפורט 53 לבירור כתובת IP.");
+    log("<span class='lbl'>[1. DNS Lookup]</span> Alice מקלידה <code class='mono'>www.site.local</code>. המחשב פונה ל-DNS בפורט 53 לבירור כתובת IP.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS QUERY", src:"192.168.1.150:51200", dst:"192.168.1.10:53", data:"Where is www.site.local?"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS QUERY", src:"192.168.1.150:51200", dst:"192.168.1.10:53", data:"Where is www.site.local?"});
 
-    log("<span class='lbl'>[2. DNS Response]</span> ה-DNS משיב שהכתובת היא <code dir='ltr'>192.168.1.30</code>.");
+    log("<span class='lbl'>[2. DNS Response]</span> ה-DNS משיב שהכתובת היא <code class='mono'>192.168.1.30</code>.");
     await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS RESPONSE", src:"192.168.1.10:53", dst:"192.168.1.150:51200", data:"IP = 192.168.1.30"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS RESPONSE", src:"192.168.1.10:53", dst:"192.168.1.150:51200", data:"IP = 192.168.1.30"});
 
@@ -1352,11 +1437,11 @@ async function runSimulation(type){
   else if(type === 'Mail'){
     document.getElementById("selInfo").innerHTML = "<b style='color:var(--mail)'>משלוח מייל מלא:</b> תרחיש משולב DNS (MX) -> SMTP (Port 25) -> POP3 (Port 110)";
 
-    log("<span class='lbl'>[1. DNS MX Lookup]</span> Alice שולחת מייל ל-<code dir='ltr'>bob@academy.local</code>. תוכנת הדואר פונה ל-DNS לבירור רשומת ה-MX.");
+    log("<span class='lbl'>[1. DNS MX Lookup]</span> Alice שולחת מייל ל-<code class='mono'>bob@academy.local</code>. תוכנת הדואר פונה ל-DNS לבירור רשומת ה-MX.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS MX QUERY", src:"192.168.1.150:53100", dst:"192.168.1.10:53", data:"MX for academy.local?"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS MX QUERY", src:"192.168.1.150:53100", dst:"192.168.1.10:53", data:"MX for academy.local?"});
 
-    log("<span class='lbl'>[2. DNS Response]</span> שרת ה-DNS משיב ששרת הדואר הוא <code dir='ltr'>192.168.1.50</code>.");
+    log("<span class='lbl'>[2. DNS Response]</span> שרת ה-DNS משיב ששרת הדואר הוא <code class='mono'>192.168.1.50</code>.");
     await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS MX REPLY", src:"192.168.1.10:53", dst:"192.168.1.150:53100", data:"Mail Server = 192.168.1.50"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS MX REPLY", src:"192.168.1.10:53", dst:"192.168.1.150:53100", data:"Mail Server = 192.168.1.50"});
 
@@ -1380,11 +1465,11 @@ async function runSimulation(type){
   else if(type === 'DNS'){
     document.getElementById("selInfo").innerHTML = "<b style='color:var(--dns)'>שאילתת DNS:</b> בירור רשומת A עבור שם דומיין";
 
-    log("<span class='lbl'>[שאילתה]</span> הלקוח פונה לשרת ה-DNS (UDP Port 53) לבירור כתובת IP עבור <code dir='ltr'>academy.local</code>.");
+    log("<span class='lbl'>[שאילתה]</span> הלקוח פונה לשרת ה-DNS (UDP Port 53) לבירור כתובת IP עבור <code class='mono'>academy.local</code>.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
 
-    log("<span class='lbl'>[תשובה]</span> שרת ה-DNS שולף מרשומת ה-A Record ומחזיר: <code dir='ltr'>192.168.1.30</code>.");
+    log("<span class='lbl'>[תשובה]</span> שרת ה-DNS שולף מרשומת ה-A Record ומחזיר: <code class='mono'>192.168.1.30</code>.");
     await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS Response", src:"192.168.1.10:53", dst:"192.168.1.150:61234", data:"academy.local -> 192.168.1.30"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS Response", src:"192.168.1.10:53", dst:"192.168.1.150:61234", data:"academy.local -> 192.168.1.30"});
   }
@@ -1572,7 +1657,7 @@ function renderQuiz(){
   quizData.forEach((item, qi) => {
     const qDiv = document.createElement("div");
     qDiv.className = "quiz-q";
-    qDiv.innerHTML = "<div class='quiz-q-num'>שאלה " + (qi+1) + " מתוך " + quizData.length + "</div><div><b>" + item.q + "</b></div>";
+    qDiv.innerHTML = "<div class='quiz-q-num'>שאלה " + (qi+1) + " מתוך " + quizData.length + "</div><div style='font-size:18px;'><b>" + item.q + "</b></div>";
 
     const optsDiv = document.createElement("div");
     optsDiv.className = "quiz-opts";
