@@ -648,7 +648,7 @@ input.term-input{
       </div>
 
       <h1 class="title">
-        ארכיטקטורת <span dir="ltr">Client-Server</span> (שרת-לקוח)
+        ארכיטקטורת <span dir="ltr">Client-Server</span> שרת-לקוח
       </h1>
 
       <p class="subtitle">
@@ -669,7 +669,7 @@ input.term-input{
 </header>
 
 <!-- =====================================================
-     SECTION 1 - מבוא وشירותים + חלונית תמונה מוגדלת
+     SECTION 1 - מבוא ושירותים + חלונית תמונה מוגדלת
      ===================================================== -->
 
 <section id="s1">
@@ -689,11 +689,11 @@ input.term-input{
     <h3 style="font-size: 20px;">🔍 שירותי זיהוי ומיפוי</h3>
     <p>
       <span class="tag dns" dir="ltr">DNS · Port 53</span><br>
-      מתרגם שמות דומיין קריאים (כמו <code class="mono">google.com</code>) ורשומות דואר (<code class="mono">MX Record</code>) לכתובות <code class="mono">IP Address</code>.
+      מתרגם שמות דומיין קריאים כמו <code class="mono">google.com</code> ורשומות דואר <code class="mono">MX Record</code> לכתובות <code class="mono">IP Address</code>.
     </p>
     <p>
       <span class="tag dhcp" dir="ltr">DHCP · Ports 67, 68</span><br>
-      מחלק כתובות <code class="mono">IP Address</code>, מסיכות רשת (<code class="mono">Subnet Mask</code>) וכתובות <code class="mono">Default Gateway</code> באופן אוטומטי.
+      מחלק כתובות <code class="mono">IP Address</code>, מסיכות רשת <code class="mono">Subnet Mask</code> וכתובות <code class="mono">Default Gateway</code> באופן אוטומטי.
     </p>
   </div>
 
@@ -748,16 +748,16 @@ input.term-input{
     02 — מנגנון הניתוב בשכבת האפליקציה
   </div>
   <h2 class="section-title">
-    כיצד הבקשות מנותבות בשכבת האפליקציה (<span dir="ltr">Application Layer</span>)?
+    כיצד הבקשות מנותבות בשכבת האפליקציה <span dir="ltr">Application Layer</span>?
   </h2>
 </div>
 
 <div class="card" style="margin-bottom: 24px; border-right: 5px solid var(--stick);">
   <h3 style="color: #1C1917; font-size: 22px; margin-bottom: 10px;">
-    ⚙️ העיקרון הכללי: מודל בקשה-תגובה (<span dir="ltr"><code class="mono">Client-Server Model</code></span>) ומספרי פורטים (<span dir="ltr"><code class="mono">Port Numbers</code></span>)
+    ⚙️ העיקרון הכללי: מודל בקשה-תגובה <span dir="ltr"><code class="mono">Client-Server Model</code></span> ומספרי פורטים <span dir="ltr"><code class="mono">Port Numbers</code></span>
   </h3>
   <p style="margin: 0; font-size: 18px; color: var(--muted);">
-    בשכבת האפליקציה, תחנת הקצה יוצרת הודעת <b>בקשה (<span dir="ltr"><code class="mono">Request</code></span>)</b> ממוקדת. הניתוב אל השירות הנכון בשרת מבוסס על <b>מספר הפורט (<span dir="ltr"><code class="mono">Port Number</code></span>)</b> — מספר ייחודי המזהה את תהליך התוכנה הספציפי שממתין לקבלת המידע. השרת מעבד את הבקשה ומחזיר הודעת <b>תגובה (<span dir="ltr"><code class="mono">Response</code></span>)</b> מתאימה.
+    בשכבת האפליקציה, תחנת הקצה יוצרת הודעת <b>בקשה <span dir="ltr"><code class="mono">Request</code></span></b> ממוקדת. הניתוב אל השירות הנכון בשרת מבוסס על <b>מספר הפורט <span dir="ltr"><code class="mono">Port Number</code></span></b> — מספר ייחודי המזהה את תהליך התוכנה הספציפי שממתין לקבלת המידע. השרת מעבד את הבקשה ומחזיר הודעת <b>תגובה <span dir="ltr"><code class="mono">Response</code></span></b> מתאימה.
   </p>
 </div>
 
@@ -767,11 +767,11 @@ input.term-input{
   </h4>
 
   <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px;">
-    <button class="btn secondary s2-btn active" onclick="showAppRouting('dns', this)">🔍 תרגום שם (<span dir="ltr"><code class="mono">DNS</code></span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('dhcp', this)">🎫 קבלת <code class="mono">IP</code> (<span dir="ltr"><code class="mono">DHCP</code></span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('web', this)">🌐 טעינת אתר (<span dir="ltr"><code class="mono">HTTP</code></span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('ftp', this)">📂 העברת קובץ (<span dir="ltr"><code class="mono">FTP</code></span>)</button>
-    <button class="btn secondary s2-btn" onclick="showAppRouting('mail', this)">✉️ שליחת דואר (<span dir="ltr"><code class="mono">SMTP</code></span>)</button>
+    <button class="btn secondary s2-btn active" onclick="showAppRouting('dns', this)">🔍 תרגום שם <span dir="ltr"><code class="mono">DNS</code></span></button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('dhcp', this)">🎫 קבלת <code class="mono">IP</code> <span dir="ltr"><code class="mono">DHCP</code></span></button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('web', this)">🌐 טעינת אתר <span dir="ltr"><code class="mono">HTTP</code></span></button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('ftp', this)">📂 העברת קובץ <span dir="ltr"><code class="mono">FTP</code></span></button>
+    <button class="btn secondary s2-btn" onclick="showAppRouting('mail', this)">✉️ שליחת דואר <span dir="ltr"><code class="mono">SMTP</code></span></button>
   </div>
 
   <div id="appRoutingBox" style="background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
@@ -792,7 +792,7 @@ input.term-input{
     03 — הדמיית תעבורה אינטראקטיבית
   </div>
   <h2 class="section-title">
-    סימולטור תהליכי רשת ומעקב אחר חבילות (<span dir="ltr"><code class="mono">PDU - Protocol Data Unit</code></span>)
+    סימולטור תהליכי רשת ומעקב אחר חבילות <span dir="ltr"><code class="mono">PDU - Protocol Data Unit</code></span>
   </h2>
 </div>
 
@@ -829,7 +829,7 @@ input.term-input{
   <circle cx="105" cy="73" r="2" fill="#059669"/>
   <text x="110" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">DNS Server</text>
   <text x="110" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.10</text>
-  <text x="110" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 53 (UDP)</text>
+  <text x="110" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 53 UDP</text>
 </g>
 
 <!-- DHCP SERVER -->
@@ -841,7 +841,7 @@ input.term-input{
   <circle cx="325" cy="73" r="2" fill="#059669"/>
   <text x="330" y="100" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">DHCP Server</text>
   <text x="330" y="118" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr">IP: 192.168.1.20</text>
-  <text x="330" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 67 (UDP)</text>
+  <text x="330" y="135" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="11" direction="ltr">Port: 67 UDP</text>
 </g>
 
 <!-- WEB SERVER -->
@@ -892,7 +892,7 @@ input.term-input{
 <g transform="translate(250, 430)">
   <rect width="190" height="95" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
   <rect x="12" y="15" width="28" height="20" rx="3" fill="#F3EFEA" stroke="#7C3AED" stroke-width="1.5"/>
-  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client 1 (Alice)</text>
+  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client 1 Alice</text>
   <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr" id="client1IpLabel">IP: 192.168.1.150</text>
   <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="10" direction="ltr">alice@academy.local</text>
 </g>
@@ -901,7 +901,7 @@ input.term-input{
 <g transform="translate(660, 430)">
   <rect width="190" height="95" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
   <rect x="12" y="15" width="28" height="20" rx="3" fill="#F3EFEA" stroke="#059669" stroke-width="1.5"/>
-  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client 2 (Bob)</text>
+  <text x="105" y="32" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_Client 2 Bob</text>
   <text x="105" y="54" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="11" direction="ltr" id="client2IpLabel">IP: 192.168.1.160</text>
   <text x="105" y="74" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="10" direction="ltr">bob@academy.local</text>
 </g>
@@ -931,11 +931,11 @@ input.term-input{
 </div>
 
 <div class="controls-row">
-  <button class="btn" onclick="runSimulation('DHCP')">תהליך <code class="mono">DHCP (DORA)</code> 🎫</button>
-  <button class="btn" onclick="runSimulation('Web')">גלישת <code class="mono">Web (DNS + HTTP)</code> 🌐</button>
-  <button class="btn" style="background:var(--mail);" onclick="runSimulation('Mail')">משלוח מייל (<code class="mono">DNS + SMTP + POP3</code>) ✉️</button>
+  <button class="btn" onclick="runSimulation('DHCP')">תהליך <code class="mono">DHCP DORA</code> 🎫</button>
+  <button class="btn" onclick="runSimulation('Web')">גלישת <code class="mono">Web DNS + HTTP</code> 🌐</button>
+  <button class="btn" style="background:var(--mail);" onclick="runSimulation('Mail')">משלוח מייל <code class="mono">DNS + SMTP + POP3</code> ✉️</button>
   <button class="btn" onclick="runSimulation('DNS')">שאילתת <code class="mono">DNS</code> 🔍</button>
-  <button class="btn" onclick="runSimulation('FTP')">חיבור <code class="mono">FTP</code> (בקרה+נתונים) 📂</button>
+  <button class="btn" onclick="runSimulation('FTP')">חיבור <code class="mono">FTP</code> בקרה+נתונים 📂</button>
   <button class="btn pause-btn" id="pauseBtn" onclick="togglePause()">השהה ⏸️</button>
   <button class="btn secondary" onclick="resetSim()">איפוס</button>
 </div>
@@ -959,12 +959,12 @@ input.term-input{
     04 — מעבדה מעשית
   </div>
   <h2 class="section-title">
-    הגדר שרת <span dir="ltr"><code class="mono">DNS Server</code></span> בארגון דרך שורת הפקודה (<span dir="ltr"><code class="mono">CLI</code></span>)
+    הגדר שרת <span dir="ltr"><code class="mono">DNS Server</code></span> בארגון דרך שורת הפקודה <span dir="ltr"><code class="mono">CLI</code></span>
   </h2>
 </div>
 
 <p>
-  המשימה: להגדיר רשומת מיפוי (<span dir="ltr"><code class="mono">A Record</code></span>)
+  המשימה: להגדיר רשומת מיפוי <span dir="ltr"><code class="mono">A Record</code></span>
   בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span> עבור האתר הארגוני המקומי
   <code class="mono">academy.local</code>
   שכתובתו
@@ -1011,11 +1011,11 @@ DNS-Server(config)# ip dns server
 <div id="dnsLabExplanation" class="explanation-card">
   <h3 style="color:#1E3A8A; font-size:20px; margin-bottom:10px;">💡 מה בדיוק יצרנו ואיך זה עובד ברשת?</h3>
   <p style="color:#1E40AF; margin-bottom:10px; font-size: 17px;">
-    <b>מה יצרת?</b> יצרת כעת רשומת מיפוי מסוג <b><span dir="ltr"><code class="mono">A Record (Address Record)</code></span></b> בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span> של הארגון. רשומה זו לקחה את השם הקריא לבני אדם <code class="mono">academy.local</code> וקשרה אותו לכתובת ה-<span dir="ltr"><code class="mono">IP Address</code></span> הפיזית <code class="mono">192.168.1.30</code> (שרת ה-<span dir="ltr"><code class="mono">Web Server</code></span> שלנו).
+    <b>מה יצרת?</b> יצרת כעת רשומת מיפוי מסוג <b><span dir="ltr"><code class="mono">A Record Address Record</code></span></b> בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span> של הארגון. רשומה זו לקחה את השם הקריא לבני אדם <code class="mono">academy.local</code> וקשרה אותו לכתובת ה-<span dir="ltr"><code class="mono">IP Address</code></span> הפיזית <code class="mono">192.168.1.30</code> שרת ה-<span dir="ltr"><code class="mono">Web Server</code></span> שלנו.
   </p>
   <p style="color:#1E40AF; margin:0; font-size: 17px;">
     <b>מה ניתן לעשות עם זה עכשיו?</b>
-    מהרגע שהרשומה נשמרה בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span>, כל משתמש ברשת הארגונית (כמו <code class="mono">Alice</code> או <code class="mono">Bob</code>) כבר לא צריך לזכור ולשרבט כתובות <code class="mono">IP</code> מסובכות. במידה ומשתמש יקליד בדפדפן שלו <code class="mono">http://academy.local</code>, המחשב שלו יפנה לשרת ה-<code class="mono">DNS</code>, יקבל את ה-<code class="mono">IP</code> המשויך (<code class="mono">192.168.1.30</code>), ויטען באופן מיידי את אתר האינטרנט הארגוני!
+    מהרגע שהרשומה נשמרה בשרת ה-<span dir="ltr"><code class="mono">DNS</code></span>, כל משתמש ברשת הארגונית כמו <code class="mono">Alice</code> או <code class="mono">Bob</code> כבר לא צריך לזכור ולשרבט כתובות <code class="mono">IP</code> מסובכות. במידה ומשתמש יקליד בדפדפן שלו <code class="mono">http://academy.local</code>, המחשב שלו יפנה לשרת ה-<code class="mono">DNS</code>, יקבל את ה-<code class="mono">IP</code> המשויך <code class="mono">192.168.1.30</code>, ויטען באופן מיידי את אתר האינטרנט הארגוני!
   </p>
 </div>
 
@@ -1032,7 +1032,7 @@ DNS-Server(config)# ip dns server
     05 — בחינת הבנה
   </div>
   <h2 class="section-title">
-    בחן את עצמך: ארכיטקטורת שירותים (10 שאלות מסכמות)
+    בחן את עצמך: ארכיטקטורת שירותים 10 שאלות מסכמות
   </h2>
 </div>
 
@@ -1040,7 +1040,7 @@ DNS-Server(config)# ip dns server
 
 <div style="margin-top:24px; text-align:center;">
   <button class="btn teacher-btn" onclick="revealTeacherAnswers()">
-    🔑 למורה (הצגת תשובות נכונות)
+    🔑 למורה הצגת תשובות נכונות
   </button>
 </div>
 
@@ -1067,7 +1067,7 @@ DNS-Server(config)# ip dns server
   <p style="font-size: 19px;">
     הוכחת שליטה מעולה בפרוטוקולים,
     מספרי פורטים וקונפיגורציית שירותים
-    בשכבת האפליקציה (<span dir="ltr"><code class="mono">Application Layer</code></span>).
+    בשכבת האפליקציה <span dir="ltr"><code class="mono">Application Layer</code></span>.
   </p>
 </div>
 
@@ -1391,8 +1391,8 @@ async function runSimulation(type){
   logPanel.innerHTML = "";
 
   if(type === 'DHCP'){
-    document.getElementById("client1IpLabel").textContent = "IP: 0.0.0.0 (אין כתובת)";
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--dhcp)'>סימולציית DHCP:</b> תהליך הקצאת IP אוטומטית (DORA)";
+    document.getElementById("client1IpLabel").textContent = "IP: 0.0.0.0 אין כתובת";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--dhcp)'>סימולציית DHCP:</b> תהליך הקצאת IP אוטומטית DORA";
 
     log("<span class='lbl'>[1. DISCOVER]</span> Alice מדליקה את המחשב ושולחת Broadcast לרשת בחיפוש אחר שרת DHCP.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DHCP DISCOVER", src:"0.0.0.0:68", dst:"255.255.255.255:67", data:"Who is DHCP?"});
@@ -1406,7 +1406,7 @@ async function runSimulation(type){
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DHCP REQUEST", src:"0.0.0.0:68", dst:"255.255.255.255:67", data:"Requesting 192.168.1.150"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DHCP.x, coords.DHCP.y, {proto:"DHCP REQUEST", src:"0.0.0.0:68", dst:"255.255.255.255:67", data:"Requesting 192.168.1.150"});
 
-    log("<span class='lbl'>[4. ACK]</span> השרת מאשר (Acknowledge) ונועל את ההקצאה.");
+    log("<span class='lbl'>[4. ACK]</span> השרת מאשר Acknowledge ונועל את ההקצאה.");
     await animatePacketPDU(coords.DHCP.x, coords.DHCP.y, coords.switch.x, coords.switch.y, {proto:"DHCP ACK", src:"192.168.1.20:67", dst:"192.168.1.150:68", data:"IP Assigned Successfully"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DHCP ACK", src:"192.168.1.20:67", dst:"192.168.1.150:68", data:"IP Assigned Successfully"});
 
@@ -1428,14 +1428,14 @@ async function runSimulation(type){
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"HTTP GET", src:"192.168.1.150:51201", dst:"192.168.1.30:80", data:"GET /index.html HTTP/1.1"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Web.x, coords.Web.y, {proto:"HTTP GET", src:"192.168.1.150:51201", dst:"192.168.1.30:80", data:"GET /index.html HTTP/1.1"});
 
-    log("<span class='lbl'>[4. HTTP Response]</span> שרת ה-Web מחזיר את קוד הדף (HTTP 200 OK).");
+    log("<span class='lbl'>[4. HTTP Response]</span> שרת ה-Web מחזיר את קוד הדף HTTP 200 OK.");
     await animatePacketPDU(coords.Web.x, coords.Web.y, coords.switch.x, coords.switch.y, {proto:"HTTP 200 OK", src:"192.168.1.30:80", dst:"192.168.1.150:51201", data:"Rendering Web Page..."});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"HTTP 200 OK", src:"192.168.1.30:80", dst:"192.168.1.150:51201", data:"Rendering Web Page..."});
 
     log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> עמוד ה-Web נטען בדפדפן בהצלחה!");
   }
   else if(type === 'Mail'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--mail)'>משלוח מייל מלא:</b> תרחיש משולב DNS (MX) -> SMTP (Port 25) -> POP3 (Port 110)";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--mail)'>משלוח מייל מלא:</b> תרחיש משולב DNS MX -> SMTP Port 25 -> POP3 Port 110";
 
     log("<span class='lbl'>[1. DNS MX Lookup]</span> Alice שולחת מייל ל-<code class='mono'>bob@academy.local</code>. תוכנת הדואר פונה ל-DNS לבירור רשומת ה-MX.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS MX QUERY", src:"192.168.1.150:53100", dst:"192.168.1.10:53", data:"MX for academy.local?"});
@@ -1452,7 +1452,7 @@ async function runSimulation(type){
     log("<span class='lbl'>[4. Mail Stored]</span> שרת ה-Mail שומר את ההודעה בתיבת הדואר של Bob.");
     await new Promise(r => setTimeout(r,800));
 
-    log("<span class='lbl'>[5. POP3 Fetch]</span> Bob מבצע משוך/הורדה של ההודעה משרת ה-Mail בפורט 110 (<b>POP3</b>).");
+    log("<span class='lbl'>[5. POP3 Fetch]</span> Bob מבצע משוך/הורדה של ההודעה משרת ה-Mail בפורט 110 <b>POP3</b>.");
     await animatePacketPDU(coords.client2.x, coords.client2.y, coords.switch.x, coords.switch.y, {proto:"POP3 RETR", src:"192.168.1.160:54000", dst:"192.168.1.50:110", data:"USER bob / RETR 1"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Mail.x, coords.Mail.y, {proto:"POP3 RETR", src:"192.168.1.160:54000", dst:"192.168.1.50:110", data:"Fetch Mail ID 1"});
 
@@ -1465,7 +1465,7 @@ async function runSimulation(type){
   else if(type === 'DNS'){
     document.getElementById("selInfo").innerHTML = "<b style='color:var(--dns)'>שאילתת DNS:</b> בירור רשומת A עבור שם דומיין";
 
-    log("<span class='lbl'>[שאילתה]</span> הלקוח פונה לשרת ה-DNS (UDP Port 53) לבירור כתובת IP עבור <code class='mono'>academy.local</code>.");
+    log("<span class='lbl'>[שאילתה]</span> הלקוח פונה לשרת ה-DNS UDP Port 53 לבירור כתובת IP עבור <code class='mono'>academy.local</code>.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
 
@@ -1474,7 +1474,7 @@ async function runSimulation(type){
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS Response", src:"192.168.1.10:53", dst:"192.168.1.150:61234", data:"academy.local -> 192.168.1.30"});
   }
   else if(type === 'FTP'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--ftp)'>העברת קבצים ב-FTP:</b> הפרדה בין ערוץ בקרה (21) לערוץ נתונים (20)";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--ftp)'>העברת קבצים ב-FTP:</b> הפרדה בין ערוץ בקרה 21 לערוץ נתונים 20";
 
     log("<span class='lbl'>[1. Control Connection]</span> פתיחת ערוץ בקרה מול פורט 21 בשרת FTP.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"FTP CONTROL", src:"192.168.1.150:49152", dst:"192.168.1.40:21", data:"USER admin / PASS ***"});
@@ -1545,7 +1545,7 @@ function submitCmd(){
     cliStep++;
 
     if(cliStep < cliSteps.length){
-      output.innerHTML += "\n<span class='hint'>שלב הבא: הזן את פקודת היציאה והשמירה (exit)</span>";
+      output.innerHTML += "\n<span class='hint'>שלב הבא: הזן את פקודת היציאה והשמירה exit</span>";
       document.getElementById("taskProgress").textContent = "שלב " + (cliStep+1) + " מתוך " + cliSteps.length;
       document.getElementById("termPrompt").textContent = "DNS-Server(config)#";
     }else{
@@ -1575,14 +1575,14 @@ const quizData = [
     opts:[
       "להעביר קבצים גדולים במהירות גבוהה",
       "לאבטח את תעבורת ה-Web באמצעות הצפנה",
-      "לתרגם שמות דומיין קריאים לבני אדם (כמו academy.local) לכתובות IP",
+      "לתרגם שמות דומיין קריאים לבני אדם כמו academy.local לכתובות IP",
       "לחלק כתובות IP דינמיות למחשבים"
     ],
     correct:2,
     explain:"שרת ה-DNS מתרגם שמות דומיין נוחים לזכירה לכתובות ה-IP האמיתיות של השרתים ברשת."
   },
   {
-    q:"3. מהו הסדר הנכון של 4 השלבים בתהליך הקצאת כתובת IP ב-DHCP (תהליך DORA)?",
+    q:"3. מהו הסדר הנכון של 4 השלבים בתהליך הקצאת כתובת IP ב-DHCP תהליך DORA?",
     opts:[
       "Discover -> Offer -> Request -> ACK",
       "Offer -> Discover -> ACK -> Request",
@@ -1590,16 +1590,16 @@ const quizData = [
       "Discover -> Request -> Offer -> ACK"
     ],
     correct:0,
-    explain:"תהליך DORA כולל: Discover (חיפוש בשרת), Offer (הצעת כתובת), Request (בקשה רשמית), ו-ACK (אישור ונעילה)."
+    explain:"תהליך DORA כולל: Discover חיפוש בשרת, Offer הצעת כתובת, Request בקשה רשמית, ו-ACK אישור ונעילה."
   },
   {
     q:"4. באיזה פורט משתמש פרוטוקול HTTPS המאובטח כברירת מחדל בשכבת האפליקציה?",
     opts:[ "80", "21", "443", "53" ],
     correct:2,
-    explain:"שירות Web רגיל (HTTP) משתמש בפורט 80, בעוד שירות מאובטח ומוצפן (HTTPS) משתמש בפורט 443."
+    explain:"שירות Web רגיל HTTP משתמש בפורט 80, בעוד שירות מאובטח ומוצפן HTTPS משתמש בפורט 443."
   },
   {
-    q:"5. בשירות העברת הקבצים FTP, באיזה פורט משתמש הרכיב להעברת פקודות ובקרה (Control Connection)?",
+    q:"5. בשירות העברת הקבצים FTP, באיזה פורט משתמש הרכיב להעברת פקודות ובקרה Control Connection?",
     opts:[ "פורט 20", "פורט 21", "פורט 22", "פורט 25" ],
     correct:1,
     explain:"פורט 21 ב-FTP מוקצה להעברת פקודות ובקרה, בעוד פורט 20 משמש להעברה הפיזית של נתוני הקבצים."
@@ -1608,18 +1608,18 @@ const quizData = [
     q:"6. מה מייצגת רשומת מיפוי מסוג 'A' בשרת ה-DNS?",
     opts:[
       "מיפוי שם דומיין לכתובת IPv4",
-      "מיפוי שרת דואר אלקטרוני (MX)",
-      "כינוי (Alias) לדומיין אחר",
+      "מיפוי שרת דואר אלקטרוני MX",
+      "כינוי Alias לדומיין אחר",
       "כתובת ה-MAC הפיזית של כרטיס הרשת"
     ],
     correct:0,
-    explain:"רשומת A (Address Record) ממפה שם דומיין ישירות לכתובת IPv4 של השרת."
+    explain:"רשומת A Address Record ממפה שם דומיין ישירות לכתובת IPv4 של השרת."
   },
   {
-    q:"7. באיזה פרוטוקול בשכבת התעבורה (Transport Layer) משתמשות שאילתות DNS סטנדרטיות?",
+    q:"7. באיזה פרוטוקול בשכבת התעבורה Transport Layer משתמשות שאילתות DNS סטנדרטיות?",
     opts:[ "TCP", "UDP", "ICMP", "ARP" ],
     correct:1,
-    explain:"שאילתות DNS סטנדרטיות משתמשות ב-UDP (פורט 53) בשל המהירות והיעדר הצורך בניהול חיבור מורכב."
+    explain:"שאילתות DNS סטנדרטיות משתמשות ב-UDP פורט 53 בשל המהירות והיעדר הצורך בניהול חיבור מורכב."
   },
   {
     q:"8. באיזה פורט מאזין שרת ה-DHCP לבקשות המגיעות מלקוחות ברשת?",
@@ -1631,15 +1631,15 @@ const quizData = [
     q:"9. איזה מבין הפרוטוקולים הבאים מיועד באופן ייעודי להעלאה והורדת קבצים משרת מרוחק?",
     opts:[ "FTP", "DNS", "DHCP", "ARP" ],
     correct:0,
-    explain:"FTP (File Transfer Protocol) הוא הפרוטוקול הייעודי להעברת קבצים ומסמכים ברשת."
+    explain:"FTP File Transfer Protocol הוא הפרוטוקול הייעודי להעברת קבצים ומסמכים ברשת."
   },
   {
     q:"10. באיזו שכבה במודל ה-TCP/IP פועלים השירותים HTTP, DNS, DHCP ו-FTP?",
     opts:[
-      "שכבת הגישה לרשת (Network Access)",
-      "שכבת האינטרנט (Internet Layer)",
-      "שכבת התעבורה (Transport Layer)",
-      "שכבת האפליקציה (Application Layer)"
+      "שכבת הגישה לרשת Network Access",
+      "שכבת האינטרנט Internet Layer",
+      "שכבת התעבורה Transport Layer",
+      "שכבת האפליקציה Application Layer"
     ],
     correct:3,
     explain:"כל ארבעת השירותים הללו מספקים שירותים ישירים לתוכנות ולמשתמשי קצה ולכן שייכים לשכבת האפליקציה."
@@ -1741,7 +1741,7 @@ function revealTeacherAnswers(){
         if(i === item.correct){
           el.classList.add("teacher-revealed");
           if(!el.textContent.includes("✔")){
-            el.textContent = "✔ " + el.textContent + " (תשובה נכונה)";
+            el.textContent = "✔ " + el.textContent + " תשובה נכונה";
           }
         }
       });
