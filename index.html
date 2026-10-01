@@ -816,7 +816,7 @@ input.term-input{
 
 <div class="card" style="background: var(--panel2); border: 1px solid var(--border);">
   <h4 style="font-size: 19px; font-weight: 700; margin-bottom: 14px; color: #1C1917;">
-    🖱️️ לחץ על שירות כדי לראות כיצד הבקשה מנוסחת ומנותבת ברמת האפליקציה:
+    🖱 לחץ על שירות כדי לראות כיצד הבקשה מנוסחת ומנותבת ברמת האפליקציה:
   </h4>
 
   <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px;">
@@ -1288,21 +1288,21 @@ const appRoutingData = {
     title: '🔍 ניתוב שאילתת <code class="mono">DNS</code>',
     port: 'Port 53 (UDP)',
     request: 'QUERY: What is IP for academy.local?',
-    routing: 'הבקשה מנותבת לתהליך ال-<code class="mono">DNS Server</code> המאזין בפורט <code class="mono">53</code>. השרת מחפש בטבלת הרשומות הארגונית.',
+    routing: 'הבקשה מנותבת לתהליך ה-<code class="mono">DNS Server</code> המאזין בפורט <code class="mono">53</code>. השרת מחפש בטבלת הרשומות הארגונית.',
     response: 'RESPONSE: IP = 192.168.1.30 (A Record)'
   },
   dhcp: {
     title: '🎫 ניתוב בקשת <code class="mono">DHCP</code>',
     port: 'Port 67 (UDP)',
     request: 'DISCOVER: Looking for DHCP Server...',
-    routing: 'הבקשה מופצת ברשת (<code class="mono">Broadcast</code>) ומגיעה לפורט <code class="mono">67</code> בשרת ال-<code class="mono">DHCP</code> שמנהל את מאגר הכתובות הדינמי.',
+    routing: 'הבקשה מופצת ברשת (<code class="mono">Broadcast</code>) ומגיעה לפורט <code class="mono">67</code> בשרת ה-<code class="mono">DHCP</code> שמנהל את מאגר הכתובות הדינמי.',
     response: 'OFFER: Offered IP 192.168.1.150'
   },
   web: {
     title: '🌐 ניתוב בקשת <code class="mono">HTTP / Web</code>',
     port: 'Port 80 / 443 (TCP)',
     request: 'GET /index.html HTTP/1.1',
-    routing: 'שכבת האפליקציה פונה לפורט <code class="mono">80</code> בשרת ال-<code class="mono">Web</code>. תהליך השרת שולף את קובץ ה-<code class="mono">HTML</code> המבוקש ומכין אותו לשליחה.',
+    routing: 'שכבת האפליקציה פונה לפורט <code class="mono">80</code> בשרת ה-<code class="mono">Web</code>. תהליך השרת שולף את קובץ ה-<code class="mono">HTML</code> המבוקש ומכין אותו לשליחה.',
     response: 'HTTP 200 OK (Serving HTML Page)'
   },
   ftp: {
@@ -1482,15 +1482,15 @@ async function runSimulation(type){
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS QUERY", src:"192.168.1.150:51200", dst:"192.168.1.10:53", data:"Where is www.site.local?"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS QUERY", src:"192.168.1.150:51200", dst:"192.168.1.10:53", data:"Where is www.site.local?"});
 
-    log("<span class='lbl'>[2. DNS Response]</span> ה-DNS משיב שהכתובת هي <code class='mono'>192.168.1.30</code>.");
+    log("<span class='lbl'>[2. DNS Response]</span> ה-DNS משיב שהכתובת היא <code class='mono'>192.168.1.30</code>.");
     await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS RESPONSE", src:"192.168.1.10:53", dst:"192.168.1.150:51200", data:"IP = 192.168.1.30"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS RESPONSE", src:"192.168.1.10:53", dst:"192.168.1.150:51200", data:"IP = 192.168.1.30"});
 
-    log("<span class='lbl'>[3. HTTP Request]</span> Alice פונה לשרת ה-Web בפורט 80 ומבקשת את דף الבית.");
+    log("<span class='lbl'>[3. HTTP Request]</span> Alice פונה לשרת ה-Web בפורט 80 ומבקשת את דף הבית.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"HTTP GET", src:"192.168.1.150:51201", dst:"192.168.1.30:80", data:"GET /index.html HTTP/1.1"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Web.x, coords.Web.y, {proto:"HTTP GET", src:"192.168.1.150:51201", dst:"192.168.1.30:80", data:"GET /index.html HTTP/1.1"});
 
-    log("<span class='lbl'>[4. HTTP Response]</span> שרת ال-Web מחזיר את קוד הדף HTTP 200 OK.");
+    log("<span class='lbl'>[4. HTTP Response]</span> שרת ה-Web מחזיר את קוד הדף HTTP 200 OK.");
     await animatePacketPDU(coords.Web.x, coords.Web.y, coords.switch.x, coords.switch.y, {proto:"HTTP 200 OK", src:"192.168.1.30:80", dst:"192.168.1.150:51201", data:"Rendering Web Page..."});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"HTTP 200 OK", src:"192.168.1.30:80", dst:"192.168.1.150:51201", data:"Rendering Web Page..."});
 
@@ -1507,31 +1507,31 @@ async function runSimulation(type){
     await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS MX REPLY", src:"192.168.1.10:53", dst:"192.168.1.150:53100", data:"Mail Server = 192.168.1.50"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS MX REPLY", src:"192.168.1.10:53", dst:"192.168.1.150:53100", data:"Mail Server = 192.168.1.50"});
 
-    log("<span class='lbl'>[3. SMTP Send]</span> Alice שולחת את המייל لשרת הדואר ב-<b>SMTP</b> בפורט 25.");
+    log("<span class='lbl'>[3. SMTP Send]</span> Alice שולחת את המייל לשרת הדואר ב-<b>SMTP</b> בפורט 25.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"SMTP SEND", src:"192.168.1.150:53101", dst:"192.168.1.50:25", data:"MAIL FROM:<alice> RCPT:<bob>"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Mail.x, coords.Mail.y, {proto:"SMTP SEND", src:"192.168.1.150:53101", dst:"192.168.1.50:25", data:"Msg: 'Hello Bob!'"});
 
-    log("<span class='lbl'>[4. Mail Stored]</span> שרת ال-Mail שומר את ההודעה בתיבת הדואר של Bob.");
+    log("<span class='lbl'>[4. Mail Stored]</span> שרת ה-Mail שומר את ההודעה בתיבת הדואר של Bob.");
     await new Promise(r => setTimeout(r,800));
 
     log("<span class='lbl'>[5. POP3 Fetch]</span> Bob מבצע משוך/הורדה של ההודעה משרת ה-Mail בפורט 110 <b>POP3</b>.");
     await animatePacketPDU(coords.client2.x, coords.client2.y, coords.switch.x, coords.switch.y, {proto:"POP3 RETR", src:"192.168.1.160:54000", dst:"192.168.1.50:110", data:"USER bob / RETR 1"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.Mail.x, coords.Mail.y, {proto:"POP3 RETR", src:"192.168.1.160:54000", dst:"192.168.1.50:110", data:"Fetch Mail ID 1"});
 
-    log("<span class='lbl'>[6. Mail Delivered]</span> שרת ال-Mail מעביר את תוכן ההודעה ל-Bob.");
+    log("<span class='lbl'>[6. Mail Delivered]</span> שרת ה-Mail מעביר את תוכן ההודעה ל-Bob.");
     await animatePacketPDU(coords.Mail.x, coords.Mail.y, coords.switch.x, coords.switch.y, {proto:"POP3 DATA", src:"192.168.1.50:110", dst:"192.168.1.160:54000", data:"Subject: 'Hello Bob!'"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client2.x, coords.client2.y, {proto:"POP3 DATA", src:"192.168.1.50:110", dst:"192.168.1.160:54000", data:"Subject: 'Hello Bob!'"});
 
-    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> המייל הגיע בהצלחה لתיבת הדואר של Bob!");
+    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> המייל הגיע בהצלחה לתיבת הדואר של Bob!");
   }
   else if(type === 'DNS'){
     document.getElementById("selInfo").innerHTML = "<b style='color:var(--dns)'>שאילתת DNS:</b> בירור רשומת A עבור שם דומיין";
 
-    log("<span class='lbl'>[שאילתה]</span> הלקוח פונה لשרת ה-DNS UDP Port 53 לבירור כתובת IP עבור <code class='mono'>academy.local</code>.");
+    log("<span class='lbl'>[שאילתה]</span> הלקוח פונה לשרת ה-DNS UDP Port 53 לבירור כתובת IP עבור <code class='mono'>academy.local</code>.");
     await animatePacketPDU(coords.client1.x, coords.client1.y, coords.switch.x, coords.switch.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.DNS.x, coords.DNS.y, {proto:"DNS Query", src:"192.168.1.150:61234", dst:"192.168.1.10:53", data:"Query: academy.local A?"});
 
-    log("<span class='lbl'>[תשובה]</span> שרת ال-DNS שולף מרשומת ال-A Record ומחזיר: <code class='mono'>192.168.1.30</code>.");
+    log("<span class='lbl'>[תשובה]</span> שרת ה-DNS שולף מרשומת ה-A Record ומחזיר: <code class='mono'>192.168.1.30</code>.");
     await animatePacketPDU(coords.DNS.x, coords.DNS.y, coords.switch.x, coords.switch.y, {proto:"DNS Response", src:"192.168.1.10:53", dst:"192.168.1.150:61234", data:"academy.local -> 192.168.1.30"});
     await animatePacketPDU(coords.switch.x, coords.switch.y, coords.client1.x, coords.client1.y, {proto:"DNS Response", src:"192.168.1.10:53", dst:"192.168.1.150:61234", data:"academy.local -> 192.168.1.30"});
   }
@@ -1581,7 +1581,7 @@ const cliSteps = [
   },
   {
     expect:/^exit\s*$/i,
-    ok:"יצאת ממצב ההגדרות. הרשומה נשמרה ב-Cache של الשרת ותופץ ברשת הארגונית! 🏆",
+    ok:"יצאת ממצב ההגדרות. הרשומה נשמרה ב-Cache של השרת ותופץ ברשת הארגונית! 🏆",
     cmd:"exit"
   }
 ];
@@ -1630,18 +1630,18 @@ const quizData = [
     q:"1. באיזה פרוטוקול תחנת קצה משתמשת כדי לקבל כתובת IP באופן אוטומטי מיד עם התחברותה לרשת?",
     opts:[ "DNS", "DHCP", "HTTP", "FTP" ],
     correct:1,
-    explain:"שרת ال-DHCP אחראי על חלוקה וניהול דינמי של כתובות IP ופרמטרי רשת נוספים לתחנות הקצה."
+    explain:"שרת ה-DHCP אחראי על חלוקה וניהול דינמי של כתובות IP ופרמטרי רשת נוספים לתחנות הקצה."
   },
   {
-    q:"2. מה תפקידו המרכזי של שרת ال-DNS ברשת התקשורת?",
+    q:"2. מה תפקידו המרכזי של שרת ה-DNS ברשת התקשורת?",
     opts:[
       "להעביר קבצים גדולים במהירות גבוהה",
-      "לאבטח את תעבורת ال-Web באמצעות הצפנה",
-      "לתרגם שמות דומיין קריאים לבני אדם כמו academy.local لכתובות IP",
+      "לאבטח את תעבורת ה-Web באמצעות הצפנה",
+      "לתרגם שמות דומיין קריאים לבני אדם כמו academy.local לכתובות IP",
       "לחלק כתובות IP דינמיות למחשבים"
     ],
     correct:2,
-    explain:"שרת ה-DNS מתרגם שמות דומיין נוחים לזכירה לכתובות ה-IP האמיתיות של الשרתים ברשת."
+    explain:"שרת ה-DNS מתרגם שמות דומיין נוחים לזכירה לכתובות ה-IP האמיתיות של השרתים ברשת."
   },
   {
     q:"3. מהו הסדר הנכון של 4 השלבים בתהליך הקצאת כתובת IP ב-DHCP תהליך DORA?",
@@ -1675,7 +1675,7 @@ const quizData = [
       "כתובת ה-MAC הפיזית של כרטיס הרשת"
     ],
     correct:0,
-    explain:"רשומת A Address Record ממפה שם דומיין ישירות لכתובת IPv4 של השרת."
+    explain:"רשומת A Address Record ממפה שם דומיין ישירות לכתובת IPv4 של השרת."
   },
   {
     q:"7. באיזה פרוטוקול בשכבת התעבורה Transport Layer משתמשות שאילתות DNS סטנדרטיות?",
@@ -1687,16 +1687,16 @@ const quizData = [
     q:"8. באיזה פורט מאזין שרת ה-DHCP לבקשות המגיעות מלקוחות ברשת?",
     opts:[ "Port 53", "Port 67", "Port 68", "Port 80" ],
     correct:1,
-    explain:"שרת ה-DHCP מאזין בפורט 67, בעוד מחשב الלקוח מקבל את התשובות בפורט 68."
+    explain:"שרת ה-DHCP מאזין בפורט 67, בעוד מחשב הלקוח מקבל את התשובות בפורט 68."
   },
   {
     q:"9. איזה מבין הפרוטוקולים הבאים מיועד באופן ייעודי להעלאה והורדת קבצים משרת מרוחק?",
     opts:[ "FTP", "DNS", "DHCP", "ARP" ],
     correct:0,
-    explain:"FTP File Transfer Protocol هو הפרוטוקול הייעודי להעברת קבצים ומסמכים ברשת."
+    explain:"FTP File Transfer Protocol הוא הפרוטוקול הייעודי להעברת קבצים ומסמכים ברשת."
   },
   {
-    q:"10. באיזו שכבה במודל ال-TCP/IP פועלים השירותים HTTP, DNS, DHCP ו-FTP?",
+    q:"10. באיזו שכבה במודל ה-TCP/IP פועלים השירותים HTTP, DNS, DHCP ו-FTP?",
     opts:[
       "שכבת הגישה לרשת Network Access",
       "שכבת האינטרנט Internet Layer",
